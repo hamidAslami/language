@@ -38,6 +38,7 @@ class SplashPageState extends State<SplashPage> {
     return Directionality(
       textDirection: TextDirection.rtl,
 
+
       child: Scaffold(
           backgroundColor: Colors.white,
           body: Stack(
