@@ -41,6 +41,7 @@ class SplashPageState extends State<SplashPage> {
       child: Scaffold(
           backgroundColor: Colors.white,
           body: Stack(
+
             children: [
               Container(
                 margin: EdgeInsets.only(bottom: fullHeight(context) / 4.5),
