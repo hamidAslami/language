@@ -37,6 +37,7 @@ class SplashPageState extends State<SplashPage> {
     var theme = Theme.of(context);
     return Directionality(
       textDirection: TextDirection.rtl,
+
       child: Scaffold(
           backgroundColor: Colors.white,
           body: Stack(
