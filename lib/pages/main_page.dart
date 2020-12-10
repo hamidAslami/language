@@ -1,9 +1,6 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_language_app/theme/colors.dart';
-
-import 'bas/splash_page.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -28,7 +25,6 @@ class MainPageState extends State<MainPage>
   void initState() {
     _animationController = AnimationController(
       duration: Duration(seconds: 1),
-      vsync: this,
     );
     curve = CurvedAnimation(
       parent: _animationController,
@@ -52,9 +48,9 @@ class MainPageState extends State<MainPage>
   Widget bodyWidget() {
     switch (_index) {
       case 0:
-        // return HomePage();
+      // return HomePage();
       /*case 1:
-        return DesigneApp();
+        return DesignApp();
       case 2:
         return ArtistAlbum();
       case 3:
@@ -62,7 +58,7 @@ class MainPageState extends State<MainPage>
       // case 4:
       //   return ProfilePage();
       default:
-        // return HomePage();
+      // return HomePage();
     }
   }
 
@@ -77,9 +73,7 @@ class MainPageState extends State<MainPage>
           child: Icon(
             Icons.brightness_3,
           ),
-          onPressed: () {
-
-          },
+          onPressed: () {},
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -92,7 +86,6 @@ class MainPageState extends State<MainPage>
         splashSpeedInMilliseconds: 300,
         notchSmoothness: NotchSmoothness.verySmoothEdge,
         gapLocation: GapLocation.center,
-
         onTap: (index) => setState(() => _index = index),
       ),
       body: bodyWidget(),

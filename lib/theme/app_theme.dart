@@ -14,9 +14,10 @@ ThemeData appTheme(BuildContext context) {
     brightness: Brightness.dark,
     fontFamily: 'iranSans',
     textTheme: TextTheme(
-
-      headline1: TextStyle(fontFamily: 'kalameh', color: AppColors.darkAccentColor),
-      headline2: TextStyle(fontFamily: 'kalameh', color: AppColors.darkAccentColor),
+      headline1:
+          TextStyle(fontFamily: 'kalameh', color: AppColors.darkAccentColor),
+      headline2:
+          TextStyle(fontFamily: 'kalameh', color: AppColors.darkAccentColor),
       headline3: TextStyle(
           fontSize: headline3Size(context),
           fontFamily: 'kalameh',
@@ -37,6 +38,7 @@ ThemeData appTheme(BuildContext context) {
           fontSize: subTitleSize(context),
           fontWeight: FontWeight.w300),
       bodyText1: TextStyle(
+          height: 1.6,
           fontSize: bodyText1Size(context),
           color: AppColors.textColorDark,
           fontWeight: FontWeight.w600),
@@ -52,13 +54,13 @@ ThemeData appTheme(BuildContext context) {
     scaffoldBackgroundColor: AppColors.background,
     buttonTheme: ButtonThemeData(
         minWidth: double.infinity,
-        padding: EdgeInsets.all(12),
+        padding: EdgeInsets.all(8),
         buttonColor: Theme.of(context).accentColor,
         disabledColor: Colors.grey,
         splashColor: Theme.of(context).primaryColor,
         textTheme: ButtonTextTheme.primary,
         shape: new RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(12),
+          borderRadius: new BorderRadius.circular(8),
         )),
   );
 }

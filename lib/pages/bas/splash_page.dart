@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_language_app/pages/bas/intro_page.dart';
+import 'package:flutter_language_app/pages/bas/login_page.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
@@ -15,19 +15,15 @@ class SplashPage extends StatefulWidget {
 }
 
 class SplashPageState extends State<SplashPage> {
-
-
-
   @override
   void initState() {
     Timer(Duration(seconds: 5), () {
       Navigator.push(
         context,
         PageTransition(
-          type: PageTransitionType.fade,
-          child: IntroPage(),
-          duration: Duration(milliseconds: 800)
-        ),
+            type: PageTransitionType.fade,
+            child: LoginPage(),
+            duration: Duration(milliseconds: 800)),
       );
     });
   }
@@ -37,12 +33,9 @@ class SplashPageState extends State<SplashPage> {
     var theme = Theme.of(context);
     return Directionality(
       textDirection: TextDirection.rtl,
-
-
       child: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: theme.backgroundColor,
           body: Stack(
-
             children: [
               Container(
                 margin: EdgeInsets.only(bottom: fullHeight(context) / 4.5),

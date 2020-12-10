@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_language_app/pages/bas/intro_page.dart';
+import 'package:flutter_language_app/pages/bas/login_page.dart';
+import 'package:flutter_language_app/pages/bas/notification_page.dart';
 import 'package:flutter_language_app/pages/bas/splash_page.dart';
 import 'package:flutter_language_app/pages/main_page.dart';
 import 'package:flutter_language_app/theme/app_theme.dart';
 
 void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false,home: MyApp()));
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -24,7 +27,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: appTheme(context),
-      home: SplashPage(),
+      home: NotificationPage(),
     );
   }
 }
