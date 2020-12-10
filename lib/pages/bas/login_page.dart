@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_language_app/pages/bas/verify_page.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:lottie/lottie.dart';
+import 'package:page_transition/page_transition.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -35,8 +37,10 @@ class LoginPageState extends State<LoginPage> {
                           fit: BoxFit.cover, width: fullWidth(context) / 1.2),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(top: xxLargeSize(context)),
+                  Positioned(
+                    bottom: fullHeight(context) / 4.5,
+                    right: 0,
+                    left: 0,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -65,8 +69,9 @@ class LoginPageState extends State<LoginPage> {
                                   fillColor: Colors.grey.shade200,
                                   filled: true,
                                   contentPadding:
-                                      EdgeInsets.all(mediumSize(context)),
-                                  hintText: "",
+                                  EdgeInsets.all(mediumSize(context)),
+                                  hintText: "0903333333",
+                                  hintStyle: theme.textTheme.bodyText1.copyWith(color: Colors.grey.shade600),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(8),
                                       borderSide: BorderSide(
@@ -84,13 +89,17 @@ class LoginPageState extends State<LoginPage> {
                     child: Container(
                       padding: EdgeInsets.all(xxSmallSize(context)),
                       margin:
-                          EdgeInsets.symmetric(vertical: largeSize(context)),
+                      EdgeInsets.symmetric(vertical: largeSize(context)),
                       decoration: BoxDecoration(
                           shape: BoxShape.circle, color: theme.accentColor),
                       child: IconButton(
                         icon: Icon(Icons.navigate_next_rounded,
-                            color: Colors.white, size: largeSize(context)),
-                        onPressed: () {},
+                            color: Colors.white),
+                        onPressed: () {
+                          Navigator.push(context, PageTransition(
+                              child: VerifyPage(),
+                              type: PageTransitionType.rightToLeft,duration: Duration(milliseconds: 700)));
+                        },
                       ),
                     ),
                   ),

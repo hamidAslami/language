@@ -2,13 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:lottie/lottie.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
-class NotificationPage extends StatefulWidget {
+class VerifyPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => NotificationPageState();
+  State<StatefulWidget> createState() => VerifyPageState();
 }
 
-class NotificationPageState extends State<NotificationPage> {
+class VerifyPageState extends State<VerifyPage> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -35,8 +36,10 @@ class NotificationPageState extends State<NotificationPage> {
                       fit: BoxFit.cover, width: fullWidth(context) / 1.2),
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(top: xxLargeSize(context)),
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: fullHeight(context) / 5.5,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -61,33 +64,30 @@ class NotificationPageState extends State<NotificationPage> {
                             horizontal: xlargeSize(context)),
                         child: Directionality(
                           textDirection: TextDirection.ltr,
-                          child: TextField(
-                            textAlign: TextAlign.center,
-                            keyboardType: TextInputType.phone,
-                            decoration: InputDecoration(
-                              fillColor: Colors.grey.shade200,
-                              filled: true,
-                              contentPadding:
-                                  EdgeInsets.all(mediumSize(context)),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                  borderSide: BorderSide(
-                                      width: 1, style: BorderStyle.none)),
-                            ),
-                            maxLength: 6,
-                          ),
+                          child: verifyField(context),
                         )),
                     Container(
-                      margin:
-                          EdgeInsets.symmetric(horizontal: xlargeSize(context)),
+                      margin: EdgeInsets.only(
+                          left: xlargeSize(context),
+                          right: xlargeSize(context),
+                          top: smallSize(context)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            "دریافت مجدد کد",
-                            style: theme.textTheme.subtitle1.copyWith(
-                                color: Color(0xff19004d),
-                                fontSize: fullWidth(context) / 25),
+                          InkWell(
+
+                            onTap: () {},
+                            splashColor: Colors.grey.shade300,
+                            borderRadius: BorderRadius.circular(8),
+                            child: Padding(
+                              padding:  EdgeInsets.symmetric(horizontal: xxSmallSize(context),vertical: smallSize(context)),
+                              child: Text(
+                                "دریافت مجدد کد",
+                                style: theme.textTheme.subtitle1.copyWith(
+                                    color: Color(0xff19004d),
+                                    fontSize: fullWidth(context) / 23),
+                              ),
+                            ),
                           ),
                           Directionality(
                             textDirection: TextDirection.ltr,
@@ -95,7 +95,7 @@ class NotificationPageState extends State<NotificationPage> {
                               "1:58",
                               style: theme.textTheme.subtitle1.copyWith(
                                   color: Color(0xff19004d),
-                                  fontSize: fullWidth(context) / 25),
+                                  fontSize: fullWidth(context) / 23),
                             ),
                           ),
                         ],
@@ -112,8 +112,9 @@ class NotificationPageState extends State<NotificationPage> {
                   decoration: BoxDecoration(
                       shape: BoxShape.circle, color: theme.accentColor),
                   child: IconButton(
-                    icon: Icon(Icons.navigate_next_rounded,
-                        color: Colors.white, size: largeSize(context)),
+                    alignment: Alignment.center,
+                    icon:
+                        Icon(Icons.navigate_next_rounded, color: Colors.white),
                     onPressed: () {},
                   ),
                 ),
@@ -124,4 +125,52 @@ class NotificationPageState extends State<NotificationPage> {
       ),
     );
   }
+}
+
+Widget verifyField(BuildContext context) {
+  return PinCodeTextField(
+    cursorColor: Colors.black,
+    textInputAction: TextInputAction.done,
+    keyboardType: TextInputType.number,
+    textStyle: TextStyle(
+        fontSize: fullWidth(context) > 600
+            ? fullWidth(context) / 35
+            : fullWidth(context) / 25,
+        color: Colors.black,
+        fontWeight: FontWeight.w800),
+    length: 4,
+    // animationType: AnimationType.fade,
+    pinTheme: PinTheme(
+      shape: PinCodeFieldShape.circle,
+      fieldHeight: 50,
+      fieldWidth: 50,
+      selectedColor: Theme.of(context).primaryColor,
+      inactiveFillColor: Colors.grey.shade400,
+      selectedFillColor: Colors.grey.shade400,
+      disabledColor: Colors.grey,
+      inactiveColor: Colors.grey.shade200,
+      activeColor: Theme.of(context).accentColor,
+      activeFillColor: Colors.grey.shade300,
+    ),
+    animationDuration: Duration(milliseconds: 300),
+    backgroundColor: Colors.transparent,
+    autovalidateMode: AutovalidateMode.always,
+    enableActiveFill: true,
+    onCompleted: (value) {
+      // if (!isFinish) {
+      //   setState(() {
+      //     isFinish = true;
+      //     code = value;
+      //   });
+      // }
+    },
+    beforeTextPaste: (text) {
+      print("Allowing to paste $text");
+      //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
+      //but you can show anything you want here, like your pop up saying wrong paste format or etc
+      return true;
+    },
+    appContext: context,
+    onChanged: (String value) {},
+  );
 }

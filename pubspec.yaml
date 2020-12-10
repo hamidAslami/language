@@ -35,7 +35,9 @@ dependencies:
   flare_flutter: ^2.0.6
   lottie: ^0.7.0+1
   page_transition: ^1.1.7+3
-  liquid_swipe: ^1.4.3
+  liquid_swipe: ^1.5.0
+
+  pin_code_fields: ^6.0.0
 
 
 dev_dependencies:

@@ -17,13 +17,13 @@ class SplashPage extends StatefulWidget {
 class SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    Timer(Duration(seconds: 5), () {
-      Navigator.push(
+    Timer(Duration(seconds: 10), () {
+      Navigator.pushReplacement(
         context,
         PageTransition(
             type: PageTransitionType.fade,
             child: LoginPage(),
-            duration: Duration(milliseconds: 800)),
+            duration: Duration(milliseconds: 2000)),
       );
     });
   }
