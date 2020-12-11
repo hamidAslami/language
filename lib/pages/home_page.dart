@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_language_app/fakeData.dart';
+import 'package:flutter_language_app/models/category_model.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 
 class HomePage extends StatelessWidget {
@@ -152,6 +154,20 @@ class HomePage extends StatelessWidget {
                   ),
                 ],
               ),
+              Container(
+                width: fullWidth(context),
+                height: fullHeight(context)/4.5,
+                child: ListView.builder(
+                  padding:
+                  EdgeInsets.symmetric(horizontal: 0),
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categoryList().length,
+                  itemBuilder: (context, index) =>
+                      categoryCard(categoryList()[index], context),
+                ),
+              ),
             ],
           ),
         ),
@@ -161,41 +177,46 @@ class HomePage extends StatelessWidget {
 }
 
 
-Widget categoryCard(,BuildContext context){
-  var theme=Theme.of(context);
-  return Stack(
+Widget categoryCard(CategoryModel category, BuildContext context) {
+  var theme = Theme.of(context);
+  return Container(
+    margin: EdgeInsets.symmetric(horizontal: smallSize(context)),
+    width: fullWidth(context)/2.4,
+    height: fullHeight(context) / 4.5,
+    child: Stack(
       children: [
         Positioned.fill(
             child: Container(
               margin:
               EdgeInsets.symmetric(vertical: standardSize(context)),
-              width: fullWidth(context),
-              height: fullHeight(context) / 10,
+              width: fullWidth(context)/2.5,
+              height: fullHeight(context) / 3,
               decoration: BoxDecoration(
-                  image: DecorationImage(image: AssetImage(backgroundimage)),
-                  borderRadius: BorderRadius.circular(16)),
+                  image: DecorationImage(
+                      image: AssetImage(category.backgroundImage)
+                  ),
+                  borderRadius: BorderRadius.circular(smallSize(context))),
             )),
         Positioned(
-          top: fullHeight(context) / -22,
-          left: fullHeight(context) / -5.4,
-          right: 0,
-          bottom: fullHeight(context) / -31,
+          right: fullHeight(context)/8,
+          top: fullHeight(context)/13,
+          left: 0,
+          bottom: -standardSize(context),
           child: Container(
-            child: Image.asset(imageCategory),
+            child: Image.asset(category.image),
           ),
         ),
         Positioned(
-            right: fullWidth(context) / 18,
-            top: fullHeight(context) / 20,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  child: Text(title,
-                      style: theme.textTheme.headline4.copyWith(
-                          color: Color(0xffffffff),
-                          fontSize: mediumSize(context))),
-                ),
-              ],
-            ))]);
-}
+          right: fullWidth(context) / 24,
+          top: fullHeight(context) / 20,
+          child: Container(
+            child: Text(category.title,
+                style: theme.textTheme.bodyText1.copyWith(
+                    color: Color(0xffffffff),
+                    fontSize: mediumSize(context))),
+          ),
+        ),
+      ],
+    ),
+  );
+} // Category card
