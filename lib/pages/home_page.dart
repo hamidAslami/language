@@ -159,3 +159,43 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+
+Widget categoryCard(,BuildContext context){
+  var theme=Theme.of(context);
+  return Stack(
+      children: [
+        Positioned.fill(
+            child: Container(
+              margin:
+              EdgeInsets.symmetric(vertical: standardSize(context)),
+              width: fullWidth(context),
+              height: fullHeight(context) / 10,
+              decoration: BoxDecoration(
+                  image: DecorationImage(image: AssetImage(backgroundimage)),
+                  borderRadius: BorderRadius.circular(16)),
+            )),
+        Positioned(
+          top: fullHeight(context) / -22,
+          left: fullHeight(context) / -5.4,
+          right: 0,
+          bottom: fullHeight(context) / -31,
+          child: Container(
+            child: Image.asset(imageCategory),
+          ),
+        ),
+        Positioned(
+            right: fullWidth(context) / 18,
+            top: fullHeight(context) / 20,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  child: Text(title,
+                      style: theme.textTheme.headline4.copyWith(
+                          color: Color(0xffffffff),
+                          fontSize: mediumSize(context))),
+                ),
+              ],
+            ))]);
+}
