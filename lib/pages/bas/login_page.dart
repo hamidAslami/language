@@ -69,9 +69,10 @@ class LoginPageState extends State<LoginPage> {
                                   fillColor: Colors.grey.shade200,
                                   filled: true,
                                   contentPadding:
-                                  EdgeInsets.all(mediumSize(context)),
+                                      EdgeInsets.all(mediumSize(context)),
                                   hintText: "0903333333",
-                                  hintStyle: theme.textTheme.bodyText1.copyWith(color: Colors.grey.shade600),
+                                  hintStyle: theme.textTheme.bodyText1
+                                      .copyWith(color: Colors.grey.shade600),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(8),
                                       borderSide: BorderSide(
@@ -84,21 +85,23 @@ class LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   Align(
-
                     alignment: Alignment.bottomCenter,
                     child: Container(
                       padding: EdgeInsets.all(xxSmallSize(context)),
                       margin:
-                      EdgeInsets.symmetric(vertical: largeSize(context)),
+                          EdgeInsets.symmetric(vertical: largeSize(context)),
                       decoration: BoxDecoration(
                           shape: BoxShape.circle, color: theme.accentColor),
                       child: IconButton(
                         icon: Icon(Icons.navigate_next_rounded,
                             color: Colors.white),
                         onPressed: () {
-                          Navigator.push(context, PageTransition(
-                              child: VerifyPage(),
-                              type: PageTransitionType.rightToLeft,duration: Duration(milliseconds: 700)));
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                  child: VerifyPage(),
+                                  type: PageTransitionType.rightToLeftWithFade,
+                                  duration: Duration(milliseconds: 700)));
                         },
                       ),
                     ),

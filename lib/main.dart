@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_language_app/pages/bas/splash_page.dart';
 import 'package:flutter_language_app/pages/bas/verify_page.dart';
+import 'package:flutter_language_app/pages/home_page.dart';
 import 'package:flutter_language_app/theme/app_theme.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: appTheme(context),
-      home: SplashPage(),
+      home: HomePage(),
     );
   }
 }

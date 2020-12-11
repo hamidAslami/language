@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_language_app/pages/home_page.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:lottie/lottie.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class VerifyPage extends StatefulWidget {
@@ -75,12 +76,13 @@ class VerifyPageState extends State<VerifyPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           InkWell(
-
                             onTap: () {},
                             splashColor: Colors.grey.shade300,
                             borderRadius: BorderRadius.circular(8),
                             child: Padding(
-                              padding:  EdgeInsets.symmetric(horizontal: xxSmallSize(context),vertical: smallSize(context)),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: xxSmallSize(context),
+                                  vertical: smallSize(context)),
                               child: Text(
                                 "دریافت مجدد کد",
                                 style: theme.textTheme.subtitle1.copyWith(
@@ -114,8 +116,15 @@ class VerifyPageState extends State<VerifyPage> {
                   child: IconButton(
                     alignment: Alignment.center,
                     icon:
-                        Icon(Icons.navigate_next_rounded, color: Colors.white),
-                    onPressed: () {},
+                    Icon(Icons.navigate_next_rounded, color: Colors.white),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                      PageTransition(
+                          child: HomePage(),
+                          type: PageTransitionType.rightToLeftWithFade,
+                          duration: Duration(milliseconds: 700));
+                    },
                   ),
                 ),
               ),
@@ -126,6 +135,8 @@ class VerifyPageState extends State<VerifyPage> {
     );
   }
 }
+
+///////////// Widget Verify Field /////////////
 
 Widget verifyField(BuildContext context) {
   return PinCodeTextField(
@@ -144,12 +155,16 @@ Widget verifyField(BuildContext context) {
       shape: PinCodeFieldShape.circle,
       fieldHeight: 50,
       fieldWidth: 50,
-      selectedColor: Theme.of(context).primaryColor,
+      selectedColor: Theme
+          .of(context)
+          .primaryColor,
       inactiveFillColor: Colors.grey.shade400,
       selectedFillColor: Colors.grey.shade400,
       disabledColor: Colors.grey,
       inactiveColor: Colors.grey.shade200,
-      activeColor: Theme.of(context).accentColor,
+      activeColor: Theme
+          .of(context)
+          .accentColor,
       activeFillColor: Colors.grey.shade300,
     ),
     animationDuration: Duration(milliseconds: 300),
