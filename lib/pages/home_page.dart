@@ -291,7 +291,7 @@ Widget cartBox(
           ),
         ),
         Container(
-          margin: EdgeInsets.only(right: smallSize(context)),
+          margin: EdgeInsets.only(right: largeSize(context)),
           child: Align(
             alignment: Alignment.center,
             child: Text(cartBoxModel.textTitle,
@@ -302,7 +302,7 @@ Widget cartBox(
         ),
         Container(
           margin: EdgeInsets.only(
-              bottom: xSmallSize(context), right: smallSize(context)),
+              bottom: xSmallSize(context), right: largeSize(context)),
           child: Align(
             alignment: Alignment.bottomCenter,
             child: Text(cartBoxModel.subTitles,

@@ -50,7 +50,7 @@ class MainPageState extends State<MainPage>
   Widget bodyWidget() {
     switch (_index) {
       case 0:
-       return HomePage();
+        return HomePage();
       /*case 1:
         return DesignApp();
       case 2:
@@ -60,7 +60,7 @@ class MainPageState extends State<MainPage>
       // case 4:
       //   return ProfilePage();
       default:
-       return HomePage();
+        return HomePage();
     }
   }
 
