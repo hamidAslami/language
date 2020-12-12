@@ -22,5 +22,17 @@ List cartBoxList() {
       "assets/Penguin2.jpg", "دوره تخصصی متوسـط", "Intermediate", "طلایی"));
   cartBox.add(CartBoxModel(
       "assets/Penguin.jpg", "دوره تخصصی پیشرفتـه", "Advanced", "طلایی"));
+  cartBox.add(CartBoxModel(
+      "assets/Penguin3.jpg", "دوره تخصصی مـبتدی", "Elementary", "طلایی"));
+  cartBox.add(CartBoxModel(
+      "assets/Penguin2.jpg", "دوره تخصصی متوسـط", "Intermediate", "طلایی"));
+  cartBox.add(CartBoxModel(
+      "assets/Penguin.jpg", "دوره تخصصی پیشرفتـه", "Advanced", "طلایی"));
+  cartBox.add(CartBoxModel(
+      "assets/Penguin3.jpg", "دوره تخصصی مـبتدی", "Elementary", "طلایی"));
+  cartBox.add(CartBoxModel(
+      "assets/Penguin2.jpg", "دوره تخصصی متوسـط", "Intermediate", "طلایی"));
+  cartBox.add(CartBoxModel(
+      "assets/Penguin.jpg", "دوره تخصصی پیشرفتـه", "Advanced", "طلایی"));
   return cartBox;
 }

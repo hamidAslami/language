@@ -67,30 +67,33 @@ class MainPageState extends State<MainPage>
   @override
   // ignore: missing_return
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: ScaleTransition(
-        scale: animation,
-        child: FloatingActionButton(
-          elevation: 8,
-          child: Icon(
-            Icons.brightness_3,
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        floatingActionButton: ScaleTransition(
+          scale: animation,
+          child: FloatingActionButton(
+            elevation: 8,
+            child: Icon(
+              Icons.brightness_3,
+            ),
+            onPressed: () {},
           ),
-          onPressed: () {},
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: AnimatedBottomNavigationBar(
+          icons: iconList,
+          activeIndex: _index,
+          elevation: 30,
+          inactiveColor: Colors.grey,
+          notchAndCornersAnimation: animation,
+          splashSpeedInMilliseconds: 300,
+          notchSmoothness: NotchSmoothness.verySmoothEdge,
+          gapLocation: GapLocation.center,
+          onTap: (index) => setState(() => _index = index),
+        ),
+        body: bodyWidget(),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: AnimatedBottomNavigationBar(
-        icons: iconList,
-        activeIndex: _index,
-        elevation: 30,
-        inactiveColor: Colors.grey,
-        notchAndCornersAnimation: animation,
-        splashSpeedInMilliseconds: 300,
-        notchSmoothness: NotchSmoothness.verySmoothEdge,
-        gapLocation: GapLocation.center,
-        onTap: (index) => setState(() => _index = index),
-      ),
-      body: bodyWidget(),
     );
   }
 }

@@ -174,7 +174,7 @@ class HomePage extends StatelessWidget {
                     physics: BouncingScrollPhysics(),
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
-                    itemCount: cartBoxList().length,
+                    itemCount: 3,
                     itemBuilder: (context, index) =>
                         cartBox(cartBoxList()[index], context),
                   ),
