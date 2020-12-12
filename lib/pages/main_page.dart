@@ -2,6 +2,8 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'home_page.dart';
+
 class MainPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => MainPageState();
@@ -48,7 +50,7 @@ class MainPageState extends State<MainPage>
   Widget bodyWidget() {
     switch (_index) {
       case 0:
-      // return HomePage();
+       return HomePage();
       /*case 1:
         return DesignApp();
       case 2:
@@ -58,7 +60,7 @@ class MainPageState extends State<MainPage>
       // case 4:
       //   return ProfilePage();
       default:
-      // return HomePage();
+       return HomePage();
     }
   }
 

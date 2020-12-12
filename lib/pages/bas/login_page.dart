@@ -97,11 +97,12 @@ class LoginPageState extends State<LoginPage> {
                             color: Colors.white),
                         onPressed: () {
                           Navigator.push(
-                              context,
-                              PageTransition(
-                                  child: VerifyPage(),
-                                  type: PageTransitionType.rightToLeftWithFade,
-                                  duration: Duration(milliseconds: 700)));
+                            context,
+                            PageTransition(
+                                child: VerifyPage(),
+                                type: PageTransitionType.rightToLeftWithFade,
+                                duration: Duration(milliseconds: 700)),
+                          );
                         },
                       ),
                     ),
