@@ -180,7 +180,7 @@ class LessonPageState extends State<LessonPage> {
                             Container(
                               margin: EdgeInsets.only(top: mediumSize(context)),
                               child: Text(
-                                "The Family",
+                                "Great Job",
                                 style: TextStyle(
                                     fontFamily: "balsamiq",
                                     fontWeight: FontWeight.w700,
@@ -192,7 +192,7 @@ class LessonPageState extends State<LessonPage> {
                               margin:
                               EdgeInsets.only(top: xxSmallSize(context)),
                               child: Text(
-                                "Lesson 1",
+                                "Next lesson",
                                 style: TextStyle(
                                     fontFamily: "balsamiq",
                                     fontWeight: FontWeight.w500,

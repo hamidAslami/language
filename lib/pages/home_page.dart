@@ -70,14 +70,14 @@ class HomePage extends StatelessWidget {
                           children: [
                             Positioned.fill(
                                 child: Container(
-                              margin: EdgeInsets.symmetric(
-                                  vertical: standardSize(context)),
-                              width: fullWidth(context),
-                              height: fullHeight(context) / 3.4,
-                              decoration: BoxDecoration(
-                                  color: theme.primaryColor,
-                                  borderRadius: BorderRadius.circular(16)),
-                            )),
+                                  margin: EdgeInsets.symmetric(
+                                      vertical: standardSize(context)),
+                                  width: fullWidth(context),
+                                  height: fullHeight(context) / 3.4,
+                                  decoration: BoxDecoration(
+                                      color: theme.primaryColor,
+                                      borderRadius: BorderRadius.circular(16)),
+                                )),
                             Positioned(
                               top: fullHeight(context) / -22,
                               left: fullHeight(context) / -5.4,
@@ -97,8 +97,8 @@ class HomePage extends StatelessWidget {
                                     child: Text("دوره تخصصی\nزبان انگلیسی",
                                         style: theme.textTheme.headline4
                                             .copyWith(
-                                                color: Color(0xffffffff),
-                                                fontSize: mediumSize(context))),
+                                            color: Color(0xffffffff),
+                                            fontSize: mediumSize(context))),
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
@@ -109,7 +109,7 @@ class HomePage extends StatelessWidget {
                                       child: Container(
                                         decoration: BoxDecoration(
                                           borderRadius:
-                                              BorderRadius.circular(10),
+                                          BorderRadius.circular(10),
                                           boxShadow: [
                                             BoxShadow(
                                                 color: Color(0xff4c456f),
@@ -174,7 +174,8 @@ class HomePage extends StatelessWidget {
                             physics: BouncingScrollPhysics(),
                             pageSnapping: true,
                             itemCount: categoryList().length,
-                            controller: PageController(initialPage: 1, viewportFraction: 0.8),
+                            controller: PageController(
+                                initialPage: 1, viewportFraction: 0.8),
                             itemBuilder: (context, index) =>
                                 categoryCard(categoryList()[index], context)),
                         // child: ListView.builder(
@@ -252,15 +253,15 @@ Widget categoryCard(CategoryModel category, BuildContext context) {
       children: [
         Positioned.fill(
             child: Container(
-          margin: EdgeInsets.symmetric(vertical: standardSize(context)),
-          width: fullWidth(context) / 2.5,
-          height: fullHeight(context) / 3,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(category.backgroundImage),
-                  fit: BoxFit.cover),
-              borderRadius: BorderRadius.circular(16)),
-        )),
+              margin: EdgeInsets.symmetric(vertical: standardSize(context)),
+              width: fullWidth(context) / 2.5,
+              height: fullHeight(context) / 3,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(category.backgroundImage),
+                      fit: BoxFit.cover),
+                  borderRadius: BorderRadius.circular(16)),
+            )),
         Positioned(
           top: fullHeight(context) / 13,
           left: smallSize(context),
@@ -269,7 +270,6 @@ Widget categoryCard(CategoryModel category, BuildContext context) {
             width: fullWidth(context) / 6,
             height: fullWidth(context) / 6,
             child: Image.asset(
-
               category.image,
             ),
           ),
@@ -281,7 +281,7 @@ Widget categoryCard(CategoryModel category, BuildContext context) {
             child: Text(category.title,
                 style: theme.textTheme.headline4.copyWith(
                   color: Color(0xffffffff),
-                  fontSize: fullWidth(context) / 190.2,
+                  fontSize: fullWidth(context) / 20,
                   shadows: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(1),
@@ -298,10 +298,8 @@ Widget categoryCard(CategoryModel category, BuildContext context) {
   );
 } // Category card
 
-Widget lessonBox(
-  CartBoxModel cartBoxModel,
-  BuildContext context,
-) {
+Widget lessonBox(CartBoxModel cartBoxModel,
+    BuildContext context,) {
   var theme = Theme.of(context);
   return Container(
     margin: EdgeInsets.symmetric(vertical: mediumSize(context)),
