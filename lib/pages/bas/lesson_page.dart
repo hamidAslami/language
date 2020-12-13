@@ -6,6 +6,7 @@ import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/widgets/appbar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lottie/lottie.dart';
 
 class LessonPage extends StatefulWidget {
   @override
@@ -167,8 +168,8 @@ class LessonPageState extends State<LessonPage> {
                       Positioned(
                         top: 0,
                         right: 0,
-                        child: Image.network(
-                          "https://s17.picofile.com/file/8417368668/bg_lesson_1_5x.png",
+                        child: Lottie.asset(
+                          "assets/nice_job.json",
                           width: fullWidth(context) / 2,
                           height: fullWidth(context) / 2,
                         ),
@@ -184,7 +185,7 @@ class LessonPageState extends State<LessonPage> {
                                 style: TextStyle(
                                     fontFamily: "balsamiq",
                                     fontWeight: FontWeight.w700,
-                                    fontSize: subTitleSize(context),
+                                    fontSize:fullWidth(context) / 13,
                                     color: Colors.white),
                               ),
                             ),
@@ -309,7 +310,7 @@ class LessonPageState extends State<LessonPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(lesson.title,
-                          style: Theme.of(context).textTheme.headline4),
+                          style: Theme.of(context).textTheme.headline4.copyWith(fontSize: bodyText1Size(context))),
                       Container(
                         margin: EdgeInsets.only(top: mediumSize(context)),
                         child: Row(
