@@ -28,7 +28,7 @@ class ViewAllPageState extends State<ViewAllPage> {
                   color: theme.primaryColor)),
           centerTitle: true,
           leading: IconButton(
-            //onPressed: (){},
+            onPressed: (){},
             icon: Icon(Icons.navigate_before,
                 color: theme.primaryColor, size: largeSize(context)),
           ),
@@ -57,7 +57,7 @@ class ViewAllPageState extends State<ViewAllPage> {
                     shrinkWrap: true,
                     itemCount: 6,
                     itemBuilder: (context, index) =>
-                        cartBox(cartBoxList()[index], context),
+                        lessonBox(homeLessonList()[index], context),
                   ),
                 ),
               ],

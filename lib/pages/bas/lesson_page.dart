@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_language_app/fakeData.dart';
+import 'package:flutter_language_app/models/lesson_model.dart';
+import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
+import 'package:flutter_language_app/widgets/appbar.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LessonPage extends StatefulWidget {
   @override
@@ -12,82 +17,383 @@ class LessonPageState extends State<LessonPage> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Directionality(
-        textDirection: TextDirection.rtl,
-        child: Scaffold(
-          backgroundColor: theme.backgroundColor,
-          appBar: AppBar(
-            centerTitle: true,
-            shadowColor: Colors.white70,
-            elevation: 5,
-            backgroundColor: Colors.white,
-            leading: IconButton(
-              icon: Icon(
-                Icons.arrow_back_ios,
-              ),
-              onPressed: () {},
-            ),
-            title: Text("خانواده و فامیل", style: theme.textTheme.bodyText1),
-          ),
-          body: SingleChildScrollView(
-            child: Container(
-              margin: EdgeInsets.only(
-                  top: standardSize(context),
-                  left: standardSize(context),
-                  right: standardSize(context)),
-              child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    lessonItemWidget(),
-                    lessonItemWidget(),
-                    lessonItemWidget(),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ));
-  }
-
-  Widget lessonItemWidget() {
-    return Container(
-      width: fullWidth(context),
-      margin: EdgeInsets.only(bottom: mediumSize(context)),
-      height: fullHeight(context) / 5,
-      child: Row(
-        children: [
-          Container(
-            height: 140,
-            child: Stack(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        backgroundColor: theme.backgroundColor,
+        appBar: appbarCustom("خانواده و فامیل", context),
+        body: Container(
+          height: fullHeight(context),
+          child: SingleChildScrollView(
+            primary: true,
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
               children: [
-                Positioned.fill(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border:
-                            Border.all(width: 10, color: Colors.grey.shade100)),
+                Container(
+                  margin: EdgeInsets.only(
+                      left: standardSize(context),
+                      right: standardSize(context),
+                      top: fullHeight(context) / 35,
+                      bottom: standardSize(context)),
+                  width: fullWidth(context),
+                  height: fullHeight(context) / 3,
+                  decoration: BoxDecoration(boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.shade300,
+                      spreadRadius: 1,
+                      blurRadius: 12,
+                      offset: Offset(0, 16), // changes position of shadow
+                    ),
+                  ]),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        right: 0,
+                        top: standardSize(context),
+                        bottom: 0,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(
+                                      "assets/bg_lesson_start.jpg"))),
+                        ),
+                      ),
+                      Positioned(
+                        top: 0,
+                        right: 0,
+                        child: Image.network(
+                          "https://s17.picofile.com/file/8417368668/bg_lesson_1_5x.png",
+                          width: fullWidth(context) / 2,
+                          height: fullWidth(context) / 2,
+                        ),
+                      ),
+                      Positioned(
+                        top: xlargeSize(context),
+                        child: Column(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(top: mediumSize(context)),
+                              child: Text(
+                                "The Family",
+                                style: TextStyle(
+                                    fontFamily: "balsamiq",
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: subTitleSize(context),
+                                    color: Colors.white),
+                              ),
+                            ),
+                            Container(
+                              margin:
+                                  EdgeInsets.only(top: xxSmallSize(context)),
+                              child: Text(
+                                "Lesson 1",
+                                style: TextStyle(
+                                    fontFamily: "balsamiq",
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: caption1Size(context),
+                                    color: Colors.white),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.only(top: smallSize(context)),
+                              height: fullWidth(context) / 12,
+                              width: fullWidth(context) / 4.6,
+                              decoration: BoxDecoration(
+                                  color: theme.accentColor,
+                                  borderRadius: BorderRadius.circular(16),boxShadow: [BoxShadow(
+
+                              )]),
+                              child: Text(
+                                "Start",
+                                style: TextStyle(
+                                    fontFamily: "balsamiq",
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: caption1Size(context),
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        ),
+                        left: mediumSize(context),
+                        bottom: mediumSize(context),
+                      )
+                    ],
                   ),
                 ),
-                Positioned(
-                  top: mediumSize(context),
-                  left: mediumSize(context),
-                  right: mediumSize(context),
-                  bottom: mediumSize(context),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                                "https://www.online-convert.com/downloadfile/d43a574e-3cd9-4346-b9e4-dc88e53c2eca/69a870f8-f93d-4a40-9e3f-a319978d7f52"))),
+                ListView.builder(
+                  primary: false,
+                  padding: EdgeInsets.all(mediumSize(context)),
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: lessonList(context).length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) =>
+                      lessonItemWidget(lessonList(context)[index]),
+                ),
+                Container(
+                  margin: EdgeInsets.only(
+                      left: standardSize(context),
+                      right: standardSize(context),
+                      bottom: standardSize(context)),
+                  width: fullWidth(context),
+                  height: fullHeight(context) / 3,
+                  decoration: BoxDecoration(boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.shade300,
+                      spreadRadius: 1,
+                      blurRadius: 12,
+                      offset: Offset(0, 16), // changes position of shadow
+                    ),
+                  ]),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        right: 0,
+                        top: standardSize(context),
+                        bottom: 0,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(
+                                      "assets/bg_finish_lesson.jpg"))),
+                        ),
+                      ),
+                      Positioned(
+                        top: 0,
+                        right: 0,
+                        child: Image.network(
+                          "https://s17.picofile.com/file/8417368668/bg_lesson_1_5x.png",
+                          width: fullWidth(context) / 2,
+                          height: fullWidth(context) / 2,
+                        ),
+                      ),
+                      Positioned(
+                        top: xlargeSize(context),
+                        child: Column(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(top: mediumSize(context)),
+                              child: Text(
+                                "The Family",
+                                style: TextStyle(
+                                    fontFamily: "balsamiq",
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: subTitleSize(context),
+                                    color: Colors.white),
+                              ),
+                            ),
+                            Container(
+                              margin:
+                              EdgeInsets.only(top: xxSmallSize(context)),
+                              child: Text(
+                                "Lesson 1",
+                                style: TextStyle(
+                                    fontFamily: "balsamiq",
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: caption1Size(context),
+                                    color: Colors.white),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.only(top: smallSize(context)),
+                              height: fullWidth(context) / 12,
+                              width: fullWidth(context) / 4.6,
+                              decoration: BoxDecoration(
+                                  color: theme.accentColor,
+                                  borderRadius: BorderRadius.circular(16),boxShadow: [BoxShadow(
+
+                              )]),
+                              child: Text(
+                                "Start",
+                                style: TextStyle(
+                                    fontFamily: "balsamiq",
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: caption1Size(context),
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        ),
+                        left: mediumSize(context),
+                        bottom: mediumSize(context),
+                      )
+                    ],
                   ),
-                )
+                ),
+
               ],
             ),
-            width: 140,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget lessonItemWidget(Lesson lesson) {
+    return Container(
+      width: fullWidth(context),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                height: fullWidth(context) / 3.5,
+                child: Stack(
+                  children: [
+                    Positioned.fill(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.shade300,
+                                blurRadius: 10,
+                                spreadRadius: 2,
+                              )
+                            ],
+                            border: Border.all(
+                                width: 9,
+                                color: lesson.isDone
+                                    ? lesson.color
+                                    : Colors.grey.shade200)),
+                      ),
+                    ),
+                    Positioned(
+                      top: mediumSize(context),
+                      left: mediumSize(context),
+                      right: mediumSize(context),
+                      bottom: mediumSize(context),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(lesson.image))),
+                      ),
+                    ),
+                    lesson.isDone
+                        ? Align(
+                            alignment: Alignment(0, 1.3),
+                            child: Container(
+                              padding: EdgeInsets.all(xSmallSize(context)),
+                              child: Container(
+                                  width: fullWidth(context) / 26,
+                                  height: fullWidth(context) / 26,
+                                  child: SvgPicture.asset(
+                                    'assets/tick.svg',
+                                    color: Colors.white,
+                                  )),
+                              decoration: BoxDecoration(
+                                  color: lesson.color, shape: BoxShape.circle),
+                            ),
+                          )
+                        : Container(),
+                  ],
+                ),
+                width: fullWidth(context) / 3.5,
+              ),
+              Expanded(
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: smallSize(context)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(lesson.title,
+                          style: Theme.of(context).textTheme.headline4),
+                      Container(
+                        margin: EdgeInsets.only(top: mediumSize(context)),
+                        child: Row(
+                          children: [
+                            icon((() {
+                              switch (lesson.type) {
+                                case lessonType.video:
+                                  return Icons.video_library_sharp;
+                                  break;
+                                case lessonType.speaking:
+                                  return Icons.chat_rounded;
+                                  break;
+                                case lessonType.words:
+                                  return Icons.menu_book_outlined;
+                                  break;
+                                case lessonType.writing:
+                                  return Icons.text_format_sharp;
+                                  break;
+                                case lessonType.Exercises:
+                                  return Icons.assignment;
+                                  break;
+                              }
+                            })()),
+                            text(context, (() {
+                              switch (lesson.type) {
+                                case lessonType.video:
+                                  return "Video";
+                                  break;
+                                case lessonType.speaking:
+                                  return "Speaking";
+                                  break;
+                                case lessonType.words:
+                                  return "Vocabulary";
+                                  break;
+                                case lessonType.writing:
+                                  return "Writing";
+                                  break;
+                                case lessonType.Exercises:
+                                  return "Exercises";
+                                  break;
+                              }
+                            })()),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Align(
+            alignment: Alignment(0.71, -0.5),
+            child: Container(
+              width: xSmallSize(context),
+              height: fullWidth(context) / 6,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: lesson.isDone ? lesson.color : Colors.grey.shade200),
+            ),
           ),
         ],
       ),
     );
   }
+}
+
+Widget text(BuildContext context, text) {
+  return Container(
+    margin: EdgeInsets.only(right: xSmallSize(context)),
+    child: Text(
+      text,
+      style: TextStyle(
+          fontFamily: "balsamiq",
+          fontSize: caption1Size(context),
+          color: AppColors.textColorLight,
+          fontWeight: FontWeight.w500),
+    ),
+  );
+}
+
+Widget icon(IconData iconData) {
+  return Icon(
+    iconData,
+    color: AppColors.textColorLight,
+  );
 }
