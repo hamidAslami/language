@@ -3,7 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_language_app/pages/bas/intro_page.dart';
 import 'package:flutter_language_app/pages/bas/splash_page.dart';
 import 'package:flutter_language_app/pages/bas/view_all_page.dart';
-import 'package:flutter_language_app/pages/home_page.dart';
+import 'package:flutter_language_app/pages/intro/intro_page.dart';
+import 'file:///C:/Users/Genius8020/StudioProjects/flutter_language_app/lib/pages/bas/home_page.dart';
 import 'package:flutter_language_app/theme/app_theme.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: appTheme(context),
-      home: SplashPage(),
+      home: MyApp2(),
     );
   }
 }

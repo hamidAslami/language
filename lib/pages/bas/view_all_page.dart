@@ -4,7 +4,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../fakeData.dart';
-import '../home_page.dart';
+import 'home_page.dart';
 
 class ViewAllPage extends StatefulWidget {
   @override

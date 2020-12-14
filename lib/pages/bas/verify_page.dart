@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_language_app/pages/home_page.dart';
+import 'file:///C:/Users/Genius8020/StudioProjects/flutter_language_app/lib/pages/bas/home_page.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
