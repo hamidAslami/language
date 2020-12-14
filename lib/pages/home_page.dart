@@ -10,6 +10,7 @@ import 'package:flutter_language_app/pages/bas/lesson_page.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 
 import 'package:flutter_language_app/theme/dimens.dart';
+import 'package:flutter_language_app/theme/text_widgets.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -70,14 +71,14 @@ class HomePage extends StatelessWidget {
                           children: [
                             Positioned.fill(
                                 child: Container(
-                                  margin: EdgeInsets.symmetric(
-                                      vertical: standardSize(context)),
-                                  width: fullWidth(context),
-                                  height: fullHeight(context) / 3.4,
-                                  decoration: BoxDecoration(
-                                      color: theme.primaryColor,
-                                      borderRadius: BorderRadius.circular(16)),
-                                )),
+                              margin: EdgeInsets.symmetric(
+                                  vertical: standardSize(context)),
+                              width: fullWidth(context),
+                              height: fullHeight(context) / 3.4,
+                              decoration: BoxDecoration(
+                                  color: theme.primaryColor,
+                                  borderRadius: BorderRadius.circular(16)),
+                            )),
                             Positioned(
                               top: fullHeight(context) / -22,
                               left: fullHeight(context) / -5.4,
@@ -97,8 +98,8 @@ class HomePage extends StatelessWidget {
                                     child: Text("دوره تخصصی\nزبان انگلیسی",
                                         style: theme.textTheme.headline4
                                             .copyWith(
-                                            color: Color(0xffffffff),
-                                            fontSize: mediumSize(context))),
+                                                color: Color(0xffffffff),
+                                                fontSize: mediumSize(context))),
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
@@ -109,7 +110,7 @@ class HomePage extends StatelessWidget {
                                       child: Container(
                                         decoration: BoxDecoration(
                                           borderRadius:
-                                          BorderRadius.circular(10),
+                                              BorderRadius.circular(10),
                                           boxShadow: [
                                             BoxShadow(
                                                 color: Color(0xff4c456f),
@@ -253,15 +254,15 @@ Widget categoryCard(CategoryModel category, BuildContext context) {
       children: [
         Positioned.fill(
             child: Container(
-              margin: EdgeInsets.symmetric(vertical: standardSize(context)),
-              width: fullWidth(context) / 2.5,
-              height: fullHeight(context) / 3,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(category.backgroundImage),
-                      fit: BoxFit.cover),
-                  borderRadius: BorderRadius.circular(16)),
-            )),
+          margin: EdgeInsets.symmetric(vertical: standardSize(context)),
+          width: fullWidth(context) / 2.5,
+          height: fullHeight(context) / 3,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(category.backgroundImage),
+                  fit: BoxFit.cover),
+              borderRadius: BorderRadius.circular(16)),
+        )),
         Positioned(
           top: fullHeight(context) / 13,
           left: smallSize(context),
@@ -298,8 +299,10 @@ Widget categoryCard(CategoryModel category, BuildContext context) {
   );
 } // Category card
 
-Widget lessonBox(CartBoxModel cartBoxModel,
-    BuildContext context,) {
+Widget lessonBox(
+  CartBoxModel cartBoxModel,
+  BuildContext context,
+) {
   var theme = Theme.of(context);
   return Container(
     margin: EdgeInsets.symmetric(vertical: mediumSize(context)),
@@ -372,15 +375,7 @@ Widget lessonBox(CartBoxModel cartBoxModel,
                   bottom: mediumSize(context), right: xlargeSize(context)),
               child: Align(
                 alignment: Alignment.bottomCenter,
-                child: Text(cartBoxModel.subTitles,
-                    textAlign: TextAlign.center,
-                    style: theme.textTheme.bodyText2.copyWith(
-                      fontSize: fullWidth(context) / 28,
-                      color: Color(
-                        AppColors.textColorLight.value,
-                      ),
-                      fontFamily: 'balsamiq',
-                    )),
+                child: bodyText1(context, cartBoxModel.subTitles),
               ),
             ),
             Align(

@@ -4,8 +4,10 @@ import 'dart:ui';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_language_app/pages/bas/login_page.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
+import 'package:flutter_language_app/theme/text_widgets.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -29,7 +31,9 @@ class SplashPageState extends State<SplashPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     var theme = Theme.of(context);
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -56,9 +60,7 @@ class SplashPageState extends State<SplashPage> {
                 margin: EdgeInsets.only(bottom: largeSize(context)),
                 child: Align(
                   alignment: Alignment.bottomCenter,
-                  child: Text("Csp Melal",
-                      style: theme.textTheme.headline4.copyWith(
-                          fontFamily: 'balsamiq', fontWeight: FontWeight.w700)),
+                  child: headline4(context, "Csp Melal"),
                 ),
               )
             ],

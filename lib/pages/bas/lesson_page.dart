@@ -4,6 +4,7 @@ import 'package:flutter_language_app/fakeData.dart';
 import 'package:flutter_language_app/models/lesson_model.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
+import 'package:flutter_language_app/theme/text_widgets.dart';
 import 'package:flutter_language_app/widgets/appbar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
@@ -77,26 +78,14 @@ class LessonPageState extends State<LessonPage> {
                           children: [
                             Container(
                               margin: EdgeInsets.only(top: mediumSize(context)),
-                              child: Text(
-                                "The Family",
-                                style: TextStyle(
-                                    fontFamily: "balsamiq",
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: subTitleSize(context),
-                                    color: Colors.white),
-                              ),
+                              child: headline3(context, "The Family",
+                                  color: Colors.white),
                             ),
                             Container(
                               margin:
                                   EdgeInsets.only(top: xxSmallSize(context)),
-                              child: Text(
-                                "Lesson 1",
-                                style: TextStyle(
-                                    fontFamily: "balsamiq",
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: caption1Size(context),
-                                    color: Colors.white),
-                              ),
+                              child: bodyText2(context, "Lesson 1",
+                                  color: Colors.white),
                             ),
                             Container(
                               alignment: Alignment.center,
@@ -105,16 +94,12 @@ class LessonPageState extends State<LessonPage> {
                               width: fullWidth(context) / 4.6,
                               decoration: BoxDecoration(
                                   color: theme.accentColor,
-                                  borderRadius: BorderRadius.circular(16),boxShadow: [BoxShadow(
-
-                              )]),
-                              child: Text(
+                                  borderRadius: BorderRadius.circular(16),
+                                  boxShadow: [BoxShadow()]),
+                              child: bodyText2(
+                                context,
                                 "Start",
-                                style: TextStyle(
-                                    fontFamily: "balsamiq",
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: caption1Size(context),
-                                    color: Colors.white),
+                                color: Colors.white,
                               ),
                             ),
                           ],
@@ -180,25 +165,16 @@ class LessonPageState extends State<LessonPage> {
                           children: [
                             Container(
                               margin: EdgeInsets.only(top: mediumSize(context)),
-                              child: Text(
-                                "Great Job",
-                                style: TextStyle(
-                                    fontFamily: "balsamiq",
-                                    fontWeight: FontWeight.w700,
-                                    fontSize:fullWidth(context) / 13,
-                                    color: Colors.white),
-                              ),
+                              child: headline3(context, "Great Job",
+                                  color: Colors.white),
                             ),
                             Container(
                               margin:
-                              EdgeInsets.only(top: xxSmallSize(context)),
-                              child: Text(
+                                  EdgeInsets.only(top: xxSmallSize(context)),
+                              child: bodyText2(
+                                context,
                                 "Next lesson",
-                                style: TextStyle(
-                                    fontFamily: "balsamiq",
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: caption1Size(context),
-                                    color: Colors.white),
+                                color: Colors.white,
                               ),
                             ),
                             Container(
@@ -208,16 +184,12 @@ class LessonPageState extends State<LessonPage> {
                               width: fullWidth(context) / 4.6,
                               decoration: BoxDecoration(
                                   color: theme.accentColor,
-                                  borderRadius: BorderRadius.circular(16),boxShadow: [BoxShadow(
-
-                              )]),
-                              child: Text(
+                                  borderRadius: BorderRadius.circular(16),
+                                  boxShadow: [BoxShadow()]),
+                              child: bodyText2(
+                                context,
                                 "Start",
-                                style: TextStyle(
-                                    fontFamily: "balsamiq",
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: caption1Size(context),
-                                    color: Colors.white),
+                                color: Colors.white,
                               ),
                             ),
                           ],
@@ -228,7 +200,6 @@ class LessonPageState extends State<LessonPage> {
                     ],
                   ),
                 ),
-
               ],
             ),
           ),
@@ -310,7 +281,10 @@ class LessonPageState extends State<LessonPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(lesson.title,
-                          style: Theme.of(context).textTheme.headline4.copyWith(fontSize: bodyText1Size(context))),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline4
+                              .copyWith(fontSize: bodyText1Size(context))),
                       Container(
                         margin: EdgeInsets.only(top: mediumSize(context)),
                         child: Row(
@@ -381,14 +355,7 @@ class LessonPageState extends State<LessonPage> {
 Widget text(BuildContext context, text) {
   return Container(
     margin: EdgeInsets.only(right: xSmallSize(context)),
-    child: Text(
-      text,
-      style: TextStyle(
-          fontFamily: "balsamiq",
-          fontSize: caption1Size(context),
-          color: AppColors.textColorLight,
-          fontWeight: FontWeight.w500),
-    ),
+    child: bodyText2(context, text),
   );
 }
 
