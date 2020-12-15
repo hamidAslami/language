@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/Genius8020/StudioProjects/flutter_language_app/lib/pages/bas/home_page.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+
+import 'home_page.dart';
 
 class VerifyPage extends StatefulWidget {
   @override
@@ -116,7 +117,7 @@ class VerifyPageState extends State<VerifyPage> {
                   child: IconButton(
                     alignment: Alignment.center,
                     icon:
-                    Icon(Icons.navigate_next_rounded, color: Colors.white),
+                        Icon(Icons.navigate_next_rounded, color: Colors.white),
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => HomePage()));
@@ -155,16 +156,12 @@ Widget verifyField(BuildContext context) {
       shape: PinCodeFieldShape.circle,
       fieldHeight: 50,
       fieldWidth: 50,
-      selectedColor: Theme
-          .of(context)
-          .primaryColor,
+      selectedColor: Theme.of(context).primaryColor,
       inactiveFillColor: Colors.grey.shade400,
       selectedFillColor: Colors.grey.shade400,
       disabledColor: Colors.grey,
       inactiveColor: Colors.grey.shade200,
-      activeColor: Theme
-          .of(context)
-          .accentColor,
+      activeColor: Theme.of(context).accentColor,
       activeFillColor: Colors.grey.shade300,
     ),
     animationDuration: Duration(milliseconds: 300),
