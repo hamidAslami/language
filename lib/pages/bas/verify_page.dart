@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
@@ -53,10 +54,10 @@ class VerifyPageState extends State<VerifyPage> {
                       child: Container(
                         margin: EdgeInsets.only(top: standardSize(context)),
                         child: Text(
-                          "لطفا کدی که به شماره 09032716586\nارسال شده را وارد کنید",
+                          "لطفا کدی که به شماره 09032716586\nارسال شده را وارد کنید!",
                           textAlign: TextAlign.center,
                           style: theme.textTheme.headline4.copyWith(
-                              color: Color(0xff19004d),
+                              color: Color(0xff4c456f),
                               fontSize: fullWidth(context) / 25),
                         ),
                       ),
@@ -87,7 +88,7 @@ class VerifyPageState extends State<VerifyPage> {
                               child: Text(
                                 "دریافت مجدد کد",
                                 style: theme.textTheme.subtitle1.copyWith(
-                                    color: Color(0xff19004d),
+                                    color: Color(0xff4c456f),
                                     fontSize: fullWidth(context) / 23),
                               ),
                             ),
@@ -97,8 +98,10 @@ class VerifyPageState extends State<VerifyPage> {
                             child: Text(
                               "1:58",
                               style: theme.textTheme.subtitle1.copyWith(
-                                  color: Color(0xff19004d),
-                                  fontSize: fullWidth(context) / 23),
+                                  color: Color(0xff4c456f),
+                                  fontSize: fullWidth(context) / 27,
+                                  fontFamily: "balsamiq",
+                                  fontWeight: FontWeight.w100),
                             ),
                           ),
                         ],
@@ -113,7 +116,7 @@ class VerifyPageState extends State<VerifyPage> {
                   padding: EdgeInsets.all(xxSmallSize(context)),
                   margin: EdgeInsets.symmetric(vertical: largeSize(context)),
                   decoration: BoxDecoration(
-                      shape: BoxShape.circle, color: theme.accentColor),
+                      shape: BoxShape.circle, color: AppColors.textColorLight),
                   child: IconButton(
                     alignment: Alignment.center,
                     icon:

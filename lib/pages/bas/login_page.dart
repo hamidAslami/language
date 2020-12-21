@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_language_app/pages/bas/verify_page.dart';
+import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
@@ -53,7 +54,7 @@ class LoginPageState extends State<LoginPage> {
                             "شماره موبایل خود را در فیلد زیر وارد کنید",
                             textAlign: TextAlign.center,
                             style: theme.textTheme.headline4.copyWith(
-                                color: Color(0xff19004d),
+                                color: Color(0xff4c456f),
                                 fontSize: fullWidth(context) / 25),
                           ),
                         ),
@@ -91,7 +92,8 @@ class LoginPageState extends State<LoginPage> {
                       margin:
                           EdgeInsets.symmetric(vertical: largeSize(context)),
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: theme.accentColor),
+                          shape: BoxShape.circle,
+                          color: AppColors.textColorLight),
                       child: IconButton(
                         icon: Icon(Icons.navigate_next_rounded,
                             color: Colors.white),

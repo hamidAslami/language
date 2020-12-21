@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
@@ -93,7 +93,7 @@ class ProfilePageState extends State<ProfilePage> {
                                 child: Text("10",
                                     style: theme.textTheme.headline4.copyWith(
                                         fontSize: bodyText1Size(context),
-                                        color: theme.primaryColor)),
+                                        color: AppColors.textColorDark)),
                               ),
                             ],
                           ),
@@ -117,7 +117,7 @@ class ProfilePageState extends State<ProfilePage> {
                                 child: Text("6",
                                     style: theme.textTheme.headline4.copyWith(
                                         fontSize: bodyText1Size(context),
-                                        color: theme.primaryColor)),
+                                        color: AppColors.textColorDark)),
                               ),
                             ],
                           ),
@@ -141,7 +141,7 @@ class ProfilePageState extends State<ProfilePage> {
                                 child: Text("2",
                                     style: theme.textTheme.headline4.copyWith(
                                         fontSize: bodyText1Size(context),
-                                        color: theme.primaryColor)),
+                                        color: AppColors.textColorDark)),
                               ),
                             ],
                           ),
@@ -156,6 +156,9 @@ class ProfilePageState extends State<ProfilePage> {
                               horizontal: mediumSize(context)),
                           height: fullHeight(context) / 8.5,
                           decoration: BoxDecoration(
+                              //     image: DecorationImage(
+                              //         image: AssetImage("assets/1.jpg"),
+                              //         fit: BoxFit.cover),
                               color: theme.backgroundColor,
                               borderRadius: BorderRadius.circular(16),
                               boxShadow: [
@@ -213,6 +216,9 @@ class ProfilePageState extends State<ProfilePage> {
                               horizontal: mediumSize(context)),
                           height: fullHeight(context) / 8.5,
                           decoration: BoxDecoration(
+                              //     image: DecorationImage(
+                              //         image: AssetImage("assets/1.jpg"),
+                              //         fit: BoxFit.cover),
                               color: theme.backgroundColor,
                               borderRadius: BorderRadius.circular(16),
                               boxShadow: [

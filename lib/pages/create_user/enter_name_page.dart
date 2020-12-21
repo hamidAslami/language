@@ -1,0 +1,82 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_language_app/theme/colors.dart';
+import 'package:flutter_language_app/theme/dimens.dart';
+import 'package:lottie/lottie.dart';
+
+class NamePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => NamePageState();
+}
+
+class NamePageState extends State<NamePage> {
+  @override
+  Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+    return Directionality(
+        textDirection: TextDirection.ltr,
+        child: Scaffold(
+            backgroundColor: theme.backgroundColor,
+            resizeToAvoidBottomPadding: true,
+            resizeToAvoidBottomInset: true,
+            body: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              child: Column(children: [
+                Container(
+                  margin: EdgeInsets.only(top: xlargeSize(context)),
+                  alignment: Alignment.center,
+                  child: Lottie.asset("assets/name.json",
+                      fit: BoxFit.cover, width: fullWidth(context) / 1.3),
+                ),
+                Container(
+                  child: Text("!نام خـود را وارد کـنید",
+                      style: theme.textTheme.headline4.copyWith(
+                          color: AppColors.textColorLight,
+                          fontSize: fullWidth(context) / 25)),
+                ),
+                Container(
+                    margin: EdgeInsets.only(
+                        top: standardSize(context),
+                        right: standardSize(context),
+                        left: standardSize(context)),
+                    child: Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: TextField(
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          fillColor: Colors.grey.shade200,
+                          filled: true,
+                          contentPadding: EdgeInsets.all(mediumSize(context)),
+                          hintText: "",
+                          hintStyle: theme.textTheme.bodyText1
+                              .copyWith(color: Colors.grey.shade600),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide(
+                                  width: 1, style: BorderStyle.none)),
+                        ),
+                        maxLength: 22,
+                      ),
+                    )),
+                Container(
+                  margin: EdgeInsets.symmetric(
+                      horizontal: standardSize(context),
+                      vertical: fullHeight(context) / 8),
+                  width: fullWidth(context),
+                  height: fullHeight(context) / 13,
+                  child: RaisedButton(
+                    splashColor: Color(0xff512da8),
+                    elevation: standardSize(context),
+                    onPressed: () {},
+                    color: AppColors.textColorLight,
+                    child: Text(
+                      "!ادامـه دهـید",
+                      style: theme.textTheme.headline4.copyWith(
+                          fontSize: caption1Size(context),
+                          color: theme.backgroundColor),
+                    ),
+                  ),
+                ),
+              ]),
+            )));
+  }
+}

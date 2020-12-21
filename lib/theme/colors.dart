@@ -8,5 +8,4 @@ class AppColors {
   static const Color darkAccentColor = Color(0xff19004d);
   static const Color textColorDark = Color(0xff676377);
   static const Color textColorLight = Color(0xff4c456f);
-
 }
