@@ -5,6 +5,7 @@ import 'package:flutter_language_app/pages/create_user/enter_name_page.dart';
 import 'package:flutter_language_app/pages/create_user/level_english_page.dart';
 import 'package:flutter_language_app/pages/create_user/notification_page.dart';
 import 'package:flutter_language_app/pages/create_user/time_goal_page.dart';
+import 'package:flutter_language_app/pages/listening_page.dart';
 
 import 'package:flutter_language_app/theme/app_theme.dart';
 import 'package:flutter_language_app/theme/colors.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: appTheme(context),
-      home: TimeGoalPage(),
+      home: ListeningPage(),
     );
   }
 }
