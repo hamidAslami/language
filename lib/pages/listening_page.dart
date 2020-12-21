@@ -133,7 +133,7 @@ class ListeningPageState extends State<ListeningPage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            '02.13',
+                            '13 : 01',
                             style: theme.textTheme.bodyText1
                                 .copyWith(color: Colors.brown.shade800),
                           ),
@@ -141,7 +141,7 @@ class ListeningPageState extends State<ListeningPage> {
                             child: SizedBox(),
                           ),
                           Text(
-                            '02.21',
+                            '21 : 02',
                             style: theme.textTheme.bodyText1
                                 .copyWith(color: Colors.brown.shade800),
                           ),

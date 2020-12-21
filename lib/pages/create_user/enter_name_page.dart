@@ -22,12 +22,11 @@ class NamePageState extends State<NamePage> {
               physics: BouncingScrollPhysics(),
               child: Column(children: [
                 Container(
-                  margin: EdgeInsets.only(top: xlargeSize(context)),
-                  alignment: Alignment.center,
                   child: Lottie.asset("assets/name.json",
-                      fit: BoxFit.cover, width: fullWidth(context) / 1.3),
+                      fit: BoxFit.cover, width: fullWidth(context) / 1.3),height: fullHeight(context) / 3,
                 ),
                 Container(
+                  margin: EdgeInsets.only(top: standardSize(context)),
                   child: Text("!نام خـود را وارد کـنید",
                       style: theme.textTheme.headline4.copyWith(
                           color: AppColors.textColorLight,
@@ -57,25 +56,6 @@ class NamePageState extends State<NamePage> {
                         maxLength: 22,
                       ),
                     )),
-                Container(
-                  margin: EdgeInsets.symmetric(
-                      horizontal: standardSize(context),
-                      vertical: fullHeight(context) / 8),
-                  width: fullWidth(context),
-                  height: fullHeight(context) / 13,
-                  child: RaisedButton(
-                    splashColor: Color(0xff512da8),
-                    elevation: standardSize(context),
-                    onPressed: () {},
-                    color: AppColors.textColorLight,
-                    child: Text(
-                      "!ادامـه دهـید",
-                      style: theme.textTheme.headline4.copyWith(
-                          fontSize: caption1Size(context),
-                          color: theme.backgroundColor),
-                    ),
-                  ),
-                ),
               ]),
             )));
   }

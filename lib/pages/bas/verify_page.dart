@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_language_app/pages/create_user/enter_name_page.dart';
+import 'package:flutter_language_app/pages/create_user/level_english_page.dart';
+import 'package:flutter_language_app/pages/create_user/notification_page.dart';
+import 'package:flutter_language_app/pages/create_user/time_goal_page.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 import 'home_page.dart';
+
+PageController controller;
 
 class VerifyPage extends StatefulWidget {
   @override
@@ -122,12 +129,15 @@ class VerifyPageState extends State<VerifyPage> {
                     icon:
                         Icon(Icons.navigate_next_rounded, color: Colors.white),
                     onPressed: () {
-                      Navigator.push(context,
+                      createUserSheet(context);
+                      /*Navigator.push(context,
                           MaterialPageRoute(builder: (context) => HomePage()));
                       PageTransition(
                           child: HomePage(),
                           type: PageTransitionType.rightToLeftWithFade,
                           duration: Duration(milliseconds: 700));
+                          }
+                       */
                     },
                   ),
                 ),
@@ -137,6 +147,11 @@ class VerifyPageState extends State<VerifyPage> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    controller = PageController(initialPage: 0);
   }
 }
 
@@ -187,5 +202,92 @@ Widget verifyField(BuildContext context) {
     },
     appContext: context,
     onChanged: (String value) {},
+  );
+}
+
+void createUserSheet(BuildContext context) {
+  showModalBottomSheet(
+    backgroundColor: Colors.white,
+    isScrollControlled: true,
+    enableDrag: true,
+    isDismissible: true,
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(standardSize(context)),
+            topRight: Radius.circular(standardSize(context)))),
+    builder: (BuildContext context) => FractionallySizedBox(
+      heightFactor: 0.9,
+      child: Directionality(
+        textDirection: TextDirection.rtl,
+        child: Container(
+          height: fullHeight(context),
+          width: fullWidth(context),
+          child: Column(
+            children: [
+              AppBar(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(standardSize(context)),
+                        topRight: Radius.circular(standardSize(context)))),
+                backgroundColor: Colors.white,
+                centerTitle: true,
+                title: Text(
+                  "ایجاد حساب",
+                  style: Theme.of(context).textTheme.subtitle1,
+                ),
+                leading: IconButton(
+                  icon: Icon(Icons.close),
+                  onPressed: () {},
+                ),
+              ),
+              StepProgressIndicator(
+                unselectedColor: Colors.grey.shade200,
+                currentStep: 2,
+                padding: 0,
+                totalSteps: 6,
+              ),
+              Expanded(
+                child: PageView(
+                  controller: controller,
+                  physics: new NeverScrollableScrollPhysics(),
+                  children: [
+                    NamePage(),
+                    LevelEnglish(),
+                    NotificationPage(),
+                    TimeGoalPage()
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(
+                    horizontal: standardSize(context),
+                    vertical: largeSize(context)),
+                width: fullWidth(context),
+                height: fullHeight(context) / 13,
+                child: RaisedButton(
+                  splashColor: Color(0xff512da8),
+                  elevation: standardSize(context),
+                  onPressed: () {
+                    controller.animateToPage(
+                      controller.page.toInt() +1,
+                      duration: Duration(milliseconds: 200),
+                      curve: Curves.easeInQuad,
+                    );
+                  },
+                  color: AppColors.textColorLight,
+                  child: Text(
+                    "!ادامـه دهـید",
+                    style: Theme.of(context).textTheme.headline4.copyWith(
+                        fontSize: caption1Size(context),
+                        color: Theme.of(context).backgroundColor),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+    context: context,
   );
 }

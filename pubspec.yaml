@@ -36,6 +36,7 @@ dependencies:
   lottie: ^0.7.0+1
   page_transition: ^1.1.7+3
   liquid_swipe: ^1.5.0
+  step_progress_indicator: ^0.2.5+8
 
   pin_code_fields: ^6.0.0
 
