@@ -6,11 +6,8 @@ import 'package:flutter_language_app/pages/create_user/time_goal_page.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:lottie/lottie.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
-
-import 'home_page.dart';
 
 PageController controller;
 
@@ -242,8 +239,8 @@ void createUserSheet(BuildContext context) {
               ),
               StepProgressIndicator(
                 unselectedColor: Colors.grey.shade200,
-                currentStep: 2,
-                padding: 0,
+                currentStep: 1,
+selectedColor: Theme.of(context).primaryColor,
                 totalSteps: 6,
               ),
               Expanded(
@@ -276,7 +273,7 @@ void createUserSheet(BuildContext context) {
                   },
                   color: AppColors.textColorLight,
                   child: Text(
-                    "!ادامـه دهـید",
+                    "ادامـه دهـید !",
                     style: Theme.of(context).textTheme.headline4.copyWith(
                         fontSize: caption1Size(context),
                         color: Theme.of(context).backgroundColor),

@@ -7,6 +7,7 @@ import 'package:flutter_language_app/fakeData.dart';
 import 'package:flutter_language_app/models/cart_box.dart';
 import 'package:flutter_language_app/models/category_model.dart';
 import 'package:flutter_language_app/pages/bas/lesson_page.dart';
+import 'package:flutter_language_app/pages/profile_page.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 
 import 'package:flutter_language_app/theme/dimens.dart';
@@ -55,9 +56,14 @@ class HomePage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            Image.asset(
-                              "assets/avatar5.png",
-                              width: fullWidth(context) / 8,
+                            GestureDetector(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage(),));
+                              },
+                              child: Image.asset(
+                                "assets/avatar5.png",
+                                width: fullWidth(context) / 8,
+                              ),
                             ),
                           ],
                         ),
@@ -198,7 +204,7 @@ class HomePage extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.symmetric(
                                   vertical: mediumSize(context)),
-                              child: Text("دوره های تخصصی",
+                              child: Text("درس ها",
                                   style: theme.textTheme.headline4.copyWith(
                                     color: AppColors.darkAccentColor,
                                   )),

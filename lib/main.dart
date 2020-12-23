@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_language_app/pages/bas/verify_page.dart';
-import 'package:flutter_language_app/pages/create_user/ages_page.dart';
-import 'package:flutter_language_app/pages/create_user/create_user%20page.dart';
-import 'package:flutter_language_app/pages/create_user/enter_name_page.dart';
-import 'package:flutter_language_app/pages/create_user/level_english_page.dart';
-import 'package:flutter_language_app/pages/create_user/notification_page.dart';
-import 'package:flutter_language_app/pages/create_user/time_goal_page.dart';
-import 'package:flutter_language_app/pages/listening_page.dart';
+import 'package:flutter_language_app/pages/bas/splash_page.dart';
+
+import 'package:flutter_language_app/pages/intro/intro_page.dart';
+import 'package:flutter_language_app/pages/lessons/animation_test.dart';
+import 'package:flutter_language_app/pages/profile_page.dart';
 
 import 'package:flutter_language_app/theme/app_theme.dart';
 import 'package:flutter_language_app/theme/colors.dart';
@@ -32,7 +29,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: appTheme(context),
-      home: VerifyPage(),
+      home: AnimationTestPage(),
     );
   }
 }

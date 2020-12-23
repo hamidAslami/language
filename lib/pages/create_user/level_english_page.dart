@@ -17,32 +17,35 @@ class LevelEnglishState extends State<LevelEnglish> {
       textDirection: TextDirection.ltr,
       child: Scaffold(
         backgroundColor: theme.backgroundColor,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: largeSize(context)),
-              child: Text("آیا از قبـل انگـلیسی بلـدید؟",
-                  style: theme.textTheme.headline4
-                      .copyWith(color: AppColors.textColorLight)),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: mediumSize(context)),
-              child: Text(
-                "مسیر موفقیت و مسیر شکست تقریبا شبیه هم هستند\n!ما به شما کمک خواهیم کرد تا مکان مناسب را برای شروع درست کنید",
-                style: theme.textTheme.caption.copyWith(
-                  color: AppColors.textColorDark,
-                ),
-                textAlign: TextAlign.center,
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                margin: EdgeInsets.only(top: largeSize(context)),
+                child: Text("آیا از قبـل انگـلیسی بلـدید؟",
+                    style: theme.textTheme.headline4
+                        .copyWith(color: AppColors.textColorLight)),
               ),
-            ),
-            Container(
-              child: levelEnglish(context, "بسیار کم!", "assets/level1.png"),
-              margin: EdgeInsets.only(top: smallSize(context)),
-            ),
-            levelEnglish(context, "مقداری!", "assets/level2.png"),
-            levelEnglish(context, "بسیار زیاد!", "assets/level3.png"),
-          ],
+              Container(
+                margin: EdgeInsets.only(top: mediumSize(context)),
+                child: Text(
+                  "مسیر موفقیت و مسیر شکست تقریبا شبیه هم هستند\n!ما به شما کمک خواهیم کرد تا مکان مناسب را برای شروع درست کنید",
+                  style: theme.textTheme.caption.copyWith(
+                    color: AppColors.textColorDark,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Container(
+                child: levelEnglish(context, "بسیار کم!", "assets/level1.png"),
+                margin: EdgeInsets.only(top: smallSize(context)),
+              ),
+              levelEnglish(context, "مقداری!", "assets/level2.png"),
+              levelEnglish(context, "بسیار زیاد!", "assets/level3.png"),
+            ],
+          ),
         ),
       ),
     );

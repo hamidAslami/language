@@ -20,13 +20,17 @@ class NotificationPageState extends State<NotificationPage> {
         body: Stack(
           fit: StackFit.expand,
           children: [
-            Container(
-              margin: EdgeInsets.only(bottom: fullHeight(context) / 2.2),
-              child: FlareActor(
-                "assets/notification1.flr",
-                animation: "Notifications",
-                alignment: Alignment.topCenter,
-                fit: BoxFit.cover,
+            Positioned(
+              left: 0,
+              right: 0,
+              top: 0,
+              child: Container(
+                width: fullWidth(context),
+                height: fullHeight(context) / 2.7,
+                child: FlareActor(
+                  "assets/notification1.flr",
+                  animation: "Notifications",
+           ),
               ),
             ),
             Align(
@@ -56,7 +60,7 @@ class NotificationPageState extends State<NotificationPage> {
                     height: fullHeight(context) / 13,
                     child: RaisedButton(
                       splashColor: Colors.grey.shade200,
-                      elevation: standardSize(context),
+                      elevation: xxSmallSize(context),
                       onPressed: () {},
                       color: theme.backgroundColor,
                       child: Text(
@@ -72,9 +76,9 @@ class NotificationPageState extends State<NotificationPage> {
                     height: fullHeight(context) / 13,
                     child: RaisedButton(
                       splashColor: Color(0xff512da8),
-                      elevation: standardSize(context),
+                      elevation: xxSmallSize(context),
                       onPressed: () {},
-                      color: AppColors.textColorLight,
+                      color: AppColors.primaryColor,
                       child: Text(
                         "یادآوری کن",
                         style: theme.textTheme.headline4.copyWith(

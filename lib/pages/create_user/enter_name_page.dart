@@ -19,44 +19,49 @@ class NamePageState extends State<NamePage> {
             resizeToAvoidBottomPadding: true,
             resizeToAvoidBottomInset: true,
             body: SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
-              child: Column(children: [
-                Container(
-                  child: Lottie.asset("assets/name.json",
-                      fit: BoxFit.cover, width: fullWidth(context) / 1.3),height: fullHeight(context) / 3,
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: standardSize(context)),
-                  child: Text("!نام خـود را وارد کـنید",
-                      style: theme.textTheme.headline4.copyWith(
-                          color: AppColors.textColorLight,
-                          fontSize: fullWidth(context) / 25)),
-                ),
-                Container(
-                    margin: EdgeInsets.only(
-                        top: standardSize(context),
-                        right: standardSize(context),
-                        left: standardSize(context)),
-                    child: Directionality(
-                      textDirection: TextDirection.rtl,
-                      child: TextField(
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          fillColor: Colors.grey.shade200,
-                          filled: true,
-                          contentPadding: EdgeInsets.all(mediumSize(context)),
-                          hintText: "",
-                          hintStyle: theme.textTheme.bodyText1
-                              .copyWith(color: Colors.grey.shade600),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: BorderSide(
-                                  width: 1, style: BorderStyle.none)),
-                        ),
-                        maxLength: 22,
+              child: Container(
+                margin: EdgeInsets.only(top: xxLargeSize(context)),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // Container(
+                      //   child: Lottie.asset("assets/name.json",
+                      //       fit: BoxFit.cover, width: fullWidth(context) / 1.3),height: fullHeight(context) / 3,
+                      // ),
+                      Container(
+                        margin: EdgeInsets.only(top: standardSize(context)),
+                        child: Text("!نام خـود را وارد کـنید",
+                            style: theme.textTheme.headline4.copyWith(
+                                color: AppColors.textColorLight,
+                                fontSize: fullWidth(context) / 25)),
                       ),
-                    )),
-              ]),
+                      Container(
+                          margin: EdgeInsets.only(
+                              top: standardSize(context),
+                              right: standardSize(context),
+                              left: standardSize(context)),
+                          child: Directionality(
+                            textDirection: TextDirection.rtl,
+                            child: TextField(
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                fillColor: Colors.grey.shade200,
+                                filled: true,
+                                contentPadding:
+                                    EdgeInsets.all(mediumSize(context)),
+                                hintText: "",
+                                hintStyle: theme.textTheme.bodyText1
+                                    .copyWith(color: Colors.grey.shade600),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                    borderSide: BorderSide(
+                                        width: 1, style: BorderStyle.none)),
+                              ),
+                              maxLength: 22,
+                            ),
+                          )),
+                    ]),
+              ),
             )));
   }
 }
