@@ -43,10 +43,24 @@ Widget headline4(BuildContext context, String text,
     {Color color: AppColors.textColorLight}) {
   return Text(
     text,
+    textAlign: TextAlign.center,
     style: TextStyle(
         fontFamily: "balsamiq",
         color: color,
         fontSize: fullWidth(context) / 22,
         fontWeight: FontWeight.w700),
+  );
+}
+
+Widget subtitle1(BuildContext context, String text,
+    {Color color: AppColors.textColorLight}) {
+  return Text(
+    text,
+    textAlign: TextAlign.center,
+    style: TextStyle(
+        fontFamily: "balsamiq",
+        color: color,
+        fontSize: fullWidth(context) / 23,
+        fontWeight: FontWeight.w600),
   );
 }

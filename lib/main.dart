@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_language_app/pages/bas/home_page.dart';
 import 'package:flutter_language_app/pages/bas/splash_page.dart';
 
 import 'package:flutter_language_app/pages/intro/intro_page.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: appTheme(context),
-      home: AnimationTestPage(),
+      home: HomePage(),
     );
   }
 }

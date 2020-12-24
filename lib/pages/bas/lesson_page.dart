@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_language_app/fakeData.dart';
 import 'package:flutter_language_app/models/lesson_model.dart';
+import 'package:flutter_language_app/pages/lessons/animation_test.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
@@ -209,144 +210,147 @@ class LessonPageState extends State<LessonPage> {
   }
 
   Widget lessonItemWidget(Lesson lesson) {
-    return Container(
-      width: fullWidth(context),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Container(
-                height: fullWidth(context) / 3.5,
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      child: Container(
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.shade300,
-                                blurRadius: 10,
-                                spreadRadius: 2,
-                              )
-                            ],
-                            border: Border.all(
-                                width: 9,
-                                color: lesson.isDone
-                                    ? lesson.color
-                                    : Colors.grey.shade200)),
-                      ),
-                    ),
-                    Positioned(
-                      top: mediumSize(context),
-                      left: mediumSize(context),
-                      right: mediumSize(context),
-                      bottom: mediumSize(context),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: NetworkImage(lesson.image))),
-                      ),
-                    ),
-                    lesson.isDone
-                        ? Align(
-                            alignment: Alignment(0, 1.3),
-                            child: Container(
-                              padding: EdgeInsets.all(xSmallSize(context)),
-                              child: Container(
-                                  width: fullWidth(context) / 26,
-                                  height: fullWidth(context) / 26,
-                                  child: SvgPicture.asset(
-                                    'assets/tick.svg',
-                                    color: Colors.white,
-                                  )),
-                              decoration: BoxDecoration(
-                                  color: lesson.color, shape: BoxShape.circle),
-                            ),
-                          )
-                        : Container(),
-                  ],
-                ),
-                width: fullWidth(context) / 3.5,
-              ),
-              Expanded(
-                child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: smallSize(context)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+    return GestureDetector(
+      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => LessoningDetailPage())),
+      child: Container(
+        width: fullWidth(context),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Container(
+                  height: fullWidth(context) / 3.5,
+                  child: Stack(
                     children: [
-                      Text(lesson.title,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline4
-                              .copyWith(fontSize: bodyText1Size(context))),
-                      Container(
-                        margin: EdgeInsets.only(top: mediumSize(context)),
-                        child: Row(
-                          children: [
-                            icon((() {
-                              switch (lesson.type) {
-                                case lessonType.video:
-                                  return Icons.video_library_sharp;
-                                  break;
-                                case lessonType.speaking:
-                                  return Icons.chat_rounded;
-                                  break;
-                                case lessonType.words:
-                                  return Icons.menu_book_outlined;
-                                  break;
-                                case lessonType.writing:
-                                  return Icons.text_format_sharp;
-                                  break;
-                                case lessonType.Exercises:
-                                  return Icons.assignment;
-                                  break;
-                              }
-                            })()),
-                            text(context, (() {
-                              switch (lesson.type) {
-                                case lessonType.video:
-                                  return "Video";
-                                  break;
-                                case lessonType.speaking:
-                                  return "Speaking";
-                                  break;
-                                case lessonType.words:
-                                  return "Vocabulary";
-                                  break;
-                                case lessonType.writing:
-                                  return "Writing";
-                                  break;
-                                case lessonType.Exercises:
-                                  return "Exercises";
-                                  break;
-                              }
-                            })()),
-                          ],
+                      Positioned.fill(
+                        child: Container(
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  blurRadius: 10,
+                                  spreadRadius: 2,
+                                )
+                              ],
+                              border: Border.all(
+                                  width: 9,
+                                  color: lesson.isDone
+                                      ? lesson.color
+                                      : Colors.grey.shade200)),
                         ),
-                      )
+                      ),
+                      Positioned(
+                        top: mediumSize(context),
+                        left: mediumSize(context),
+                        right: mediumSize(context),
+                        bottom: mediumSize(context),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: NetworkImage(lesson.image))),
+                        ),
+                      ),
+                      lesson.isDone
+                          ? Align(
+                              alignment: Alignment(0, 1.3),
+                              child: Container(
+                                padding: EdgeInsets.all(xSmallSize(context)),
+                                child: Container(
+                                    width: fullWidth(context) / 26,
+                                    height: fullWidth(context) / 26,
+                                    child: SvgPicture.asset(
+                                      'assets/tick.svg',
+                                      color: Colors.white,
+                                    )),
+                                decoration: BoxDecoration(
+                                    color: lesson.color, shape: BoxShape.circle),
+                              ),
+                            )
+                          : Container(),
                     ],
                   ),
+                  width: fullWidth(context) / 3.5,
                 ),
-              ),
-            ],
-          ),
-          Align(
-            alignment: Alignment(0.71, -0.5),
-            child: Container(
-              width: xSmallSize(context),
-              height: fullWidth(context) / 6,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  color: lesson.isDone ? lesson.color : Colors.grey.shade200),
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: smallSize(context)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(lesson.title,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline4
+                                .copyWith(fontSize: bodyText1Size(context))),
+                        Container(
+                          margin: EdgeInsets.only(top: mediumSize(context)),
+                          child: Row(
+                            children: [
+                              icon((() {
+                                switch (lesson.type) {
+                                  case lessonType.video:
+                                    return Icons.video_library_sharp;
+                                    break;
+                                  case lessonType.speaking:
+                                    return Icons.chat_rounded;
+                                    break;
+                                  case lessonType.words:
+                                    return Icons.menu_book_outlined;
+                                    break;
+                                  case lessonType.writing:
+                                    return Icons.text_format_sharp;
+                                    break;
+                                  case lessonType.Exercises:
+                                    return Icons.assignment;
+                                    break;
+                                }
+                              })()),
+                              text(context, (() {
+                                switch (lesson.type) {
+                                  case lessonType.video:
+                                    return "Video";
+                                    break;
+                                  case lessonType.speaking:
+                                    return "Speaking";
+                                    break;
+                                  case lessonType.words:
+                                    return "Vocabulary";
+                                    break;
+                                  case lessonType.writing:
+                                    return "Writing";
+                                    break;
+                                  case lessonType.Exercises:
+                                    return "Exercises";
+                                    break;
+                                }
+                              })()),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
+            Align(
+              alignment: Alignment(0.71, -0.5),
+              child: Container(
+                width: xSmallSize(context),
+                height: fullWidth(context) / 6,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: lesson.isDone ? lesson.color : Colors.grey.shade200),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

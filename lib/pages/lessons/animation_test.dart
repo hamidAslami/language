@@ -2,101 +2,85 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:line_icons/line_icons.dart';
 
-class AnimationTestPage extends StatefulWidget {
+class LessoningDetailPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => AnimationTweenState();
+  State<StatefulWidget> createState() => LessoningDetailPageState();
 }
 
-class AnimationContinerState extends State<AnimationTestPage> {
-  var height = 50.0;
-  var width = 50.0;
-  var radius = 0.0;
-  var color = Colors.orange;
-  var text = "";
-
-  @override
-  Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AnimatedContainer(
-              margin: EdgeInsets.all(60),
-              duration: Duration(seconds: 4),
-              curve: Curves.fastOutSlowIn,
-              height: height,
-              width: width,
-              onEnd: () {
-                setState(() {
-                  text = "done";
-                });
-              },
-              child: Text(text),
-              decoration: BoxDecoration(
-                  color: color, borderRadius: BorderRadius.circular(radius)),
-            ),
-            RaisedButton(onPressed: () {
-              setState(() {
-                if (width == 50) {
-                  width = 500;
-                  height = 500;
-                  color = Colors.blue;
-                  radius = 16;
-                } else {
-                  width = 50;
-                  height = 50;
-                  radius = 0;
-                  color = Colors.orange;
-                }
-              });
-            })
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class AnimationOpacityState extends State<AnimationTestPage> {
-  Alignment alignment = Alignment.center;
-
-  @override
-  Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        body: Stack(
-          children: [],
-        ),
-      ),
-    );
-  }
-}
-
-class AnimationTweenState extends State<AnimationTestPage>
+class LessoningDetailPageState extends State<LessoningDetailPage>
     with TickerProviderStateMixin {
   AnimationController controller;
-  AnimationController controller2;
+  AnimationController controllerOpacity;
+  AnimationController controllerOpacityButton;
+  AnimationController controllerscaleGoal;
+  AnimationController controllerText;
+  AnimationController controllerScale;
   Animation<double> positionOfTop;
+  Animation<double> opacity;
+  Animation<double> opacityButton;
   Animation<double> scale;
-  Duration duration = Duration(milliseconds: 700);
+  Animation<double> scaleGoal;
+  Duration titleDuration = Duration(milliseconds: 700);
+  Duration imageDuration = Duration(milliseconds: 500);
+  Duration textDuration = Duration(milliseconds: 250);
+  Duration textGoalDuration = Duration(milliseconds: 250);
+  Duration buttonDuration = Duration(seconds: 2);
 
   @override
   void initState() {
-    controller = AnimationController(vsync: this, duration: duration);
-    controller2 = AnimationController(vsync: this, duration: duration);
+    controller = AnimationController(vsync: this, duration: titleDuration);
+    controllerOpacity =
+        AnimationController(vsync: this, duration: imageDuration);
+    controllerscaleGoal =
+        AnimationController(vsync: this, duration: textGoalDuration);
+    controllerText = AnimationController(vsync: this, duration: textDuration);
+    controllerOpacityButton =
+        AnimationController(vsync: this, duration: buttonDuration);
 
+    opacity = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(
+      curve: Curves.bounceIn,
+      parent: controllerOpacity,
+    ));
+    opacityButton = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(
+      curve: Curves.linear,
+      parent: controllerOpacityButton,
+    ));
+    scale = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(
+      curve: Curves.linear,
+      parent: controllerText,
+    ));
+    scaleGoal = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(
+      curve: Curves.linear,
+      parent: controllerscaleGoal,
+    ));
 
-    scale = Tween<double>(begin: 0,end: 1).animate(controller2);
+    controllerText.addListener(() {
+      if (controllerText.isCompleted) {
+        setState(() {
+          controllerscaleGoal.forward();
+          controllerscaleGoal.addListener(() {
+            setState(() {});
+          });
+        });
+      }
+    });
+
+    controllerscaleGoal.addListener(() {
+      if (controllerscaleGoal.isCompleted) {
+        setState(() {
+          controllerOpacityButton.forward();
+          controllerOpacityButton.addListener(() {
+            setState(() {});
+          });
+        });
+      }
+    });
 
     Timer(Duration(seconds: 2), () {
       controller.forward();
@@ -110,49 +94,165 @@ class AnimationTweenState extends State<AnimationTestPage>
   @override
   Widget build(BuildContext context) {
     positionOfTop =
-        Tween<double>(begin: fullHeight(context) / 2, end: xlargeSize(context))
+        Tween<double>(begin: fullHeight(context) / 2, end: largeSize(context))
             .animate(controller);
 
     var theme = Theme.of(context);
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        backgroundColor: theme.primaryColor,
-        body: Stack(
-          children: [
-            AnimatedPositioned(
-              top: positionOfTop.value,
-              right: largeSize(context),
-              onEnd: (){
-                controller2.forward();
-              },
-              left: largeSize(context),
-              curve: Curves.decelerate,
-              duration: duration,
-              child: Column(
-                children: [
-                  headline4(context, "Lessson 1", color: Colors.white70),
-                  headline3(context, "Metting a new Person",
-                      color: Colors.white)
-                ],
+    return AnnotatedRegion(
+      value: SystemUiOverlayStyle(statusBarColor: Color(0xfff4a806)),
+      child: Directionality(
+        textDirection: TextDirection.rtl,
+        child: Scaffold(
+          backgroundColor: Color(0xfff4a806),
+          body: Stack(
+            children: [
+              AnimatedPositioned(
+                top: positionOfTop.value,
+                right: largeSize(context),
+                onEnd: () {
+                  controllerOpacity.forward();
+                  controllerOpacity.addListener(() {
+                    setState(() {});
+                  });
+                },
+                left: largeSize(context),
+                curve: Curves.decelerate,
+                duration: titleDuration,
+                child: Column(
+                  children: [
+                    headline4(context, "Lessson 1", color: Colors.white70),
+                    headline3(context, "Metting a new Person",
+                        color: Colors.white)
+                  ],
+                ),
               ),
-            ),
-            Positioned(
-                top: xxLargeSize(context),
-                left: 100,
-                right: 100,
-                child: ScaleTransition(
-                  scale: scale,
-                  child: Container(
-                    height: 100,
-                    alignment: Alignment.center,
-                    width: 100,
-                    color: Colors.blue,
-                  ),
-                ))
-          ],
+              AnimatedOpacity(
+                  opacity: opacity.value,
+                  onEnd: () {
+                    controllerText.forward();
+                    controllerText.addListener(() {
+                      setState(() {});
+                    });
+                  },
+                  duration: imageDuration,
+                  child: lessonPic(
+                      'assets/image_lesson.jpg',
+                      'https://images.vexels.com/media/users/3/145908/list/52eabf633ca6414e60a7677b0b917d92-male-avatar-maker.jpg',
+                      context)),
+              Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: fullHeight(context) / 2.8,
+                  child: ScaleTransition(
+                    scale: scale,
+                    child: Text(
+                      'you\'re visiting a new country and a\nlocal person starts talking to you',
+                      style: TextStyle(
+                        fontSize: fullWidth(context) / 19,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'balsamiq',
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  )),
+              Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: fullHeight(context) / 5,
+                  child: ScaleTransition(
+                      scale: scaleGoal,
+                      child: goalText(
+                          'Your Goal', 'Introduce yourself', context))),
+              Positioned(
+                left: largeSize(context),
+                right: largeSize(context),
+                bottom: standardSize(context),
+                child: AnimatedOpacity(
+                    opacity: opacityButton.value,
+                    onEnd: () {
+                      controllerOpacityButton.forward();
+                      controllerOpacityButton.addListener(() {
+                        setState(() {});
+                      });
+                    },
+                    duration: imageDuration,
+                    child: RaisedButton(
+                      onPressed: () {},
+                      color: Colors.white,
+                      splashColor: Colors.transparent,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(xxLargeSize(context))),
+                      padding: EdgeInsets.symmetric(horizontal: fullWidth(context)/5,vertical: fullWidth(context)/15),
+                      child: headline3(context, 'Continue',color: Colors.black),
+                    )),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
+}
+
+Widget lessonPic(String imagePerson, String imageAvatar, BuildContext context) {
+  return Stack(
+    children: [
+      Align(
+        alignment: Alignment(0, -0.52),
+        child: Container(
+          width: fullWidth(context) / 1.1,
+          height: fullHeight(context) / 2.6,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(imagePerson), fit: BoxFit.cover),
+              shape: BoxShape.circle,
+              border: Border.all(color: Color(0xfff9be42), width: 8)),
+        ),
+      ),
+      Align(
+        alignment: Alignment(-0.45, -0.68),
+        child: Container(
+          width: fullWidth(context) / 5.2,
+          height: fullHeight(context) / 11.4,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: NetworkImage(imageAvatar), fit: BoxFit.cover),
+              shape: BoxShape.circle,
+              border: Border.all(color: Color(0xfff9be42), width: 4)),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget goalText(String title, String text, BuildContext context) {
+  return Container(
+    width: fullWidth(context),
+    margin: EdgeInsets.symmetric(horizontal: largeSize(context)),
+    decoration: BoxDecoration(
+        border: Border.all(color: Color(0xfff9be42), width: 2),
+        borderRadius: BorderRadius.circular(xlargeSize(context))),
+    height: fullHeight(context) / 11,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Baseline(
+          baseline: 0.0,
+          baselineType: TextBaseline.alphabetic,
+          child: Container(
+            margin: EdgeInsets.only(bottom: xSmallSize(context)),
+            child: headline4(context, title, color: Colors.white),
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Color(0xfff9be42),
+            ),
+          ),
+        ),
+        Container(
+            margin: EdgeInsets.only(bottom: smallSize(context)),
+            child: subtitle1(context, text, color: Colors.white))
+      ],
+    ),
+  );
 }
