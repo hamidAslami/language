@@ -6,6 +6,7 @@ import 'package:flutter_language_app/pages/bas/splash_page.dart';
 import 'package:flutter_language_app/pages/intro/intro_page.dart';
 import 'package:flutter_language_app/pages/lessons/animation_test.dart';
 import 'package:flutter_language_app/pages/profile_page.dart';
+import 'package:flutter_language_app/pages/video_player.dart';
 
 import 'package:flutter_language_app/theme/app_theme.dart';
 import 'package:flutter_language_app/theme/colors.dart';
@@ -21,16 +22,16 @@ class MyApp extends StatelessWidget {
         statusBarColor: AppColors.background,
         statusBarIconBrightness: Brightness.dark));
 
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
+    // SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.portraitUp,
+    //   DeviceOrientation.portraitDown,
+    // ]);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: appTheme(context),
-      home: HomePage(),
+      home: LessonDetailPage(),
     );
   }
 }

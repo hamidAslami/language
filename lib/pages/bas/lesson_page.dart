@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_language_app/fakeData.dart';
 import 'package:flutter_language_app/models/lesson_model.dart';
 import 'package:flutter_language_app/pages/lessons/animation_test.dart';
@@ -78,7 +79,8 @@ class LessonPageState extends State<LessonPage> {
                         child: Column(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(top: mediumSize(context)),
+                              margin:
+                                  EdgeInsets.only(top: mediumSize(context)),
                               child: headline3(context, "The Family",
                                   color: Colors.white),
                             ),
@@ -90,7 +92,8 @@ class LessonPageState extends State<LessonPage> {
                             ),
                             Container(
                               alignment: Alignment.center,
-                              margin: EdgeInsets.only(top: smallSize(context)),
+                              margin:
+                                  EdgeInsets.only(top: smallSize(context)),
                               height: fullWidth(context) / 12,
                               width: fullWidth(context) / 4.6,
                               decoration: BoxDecoration(
@@ -165,7 +168,8 @@ class LessonPageState extends State<LessonPage> {
                         child: Column(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(top: mediumSize(context)),
+                              margin:
+                                  EdgeInsets.only(top: mediumSize(context)),
                               child: headline3(context, "Great Job",
                                   color: Colors.white),
                             ),
@@ -180,7 +184,8 @@ class LessonPageState extends State<LessonPage> {
                             ),
                             Container(
                               alignment: Alignment.center,
-                              margin: EdgeInsets.only(top: smallSize(context)),
+                              margin:
+                                  EdgeInsets.only(top: smallSize(context)),
                               height: fullWidth(context) / 12,
                               width: fullWidth(context) / 4.6,
                               decoration: BoxDecoration(
@@ -211,7 +216,10 @@ class LessonPageState extends State<LessonPage> {
 
   Widget lessonItemWidget(Lesson lesson) {
     return GestureDetector(
-      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => LessoningDetailPage())),
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (BuildContext context) => LessonDetailPage())),
       child: Container(
         width: fullWidth(context),
         child: Column(
@@ -268,7 +276,8 @@ class LessonPageState extends State<LessonPage> {
                                       color: Colors.white,
                                     )),
                                 decoration: BoxDecoration(
-                                    color: lesson.color, shape: BoxShape.circle),
+                                    color: lesson.color,
+                                    shape: BoxShape.circle),
                               ),
                             )
                           : Container(),
@@ -278,7 +287,8 @@ class LessonPageState extends State<LessonPage> {
                 ),
                 Expanded(
                   child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: smallSize(context)),
+                    margin:
+                        EdgeInsets.symmetric(horizontal: smallSize(context)),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,

@@ -34,10 +34,11 @@ dependencies:
   flutter_svg: 0.19.1
   flare_flutter: ^2.0.6
   lottie: ^0.7.0+1
-  cached_video_player: ^1.0.3
+  video_player: ^1.0.1
   page_transition: ^1.1.7+3
   liquid_swipe: ^1.5.0
   step_progress_indicator: ^0.2.5+8
+  chewie: ^0.12.0
 
   pin_code_fields: ^6.0.0
 

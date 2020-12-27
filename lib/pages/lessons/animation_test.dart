@@ -3,22 +3,21 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_language_app/pages/video_player.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:line_icons/line_icons.dart';
 
-class LessoningDetailPage extends StatefulWidget {
+class LessonDetailPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => LessoningDetailPageState();
+  State<StatefulWidget> createState() => LessonDetailPageState();
 }
 
-class LessoningDetailPageState extends State<LessoningDetailPage>
+class LessonDetailPageState extends State<LessonDetailPage>
     with TickerProviderStateMixin {
   AnimationController controller;
   AnimationController controllerOpacity;
   AnimationController controllerOpacityButton;
-  AnimationController controllerscaleGoal;
+  AnimationController controllerScaleGoal;
   AnimationController controllerText;
   AnimationController controllerScale;
   Animation<double> positionOfTop;
@@ -37,7 +36,7 @@ class LessoningDetailPageState extends State<LessoningDetailPage>
     controller = AnimationController(vsync: this, duration: titleDuration);
     controllerOpacity =
         AnimationController(vsync: this, duration: imageDuration);
-    controllerscaleGoal =
+    controllerScaleGoal =
         AnimationController(vsync: this, duration: textGoalDuration);
     controllerText = AnimationController(vsync: this, duration: textDuration);
     controllerOpacityButton =
@@ -57,22 +56,22 @@ class LessoningDetailPageState extends State<LessoningDetailPage>
     ));
     scaleGoal = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(
       curve: Curves.linear,
-      parent: controllerscaleGoal,
+      parent: controllerScaleGoal,
     ));
 
     controllerText.addListener(() {
       if (controllerText.isCompleted) {
         setState(() {
-          controllerscaleGoal.forward();
-          controllerscaleGoal.addListener(() {
+          controllerScaleGoal.forward();
+          controllerScaleGoal.addListener(() {
             setState(() {});
           });
         });
       }
     });
 
-    controllerscaleGoal.addListener(() {
-      if (controllerscaleGoal.isCompleted) {
+    controllerScaleGoal.addListener(() {
+      if (controllerScaleGoal.isCompleted) {
         setState(() {
           controllerOpacityButton.forward();
           controllerOpacityButton.addListener(() {
@@ -97,9 +96,8 @@ class LessoningDetailPageState extends State<LessoningDetailPage>
         Tween<double>(begin: fullHeight(context) / 2, end: largeSize(context))
             .animate(controller);
 
-    var theme = Theme.of(context);
     return AnnotatedRegion(
-      value: SystemUiOverlayStyle(statusBarColor: Color(0xfff4a806)),
+      value: SystemUiOverlayStyle(statusBarColor: Colors.transparent),
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
@@ -178,7 +176,9 @@ class LessoningDetailPageState extends State<LessoningDetailPage>
                     },
                     duration: imageDuration,
                     child: RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ChewieDemo(),));
+                      },
                       color: Colors.white,
                       splashColor: Colors.transparent,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(xxLargeSize(context))),

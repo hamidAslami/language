@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_language_app/pages/bas/home_page.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -76,7 +77,9 @@ Widget levelEnglish(
         child: InkWell(
           splashColor: Colors.grey.shade300,
           borderRadius: BorderRadius.circular(10),
-          onTap: () {},
+          onTap: () {
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+          },
           child: Directionality(
             textDirection: TextDirection.rtl,
             child: Row(
