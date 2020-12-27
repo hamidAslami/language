@@ -7,6 +7,7 @@ Widget appbarCustom(String title,BuildContext context){
     centerTitle: true,
     shadowColor: Colors.white70,
     elevation: 5,
+    brightness:  Brightness.light,
     backgroundColor: Colors.white,
     leading: IconButton(
       icon: Icon(

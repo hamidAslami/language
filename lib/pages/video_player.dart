@@ -16,8 +16,8 @@ class ChewieDemo extends StatefulWidget {
 }
 
 class _ChewieDemoState extends State<ChewieDemo> {
-  TargetPlatform _platform;
   VideoPlayerController _videoPlayerController1;
+  TargetPlatform _platform;
 
   ChewieController _chewieController;
 
@@ -25,6 +25,9 @@ class _ChewieDemoState extends State<ChewieDemo> {
   void initState() {
     super.initState();
     this.initializePlayer();
+    setState(() {
+      _platform = TargetPlatform.iOS;
+    });
   }
 
   @override
@@ -45,20 +48,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
       looping: true,
       // fullScreenByDefault: true,
       allowFullScreen: true,
-      customControls: Container(
-        color: Colors.white,
-        child: Row(
-          children: [
-            _chewieController.isPlaying ? IconButton(
-                icon: Icon(Icons.pause), onPressed: () {
-              _videoPlayerController1.pause();
-            }) : IconButton(
-                icon: Icon(Icons.play_arrow_rounded), onPressed: () {
-              _videoPlayerController1.play();
-            })
-          ],
-        ),
-      ),
+
       deviceOrientationsAfterFullScreen: [
         DeviceOrientation.portraitDown,
         DeviceOrientation.portraitUp,
@@ -70,12 +60,8 @@ class _ChewieDemoState extends State<ChewieDemo> {
       ],
 
       cupertinoProgressColors: ChewieProgressColors(
-        playedColor: Theme
-            .of(context)
-            .accentColor,
-        handleColor: Theme
-            .of(context)
-            .accentColor,
+        playedColor: Theme.of(context).accentColor,
+        handleColor: Theme.of(context).accentColor,
         backgroundColor: Colors.white,
         bufferedColor: Colors.grey,
       ),
@@ -83,12 +69,8 @@ class _ChewieDemoState extends State<ChewieDemo> {
 
       // showControls: false,
       materialProgressColors: ChewieProgressColors(
-        playedColor: Theme
-            .of(context)
-            .accentColor,
-        handleColor: Theme
-            .of(context)
-            .accentColor,
+        playedColor: Theme.of(context).accentColor,
+        handleColor: Theme.of(context).accentColor,
         backgroundColor: Colors.white,
         bufferedColor: Colors.grey,
       ),
@@ -103,35 +85,41 @@ class _ChewieDemoState extends State<ChewieDemo> {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle(statusBarColor: Colors.transparent),
-      child: Scaffold(
-        backgroundColor: Colors.black87,
-        appBar: AppBar(
-          backgroundColor: Colors.black87,
-          brightness: Brightness.dark,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios),
-            onPressed: () {},
-            color: Colors.white,
+        value: SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+        child: MaterialApp(
+
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData.light().copyWith(
+            platform: _platform ?? Theme.of(context).platform,
           ),
-        ),
-        body: Center(
-          child: _chewieController != null &&
-              _chewieController.videoPlayerController.value.initialized
-              ? Chewie(
-            controller: _chewieController,
-          )
-              : Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              CircularProgressIndicator(),
-              SizedBox(height: 20),
-              Text('Loading'),
-            ],
+          home: Scaffold(
+            backgroundColor: Colors.black87,
+            appBar: AppBar(
+              backgroundColor: Colors.black87,
+              brightness: Brightness.dark,
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back_ios),
+                onPressed: () {},
+                color: Colors.white,
+              ),
+            ),
+            body: Center(
+              child: _chewieController != null &&
+                      _chewieController.videoPlayerController.value.initialized
+                  ? Chewie(
+                      controller: _chewieController,
+                    )
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        CircularProgressIndicator(),
+                        SizedBox(height: 20),
+                        Text('Loading'),
+                      ],
+                    ),
+            ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
