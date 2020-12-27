@@ -177,7 +177,7 @@ class LessonDetailPageState extends State<LessonDetailPage>
                     duration: imageDuration,
                     child: RaisedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ChewieDemo(),));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ChewieDemo(),));
                       },
                       color: Colors.white,
                       splashColor: Colors.transparent,
