@@ -25,7 +25,7 @@ class NamePageState extends State<NamePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // Container(
-                      //   child: Lottie.asset("assets/name.json",
+                      //   child: Lottie.asset("assets/lottie_name.json",
                       //       fit: BoxFit.cover, width: fullWidth(context) / 1.3),height: fullHeight(context) / 3,
                       // ),
                       Container(

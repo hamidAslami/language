@@ -66,7 +66,7 @@ class ListeningPageState extends State<ListeningPage> {
                       borderRadius:
                           BorderRadius.circular(fullWidth(context) / 7.2),
                       image: DecorationImage(
-                          image: AssetImage('assets/listening_picture.jpg'),
+                          image: AssetImage('assets/pic_listening.jpg'),
                           fit: BoxFit.cover)),
                 ),
               ),
@@ -156,7 +156,7 @@ class ListeningPageState extends State<ListeningPage> {
                           IconButton(
                             splashColor: theme.primaryColor,
                             icon: SvgPicture.asset(
-                              'assets/forward.svg',
+                              'assets/ic_forward.svg',
                               color: Colors.black,
                             ),
                             onPressed: () {},
@@ -180,7 +180,7 @@ class ListeningPageState extends State<ListeningPage> {
                           ),
                           IconButton(
                             splashColor: theme.primaryColor,
-                            icon: SvgPicture.asset('assets/backward.svg'),
+                            icon: SvgPicture.asset('assets/ic_backward.svg'),
                             onPressed: () {},
                             color: Colors.black,
                           ),

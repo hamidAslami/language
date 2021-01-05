@@ -39,7 +39,7 @@ class VerifyPageState extends State<VerifyPage> {
                       top: largeSize(context),
                       left: mediumSize(context),
                       right: mediumSize(context)),
-                  child: Lottie.asset("assets/27636-confused.json",
+                  child: Lottie.asset("assets/lottie_verify.json",
                       fit: BoxFit.cover, width: fullWidth(context) / 1.2),
                 ),
               ),

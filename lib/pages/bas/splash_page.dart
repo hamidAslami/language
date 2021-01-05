@@ -40,7 +40,7 @@ class SplashPageState extends State<SplashPage> {
               Container(
                 margin: EdgeInsets.only(bottom: fullHeight(context) / 4.5),
                 child: FlareActor(
-                  "assets/Penguin.flr",
+                  "assets/flr_penguin.flr",
                   animation: "walk",
                   alignment: Alignment.topCenter,
                   fit: BoxFit.cover,
@@ -48,7 +48,7 @@ class SplashPageState extends State<SplashPage> {
               ),
               Align(
                 alignment: Alignment(0.0, 0.7),
-                child: Lottie.asset("assets/loading.json",
+                child: Lottie.asset("assets/lottie_loading.json",
                     height: fullWidth(context) / 4,
                     width: fullWidth(context) / 4),
               ),

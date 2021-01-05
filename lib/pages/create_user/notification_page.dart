@@ -28,7 +28,7 @@ class NotificationPageState extends State<NotificationPage> {
                 width: fullWidth(context),
                 height: fullHeight(context) / 2.7,
                 child: FlareActor(
-                  "assets/notification1.flr",
+                  "assets/flr_notification_page.flr",
                   animation: "Notifications",
            ),
               ),

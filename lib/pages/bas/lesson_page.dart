@@ -160,7 +160,7 @@ class LessonPageState extends State<LessonPage> {
                           top: 0,
                           right: 0,
                           child: Lottie.asset(
-                            "assets/nice_job.json",
+                            "assets/lottie_nice_job.json",
                             width: fullWidth(context) / 2,
                             height: fullWidth(context) / 2,
                           ),
@@ -275,7 +275,7 @@ class LessonPageState extends State<LessonPage> {
                                     width: fullWidth(context) / 26,
                                     height: fullWidth(context) / 26,
                                     child: SvgPicture.asset(
-                                      'assets/tick.svg',
+                                      'assets/ic_tick.svg',
                                       color: Colors.white,
                                     )),
                                 decoration: BoxDecoration(

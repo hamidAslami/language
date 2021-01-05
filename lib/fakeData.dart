@@ -7,12 +7,12 @@ import 'models/lesson_model.dart';
 List categoryList() {
   List<CategoryModel> categoryCard = new List();
 
-  categoryCard.add(CategoryModel('assets/background_category_card_1.jpg',
-      'دوره مـبتدی', 'assets/rocket.png'));
-  categoryCard.add(CategoryModel('assets/background_category_card_2.jpg',
-      'دوره متوسـط', 'assets/rocket.png'));
-  categoryCard.add(CategoryModel('assets/background_category_card_3.jpg',
-      'دوره پیشرفتـه', 'assets/rocket.png'));
+  categoryCard.add(CategoryModel('assets/bg_category_card_yellow.jpg',
+      'دوره مـبتدی', 'assets/pic_rocket.png'));
+  categoryCard.add(CategoryModel('assets/bg_category_card_blue.jpg',
+      'دوره متوسـط', 'assets/pic_rocket.png'));
+  categoryCard.add(CategoryModel('assets/bg_category_card_pink.jpg',
+      'دوره پیشرفتـه', 'assets/pic_rocket.png'));
 
   return categoryCard;
 }

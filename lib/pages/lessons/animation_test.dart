@@ -134,7 +134,7 @@ class LessonDetailPageState extends State<LessonDetailPage>
                   },
                   duration: imageDuration,
                   child: lessonPic(
-                      'assets/image_lesson.jpg',
+                      'assets/pic_lesson_dit.jpg',
                       'https://images.vexels.com/media/users/3/145908/list/52eabf633ca6414e60a7677b0b917d92-male-avatar-maker.jpg',
                       context)),
               Positioned(

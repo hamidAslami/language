@@ -67,7 +67,7 @@ class MyApp2 extends StatelessWidget {
               ],
             ),
           ),
-          Image.asset("assets/firstImage.png"),
+          Image.asset("assets/pic_first_intro.png"),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
             child: Column(
@@ -119,7 +119,7 @@ class MyApp2 extends StatelessWidget {
               ],
             ),
           ),
-          Image.asset("assets/secondImage.png"),
+          Image.asset("assets/pic_second_intro.png"),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
             child: Column(
@@ -170,7 +170,7 @@ class MyApp2 extends StatelessWidget {
               ],
             ),
           ),
-          Image.asset("assets/firstImage.png"),
+          Image.asset("assets/pic_first_intro.png"),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
             child: Column(

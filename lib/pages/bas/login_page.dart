@@ -34,7 +34,7 @@ class LoginPageState extends State<LoginPage> {
                           top: largeSize(context),
                           left: mediumSize(context),
                           right: mediumSize(context)),
-                      child: Lottie.asset("assets/27637-welcome.json",
+                      child: Lottie.asset("assets/lottie_welcome.json",
                           fit: BoxFit.cover, width: fullWidth(context) / 1.2),
                     ),
                   ),
