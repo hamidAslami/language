@@ -10,7 +10,6 @@ import 'package:flutter_language_app/pages/lessons/animation_test.dart';
 import 'package:flutter_language_app/pages/lessons/chatPage.dart';
 import 'package:flutter_language_app/pages/profile_page.dart';
 import 'package:flutter_language_app/pages/video_player.dart';
-
 import 'package:flutter_language_app/theme/app_theme.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:video_player/video_player.dart';

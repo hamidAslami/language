@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
                                 Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage(),));
                               },
                               child: Image.asset(
-                                "assets/pic_avatar5.png",
+                                "assets/pic_avatar_woman_1.png",
                                 width: fullWidth(context) / 8,
                               ),
                             ),
@@ -91,7 +91,7 @@ class HomePage extends StatelessWidget {
                               right: 0,
                               bottom: fullHeight(context) / -31,
                               child: Container(
-                                child: Image.asset("assets/pic_school1.png"),
+                                child: Image.asset("assets/pic_school_home.png"),
                               ),
                             ),
                             Positioned(
