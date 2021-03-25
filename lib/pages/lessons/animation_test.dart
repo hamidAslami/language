@@ -31,6 +31,7 @@ class LessonDetailPageState extends State<LessonDetailPage>
   Duration textGoalDuration = Duration(milliseconds: 250);
   Duration buttonDuration = Duration(seconds: 2);
 
+
   @override
   void initState() {
     controller = AnimationController(vsync: this, duration: titleDuration);

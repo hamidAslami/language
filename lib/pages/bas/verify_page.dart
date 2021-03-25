@@ -240,7 +240,7 @@ void createUserSheet(BuildContext context) {
               StepProgressIndicator(
                 unselectedColor: Colors.grey.shade200,
                 currentStep: 1,
-selectedColor: Theme.of(context).primaryColor,
+                selectedColor: Theme.of(context).primaryColor,
                 totalSteps: 6,
               ),
               Expanded(
@@ -266,7 +266,7 @@ selectedColor: Theme.of(context).primaryColor,
                   elevation: standardSize(context),
                   onPressed: () {
                     controller.animateToPage(
-                      controller.page.toInt() +1,
+                      controller.page.toInt() + 1,
                       duration: Duration(milliseconds: 200),
                       curve: Curves.easeInQuad,
                     );
