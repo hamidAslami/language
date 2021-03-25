@@ -13,8 +13,6 @@ import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
 
-import '../listening_page.dart';
-
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -63,7 +61,7 @@ class HomePage extends StatelessWidget {
                                 Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage(),));
                               },
                               child: Image.asset(
-                                "assets/pic_avatar_man_1.png",
+                                "assets/pic_avatar_woman_1.png",
                                 width: fullWidth(context) / 8,
                               ),
                             ),
