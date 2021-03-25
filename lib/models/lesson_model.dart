@@ -9,8 +9,9 @@ class Lesson {
   lessonType type;
   bool isDone;
   Color color;
+  Function opPress;
 
-  Lesson(this.image,this.title,this.type,this.isDone,this.color);
+  Lesson(this.image,this.title,this.type,this.isDone,this.color,this.opPress);
 
 }
 

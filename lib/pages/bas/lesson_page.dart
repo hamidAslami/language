@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_language_app/fakeData.dart';
+import 'package:flutter_language_app/lessons/intro_lesson_page.dart';
 import 'package:flutter_language_app/models/lesson_model.dart';
-import 'package:flutter_language_app/pages/lessons/animation_test.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
@@ -219,10 +219,7 @@ class LessonPageState extends State<LessonPage> {
 
   Widget lessonItemWidget(Lesson lesson) {
     return GestureDetector(
-      onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (BuildContext context) => LessonDetailPage())),
+      onTap: lesson.opPress,
       child: Container(
         width: fullWidth(context),
         child: Column(

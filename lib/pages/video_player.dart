@@ -40,7 +40,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
 
   Future<void> initializePlayer() async {
     _videoPlayerController1 = VideoPlayerController.network(
-        'https://dl.cspmelal.com/videos/motevaset/web-site.mp4');
+        'https://www.radiantmediaplayer.com/media/big-buck-bunny-360p.mp4');
     await _videoPlayerController1.initialize();
 
     _chewieController = ChewieController(

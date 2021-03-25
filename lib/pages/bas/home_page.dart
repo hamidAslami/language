@@ -13,6 +13,8 @@ import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
 
+import '../listening_page.dart';
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -61,85 +63,90 @@ class HomePage extends StatelessWidget {
                                 Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage(),));
                               },
                               child: Image.asset(
-                                "assets/pic_avatar5.png",
+                                "assets/pic_avatar_man_1.png",
                                 width: fullWidth(context) / 8,
                               ),
                             ),
                           ],
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: standardSize(context)),
-                        width: fullWidth(context),
-                        height: fullHeight(context) / 3.4,
-                        child: Stack(
-                          children: [
-                            Positioned.fill(
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ListeningPage(),));
+                        },
+                        child: Container(
+                          margin: EdgeInsets.symmetric(
+                              horizontal: standardSize(context)),
+                          width: fullWidth(context),
+                          height: fullHeight(context) / 3.4,
+                          child: Stack(
+                            children: [
+                              Positioned.fill(
+                                  child: Container(
+                                    margin: EdgeInsets.symmetric(
+                                        vertical: standardSize(context)),
+                                    width: fullWidth(context),
+                                    height: fullHeight(context) / 3.4,
+                                    decoration: BoxDecoration(
+                                        color: theme.primaryColor,
+                                        borderRadius: BorderRadius.circular(16)),
+                                  )),
+                              Positioned(
+                                top: fullHeight(context) / -22,
+                                left: fullHeight(context) / -5.4,
+                                right: 0,
+                                bottom: fullHeight(context) / -31,
                                 child: Container(
-                                  margin: EdgeInsets.symmetric(
-                                      vertical: standardSize(context)),
-                                  width: fullWidth(context),
-                                  height: fullHeight(context) / 3.4,
-                                  decoration: BoxDecoration(
-                                      color: theme.primaryColor,
-                                      borderRadius: BorderRadius.circular(16)),
-                                )),
-                            Positioned(
-                              top: fullHeight(context) / -22,
-                              left: fullHeight(context) / -5.4,
-                              right: 0,
-                              bottom: fullHeight(context) / -31,
-                              child: Container(
-                                child: Image.asset("assets/pic_school1.png"),
+                                  child: Image.asset("assets/pic_school1.png"),
+                                ),
                               ),
-                            ),
-                            Positioned(
-                              right: fullWidth(context) / 18,
-                              top: fullHeight(context) / 20,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    child: Text("دوره تخصصی\nزبان انگلیسی",
-                                        style: theme.textTheme.headline4
-                                            .copyWith(
-                                            color: Color(0xffffffff),
-                                            fontSize: mediumSize(context))),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        top: smallSize(context),
-                                        right: smallSize(context)),
-                                    child: InkWell(
-                                      onTap: () {},
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                          BorderRadius.circular(10),
-                                          boxShadow: [
-                                            BoxShadow(
-                                                color: Color(0xff4c456f),
-                                                blurRadius: 0,
-                                                spreadRadius: 1.2,
-                                                offset: Offset(4, 5))
-                                          ],
-                                          color: theme.backgroundColor,
-                                        ),
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: xSmallSize(context),
-                                            vertical: 2),
-                                        child: Text(
-                                          'بیشتر بدانید!',
-                                          style: theme.textTheme.bodyText2,
+                              Positioned(
+                                right: fullWidth(context) / 18,
+                                top: fullHeight(context) / 20,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      child: Text("دوره تخصصی\nزبان انگلیسی",
+                                          style: theme.textTheme.headline4
+                                              .copyWith(
+                                              color: Color(0xffffffff),
+                                              fontSize: mediumSize(context))),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          top: smallSize(context),
+                                          right: smallSize(context)),
+                                      child: InkWell(
+                                        onTap: () {},
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                            BorderRadius.circular(10),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Color(0xff4c456f),
+                                                  blurRadius: 0,
+                                                  spreadRadius: 1.2,
+                                                  offset: Offset(4, 5))
+                                            ],
+                                            color: theme.backgroundColor,
+                                          ),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: xSmallSize(context),
+                                              vertical: 2),
+                                          child: Text(
+                                            'بیشتر بدانید!',
+                                            style: theme.textTheme.bodyText2,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       Container(
