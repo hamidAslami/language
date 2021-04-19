@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_language_app/fakeData.dart';
 import 'package:flutter_language_app/models/MultiQuestion.dart';
-import 'package:flutter_language_app/models/word_model.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
 import 'package:flutter_svg/svg.dart';
@@ -32,7 +31,6 @@ class SelectWordPageState extends State<SelectWordPage> {
 
     return await cache.play("wrong.mp3");
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -88,8 +86,7 @@ class SelectWordPageState extends State<SelectWordPage> {
                 child: RaisedButton(
                   splashColor: Color(0xff512da8),
                   elevation: standardSize(context),
-                  onPressed: () async{
-
+                  onPressed: () async {
                     if (question.selectedAnswer == question.answerCorrect) {
                       await playWin();
 

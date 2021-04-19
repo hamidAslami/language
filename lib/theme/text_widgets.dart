@@ -31,6 +31,8 @@ Widget headline3(BuildContext context, String text,
     {Color color: AppColors.textColorLight}) {
   return Text(
     text,
+    textDirection: TextDirection.ltr,
+
     style: TextStyle(
         fontFamily: "balsamiq",
         color: color,
