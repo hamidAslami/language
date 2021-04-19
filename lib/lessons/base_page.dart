@@ -80,31 +80,8 @@ class BaseLessonPageState extends State<BaseLessonPage> {
                 controller: controller,
                 physics: new NeverScrollableScrollPhysics(),
                 children: [
-                  SelectWordPage(),
+                  SelectWordPage(controller),
                 ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(
-                  bottom: standardSize(context),
-                  left: standardSize(context),
-                  right: standardSize(context)),
-              child: RaisedButton(
-                splashColor: Color(0xff512da8),
-                elevation: standardSize(context),
-                onPressed: () {
-                  controller.animateToPage(
-                    controller.page.toInt() + 1,
-                    duration: Duration(milliseconds: 200),
-                    curve: Curves.easeInQuad,
-                  );
-                },
-                child: Text(
-                  "ادامـه دهـید",
-                  style: Theme.of(context).textTheme.headline4.copyWith(
-                      fontSize: caption1Size(context),
-                      color: Theme.of(context).backgroundColor),
-                ),
               ),
             ),
           ],

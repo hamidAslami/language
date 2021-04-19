@@ -1,103 +1,167 @@
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_language_app/fakeData.dart';
+import 'package:flutter_language_app/models/MultiQuestion.dart';
 import 'package:flutter_language_app/models/word_model.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SelectWordPage extends StatefulWidget {
+  final PageController controller;
+
+  SelectWordPage(this.controller);
+
   @override
   State<StatefulWidget> createState() => SelectWordPageState();
 }
 
 class SelectWordPageState extends State<SelectWordPage> {
+  GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
+
+  Future<AudioPlayer> playWin() async {
+    AudioCache cache = new AudioCache();
+
+    return await cache.play("win.mp3");
+  }
+
+  Future<AudioPlayer> playLoss() async {
+    AudioCache cache = new AudioCache();
+
+    return await cache.play("wrong.mp3");
+  }
+
+
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Container(
-        margin: EdgeInsets.symmetric(
-            horizontal: standardSize(context), vertical: xxSmallSize(context)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                SvgPicture.asset(
-                  "assets/new.svg",
-                  width: iconSizeXLarge(context),
-                  height: iconSizeXLarge(context),
+    MultiQuestion question = multiQuestion();
+    return Scaffold(
+      key: key,
+      body: Directionality(
+        textDirection: TextDirection.rtl,
+        child: Container(
+          margin: EdgeInsets.symmetric(
+              horizontal: standardSize(context),
+              vertical: xxSmallSize(context)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  SvgPicture.asset(
+                    "assets/new.svg",
+                    width: iconSizeXLarge(context),
+                    height: iconSizeXLarge(context),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(right: smallSize(context)),
+                    child: Text(
+                      "کلمه جدید",
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle1
+                          .copyWith(color: Colors.blueAccent),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(vertical: smallSize(context)),
+                child: Text(
+                  "کدام کلمه به معنای دختر است ؟",
+                  style: Theme.of(context).textTheme.headline4,
                 ),
-                Container(
-                  margin: EdgeInsets.only(right: smallSize(context)),
+              ),
+              GridView.builder(
+                shrinkWrap: true,
+                itemCount: question.words.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
+                itemBuilder: (context, index) => QuestionCard(question, index),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                  top: xlargeSize(context),
+                ),
+                child: RaisedButton(
+                  splashColor: Color(0xff512da8),
+                  elevation: standardSize(context),
+                  onPressed: () async{
+
+                    if (question.selectedAnswer == question.answerCorrect) {
+                      await playWin();
+
+                      widget.controller.animateToPage(
+                        widget.controller.page.toInt() + 1,
+                        duration: Duration(milliseconds: 200),
+                        curve: Curves.easeInQuad,
+                      );
+
+                      print("dorost");
+                    } else {
+                      await playLoss();
+                      setState(() {
+                        question.selectedAnswer = null;
+                      });
+                      key.currentState.showSnackBar(SnackBar(
+                          elevation: 3,
+                          margin: EdgeInsets.only(
+                              bottom: xlargeSize(context),
+                              right: standardSize(context),
+                              left: standardSize(context)),
+                          behavior: SnackBarBehavior.floating,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)),
+                          backgroundColor: Colors.redAccent,
+                          content: Text(
+                            "اشتباه گفتی ! دوباره امتحان کن!",
+                            textAlign: TextAlign.right,
+                            textDirection: TextDirection.rtl,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText1
+                                .copyWith(color: Colors.white),
+                          )));
+                      print("ghalat");
+                    }
+                  },
                   child: Text(
-                    "کلمه جدید",
-                    style: Theme.of(context)
-                        .textTheme
-                        .subtitle1
-                        .copyWith(color: Colors.blueAccent),
+                    "ادامـه دهـید",
+                    style: Theme.of(context).textTheme.headline4.copyWith(
+                        fontSize: caption1Size(context),
+                        color: Theme.of(context).backgroundColor),
                   ),
                 ),
-              ],
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: smallSize(context)),
-              child: Text(
-                "کدام کلمه به معنای دختر است ؟",
-                style: Theme.of(context).textTheme.headline4,
               ),
-            ),
-            GridView.count(
-              shrinkWrap: true,
-              crossAxisCount: 2,
-              children: [
-                WordCard(
-                    Word(
-                      "Boy",
-                      "https://www.flaticon.com/svg/static/icons/svg/145/145867.svg",
-                    ),
-                    1),
-                WordCard(
-                    Word("Girl",
-                        "https://www.flaticon.com/svg/static/icons/svg/145/145852.svg"),
-                    2),
-                WordCard(
-                    Word("Father",
-                        "https://www.flaticon.com/svg/static/icons/svg/145/145859.svg"),
-                    3),
-                WordCard(
-                    Word("Mother",
-                        "https://www.flaticon.com/svg/static/icons/svg/145/145862.svg"),
-                    4),
-              ],
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-class WordCard extends StatefulWidget {
-  final Word word;
-  final int number;
+class QuestionCard extends StatefulWidget {
+  final MultiQuestion _multiQuestion;
+  int index;
 
-  WordCard(this.word, this.number);
+  QuestionCard(this._multiQuestion, this.index);
 
   @override
-  State<StatefulWidget> createState() => WordCardState();
+  State<StatefulWidget> createState() => QuestionCardState();
 }
 
-class WordCardState extends State<WordCard> {
+class QuestionCardState extends State<QuestionCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(12),
       onTap: () {
         setState(() {
-          // if( widget.word.number = widget.number)
-          widget.word.number = widget.number;
-
+          widget._multiQuestion.selectedAnswer =
+              widget._multiQuestion.words[widget.index];
         });
       },
       child: Container(
@@ -107,7 +171,8 @@ class WordCardState extends State<WordCard> {
             color: Colors.white,
             boxShadow: [
               BoxShadow(
-                  color: widget.word.number == widget.number
+                  color: widget._multiQuestion.selectedAnswer ==
+                          widget._multiQuestion.words[widget.index]
                       ? Colors.blueAccent
                       : Colors.grey.shade200,
                   blurRadius: 6,
@@ -118,7 +183,7 @@ class WordCardState extends State<WordCard> {
             Container(
               margin: EdgeInsets.only(top: smallSize(context)),
               child: SvgPicture.network(
-                widget.word.image,
+                widget._multiQuestion.images[widget.index],
                 height: 80,
                 width: 80,
                 fit: BoxFit.cover,
@@ -126,7 +191,8 @@ class WordCardState extends State<WordCard> {
             ),
             Container(
                 margin: EdgeInsets.only(top: smallSize(context)),
-                child: headline3(context, widget.word.word))
+                child: headline3(
+                    context, widget._multiQuestion.words[widget.index]))
           ],
         ),
       ),

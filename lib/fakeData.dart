@@ -5,6 +5,7 @@ import 'package:flutter_language_app/models/category_model.dart';
 
 import 'lessons/intro_lesson_page.dart';
 import 'models/lesson_model.dart';
+import 'models/MultiQuestion.dart';
 
 List categoryList() {
   List<CategoryModel> categoryCard = new List();
@@ -24,26 +25,24 @@ List lessonList(BuildContext context) {
 
   var theme = Theme.of(context);
   lessonList.add(Lesson("https://s16.picofile.com/file/8417349934/teacher.jpg",
-      "آموزش گرامر", lessonType.video, true, theme.primaryColor,(){
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (BuildContext context) => LessonDetailPage()));
-      }));
+      "آموزش گرامر", lessonType.video, true, theme.primaryColor, () {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (BuildContext context) => LessonDetailPage()));
+  }));
 
   lessonList.add(Lesson("https://s17.picofile.com/file/8417350200/talk.jpg",
-      "صحبت کن !", lessonType.speaking, true, theme.accentColor,(){
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (BuildContext context) => BaseLessonPage()));
-      }));
+      "صحبت کن !", lessonType.speaking, true, theme.accentColor, () {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (BuildContext context) => BaseLessonPage()));
+  }));
   lessonList.add(Lesson("https://s16.picofile.com/file/8417350600/Write.jpg",
-      "بنویس تا یادت بمونه !", lessonType.writing, true, Colors.pink,(){}));
+      "بنویس تا یادت بمونه !", lessonType.writing, true, Colors.pink, () {}));
   lessonList.add(Lesson("https://s17.picofile.com/file/8417351634/Book3.jpg",
-      "کلمات رو حفظ کن!", lessonType.words, false, Colors.indigoAccent,(){}));
+      "کلمات رو حفظ کن!", lessonType.words, false, Colors.indigoAccent, () {}));
   lessonList.add(Lesson("https://s16.picofile.com/file/8417352300/quiz5.jpg",
-      "وقتشه خودتو محک بزنی!", lessonType.Exercises, false, Colors.red,(){}));
+      "وقتشه خودتو محک بزنی!", lessonType.Exercises, false, Colors.red, () {}));
   return lessonList;
 }
 
@@ -95,4 +94,18 @@ List homeLessonList() {
       "طلایی"));
 
   return homeLessonList;
+}
+
+MultiQuestion multiQuestion() {
+  return MultiQuestion([
+    "Boy",
+    "Girl",
+    "Father",
+    "Mother"
+  ], [
+    "https://www.flaticon.com/svg/static/icons/svg/145/145867.svg",
+    "https://www.flaticon.com/svg/static/icons/svg/145/145852.svg",
+    "https://www.flaticon.com/svg/static/icons/svg/145/145859.svg",
+    "https://www.flaticon.com/svg/static/icons/svg/145/145862.svg"
+  ], "Girl","");
 }
