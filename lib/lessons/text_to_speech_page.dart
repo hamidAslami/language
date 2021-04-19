@@ -37,7 +37,13 @@ class SpeechPageState extends State<SpeechPage>
 
     return await cache.play("wrong.mp3");
   }
+
   TextEditingController controller;
+
+  @override
+  void initState() {
+    controller = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +89,9 @@ class SpeechPageState extends State<SpeechPage>
                 alignment: Alignment.center,
                 width: fullWidth(context),
                 margin: EdgeInsets.symmetric(vertical: smallSize(context)),
-                child: TextField(),
+                child: TextField(
+                  controller: controller,
+                ),
               ),
               Container(
                 margin: EdgeInsets.only(top: mediumSize(context)),
@@ -112,9 +120,7 @@ class SpeechPageState extends State<SpeechPage>
                       ),
                     ),
                     child: GestureDetector(
-                      onTap: () {
-
-                      },
+                      onTap: () {},
                       child: Padding(
                         padding: const EdgeInsets.all(24.0),
                         child: Icon(

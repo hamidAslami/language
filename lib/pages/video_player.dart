@@ -40,7 +40,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
 
   Future<void> initializePlayer() async {
     _videoPlayerController1 = VideoPlayerController.network(
-        'https://www.radiantmediaplayer.com/media/big-buck-bunny-360p.mp4');
+        'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4');
     await _videoPlayerController1.initialize();
 
     _chewieController = ChewieController(
@@ -88,7 +88,6 @@ class _ChewieDemoState extends State<ChewieDemo> {
     return AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle(statusBarColor: Colors.transparent),
         child: MaterialApp(
-
           debugShowCheckedModeBanner: false,
           theme: ThemeData.light().copyWith(
             platform: _platform ?? Theme.of(context).platform,
@@ -102,7 +101,10 @@ class _ChewieDemoState extends State<ChewieDemo> {
                 icon: Icon(Icons.arrow_back_ios),
                 onPressed: () {
                   setState(() {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => LessonPage()));
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => LessonPage()));
                   });
                 },
                 color: Colors.white,

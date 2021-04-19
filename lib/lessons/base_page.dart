@@ -74,7 +74,18 @@ class BaseLessonPageState extends State<BaseLessonPage> {
                       Icons.close,
                       color: Colors.black,
                     ),
-                    onPressed: () {}),
+                    onPressed: () {
+                      setState(() {
+                        if(controller.page == 0){
+                          Navigator.pop(context);
+                        }else{
+                          controller.previousPage(
+                              duration: Duration(milliseconds: 100),
+                              curve: Curves.easeInCirc);
+                        }
+
+                      });
+                    }),
               ],
             ),
             Expanded(
@@ -84,7 +95,6 @@ class BaseLessonPageState extends State<BaseLessonPage> {
                 children: [
                   SelectWordPage(controller),
                   SpeechPage(controller),
-
                 ],
               ),
             ),
