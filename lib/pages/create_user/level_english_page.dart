@@ -26,14 +26,14 @@ class LevelEnglishState extends State<LevelEnglish> {
               Container(
                 margin: EdgeInsets.only(top: largeSize(context)),
                 child: Text("آیا از قبـل انگـلیسی بلـدید؟",
-                    style: theme.textTheme.headline4
+                    style: theme.textTheme.headline4!
                         .copyWith(color: AppColors.textColorLight)),
               ),
               Container(
                 margin: EdgeInsets.only(top: mediumSize(context)),
                 child: Text(
                   "مسیر موفقیت و مسیر شکست تقریبا شبیه هم هستند\n!ما به شما کمک خواهیم کرد تا مکان مناسب را برای شروع درست کنید",
-                  style: theme.textTheme.caption.copyWith(
+                  style: theme.textTheme.caption!.copyWith(
                     color: AppColors.textColorDark,
                   ),
                   textAlign: TextAlign.center,
@@ -100,7 +100,7 @@ Widget levelEnglish(
                     alignment: Alignment(0, 0),
                     child: Text(
                       text,
-                      style: theme.textTheme.headline4.copyWith(
+                      style: theme.textTheme.headline4!.copyWith(
                         fontSize: caption1Size(context),
                         color: AppColors.textColorLight,
                       ),

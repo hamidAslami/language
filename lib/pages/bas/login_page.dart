@@ -17,7 +17,6 @@ class LoginPageState extends State<LoginPage> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-          resizeToAvoidBottomPadding: true,
           resizeToAvoidBottomInset: true,
           backgroundColor: theme.backgroundColor,
           body: SingleChildScrollView(
@@ -53,7 +52,7 @@ class LoginPageState extends State<LoginPage> {
                           child: Text(
                             "شماره موبایل خود را در فیلد زیر وارد کنید",
                             textAlign: TextAlign.center,
-                            style: theme.textTheme.headline4.copyWith(
+                            style: theme.textTheme.headline4!.copyWith(
                                 color: Color(0xff4c456f),
                                 fontSize: fullWidth(context) / 25),
                           ),
@@ -72,7 +71,7 @@ class LoginPageState extends State<LoginPage> {
                                   contentPadding:
                                       EdgeInsets.all(mediumSize(context)),
                                   hintText: "0903333333",
-                                  hintStyle: theme.textTheme.bodyText1
+                                  hintStyle: theme.textTheme.bodyText1!
                                       .copyWith(color: Colors.grey.shade600),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(8),

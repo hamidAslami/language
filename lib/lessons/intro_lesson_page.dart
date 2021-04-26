@@ -14,17 +14,17 @@ class LessonDetailPage extends StatefulWidget {
 
 class LessonDetailPageState extends State<LessonDetailPage>
     with TickerProviderStateMixin {
-  AnimationController controller;
-  AnimationController controllerOpacity;
-  AnimationController controllerOpacityButton;
-  AnimationController controllerScaleGoal;
-  AnimationController controllerText;
-  AnimationController controllerScale;
-  Animation<double> positionOfTop;
-  Animation<double> opacity;
-  Animation<double> opacityButton;
-  Animation<double> scale;
-  Animation<double> scaleGoal;
+ late AnimationController controller;
+ late AnimationController controllerOpacity;
+ late AnimationController controllerOpacityButton;
+ late AnimationController controllerScaleGoal;
+ late AnimationController controllerText;
+ late AnimationController controllerScale;
+ late Animation<double> positionOfTop;
+ late Animation<double> opacity;
+ late Animation<double> opacityButton;
+ late Animation<double> scale;
+ late Animation<double> scaleGoal;
   Duration titleDuration = Duration(milliseconds: 700);
   Duration imageDuration = Duration(milliseconds: 500);
   Duration textDuration = Duration(milliseconds: 250);

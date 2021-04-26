@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_language_app/lessons/base_page.dart';
+import 'package:flutter_language_app/pages/bas/home_page.dart';
 import 'package:flutter_language_app/pages/bas/lesson_page.dart';
 import 'package:flutter_language_app/pages/bas/splash_page.dart';
 
@@ -31,7 +33,8 @@ class MyApp2 extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: appTheme(context),
-      home: SplashPage(),
+      home: HomePage(),
+      builder: EasyLoading.init(),
     );
   }
 }

@@ -9,7 +9,7 @@ import 'package:lottie/lottie.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
-PageController controller;
+late PageController controller;
 
 class VerifyPage extends StatefulWidget {
   @override
@@ -23,7 +23,6 @@ class VerifyPageState extends State<VerifyPage> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        resizeToAvoidBottomPadding: true,
         resizeToAvoidBottomInset: true,
         backgroundColor: theme.backgroundColor,
         body: SingleChildScrollView(
@@ -60,7 +59,7 @@ class VerifyPageState extends State<VerifyPage> {
                         child: Text(
                           "لطفا کدی که به شماره 09032716586\nارسال شده را وارد کنید!",
                           textAlign: TextAlign.center,
-                          style: theme.textTheme.headline4.copyWith(
+                          style: theme.textTheme.headline4!.copyWith(
                               color: Color(0xff4c456f),
                               fontSize: fullWidth(context) / 25),
                         ),
@@ -91,7 +90,7 @@ class VerifyPageState extends State<VerifyPage> {
                                   vertical: smallSize(context)),
                               child: Text(
                                 "دریافت مجدد کد",
-                                style: theme.textTheme.subtitle1.copyWith(
+                                style: theme.textTheme.subtitle1!.copyWith(
                                     color: Color(0xff4c456f),
                                     fontSize: fullWidth(context) / 23),
                               ),
@@ -101,7 +100,7 @@ class VerifyPageState extends State<VerifyPage> {
                             textDirection: TextDirection.ltr,
                             child: Text(
                               "1:58",
-                              style: theme.textTheme.subtitle1.copyWith(
+                              style: theme.textTheme.subtitle1!.copyWith(
                                   color: Color(0xff4c456f),
                                   fontSize: fullWidth(context) / 27,
                                   fontFamily: "balsamiq",
@@ -266,7 +265,7 @@ void createUserSheet(BuildContext context) {
                   elevation: standardSize(context),
                   onPressed: () {
                     controller.animateToPage(
-                      controller.page.toInt() + 1,
+                      controller.page!.toInt() + 1,
                       duration: Duration(milliseconds: 200),
                       curve: Curves.easeInQuad,
                     );
@@ -274,7 +273,7 @@ void createUserSheet(BuildContext context) {
                   color: AppColors.textColorLight,
                   child: Text(
                     "ادامـه دهـید !",
-                    style: Theme.of(context).textTheme.headline4.copyWith(
+                    style: Theme.of(context).textTheme.headline4!.copyWith(
                         fontSize: caption1Size(context),
                         color: Theme.of(context).backgroundColor),
                   ),

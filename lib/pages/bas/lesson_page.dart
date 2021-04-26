@@ -21,12 +21,33 @@ class LessonPageState extends State<LessonPage> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return AnnotatedRegion(
-      value: SystemUiOverlayStyle(statusBarColor: Colors.transparent,statusBarBrightness: Brightness.light,),
+      value: SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarBrightness: Brightness.light,
+      ),
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
           backgroundColor: theme.backgroundColor,
-          appBar: appbarCustom("خانواده و فامیل", context),
+          appBar: AppBar(
+            centerTitle: true,
+            shadowColor: Colors.white70,
+            elevation: 5,
+            brightness: Brightness.light,
+            backgroundColor: Colors.white,
+            leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: AppColors.textColorLight,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            title: Text("خانواده و فامیل",
+                style: Theme.of(context).textTheme.caption!.copyWith(
+                    fontFamily: "kalameh", color: AppColors.textColorLight)),
+          ),
           body: Container(
             height: fullHeight(context),
             child: SingleChildScrollView(
@@ -296,7 +317,7 @@ class LessonPageState extends State<LessonPage> {
                         Text(lesson.title,
                             style: Theme.of(context)
                                 .textTheme
-                                .headline4
+                                .headline4!
                                 .copyWith(fontSize: bodyText1Size(context))),
                         Container(
                           margin: EdgeInsets.only(top: mediumSize(context)),
@@ -306,38 +327,28 @@ class LessonPageState extends State<LessonPage> {
                                 switch (lesson.type) {
                                   case lessonType.video:
                                     return Icons.video_library_sharp;
-                                    break;
                                   case lessonType.speaking:
                                     return Icons.chat_rounded;
-                                    break;
                                   case lessonType.words:
                                     return Icons.menu_book_outlined;
-                                    break;
                                   case lessonType.writing:
                                     return Icons.text_format_sharp;
-                                    break;
                                   case lessonType.Exercises:
                                     return Icons.assignment;
-                                    break;
                                 }
                               })()),
                               text(context, (() {
                                 switch (lesson.type) {
                                   case lessonType.video:
                                     return "Video";
-                                    break;
                                   case lessonType.speaking:
                                     return "Speaking";
-                                    break;
                                   case lessonType.words:
                                     return "Vocabulary";
-                                    break;
                                   case lessonType.writing:
                                     return "Writing";
-                                    break;
                                   case lessonType.Exercises:
                                     return "Exercises";
-                                    break;
                                 }
                               })()),
                             ],

@@ -57,7 +57,7 @@ class SplashPageState extends State<SplashPage> {
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Text("Csp Melal",
-                      style: theme.textTheme.headline4.copyWith(
+                      style: theme.textTheme.headline4!.copyWith(
                           fontFamily: 'balsamiq', fontWeight: FontWeight.w700)),
                 ),
               )

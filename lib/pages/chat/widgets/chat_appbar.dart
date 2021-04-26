@@ -62,7 +62,7 @@ class ChatDetailPageAppBar extends StatelessWidget
                 icon: Icon(
                   Icons.assignment_sharp,
                   color: Colors.white,
-                ),
+                ), onPressed: () {  },
               ),
             ],
           ),

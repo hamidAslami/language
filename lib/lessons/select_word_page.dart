@@ -9,7 +9,7 @@ import 'package:flutter_language_app/theme/text_widgets.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SelectWordPage extends StatefulWidget {
-  final PageController controller;
+  late final PageController controller;
 
   SelectWordPage(this.controller);
 
@@ -59,7 +59,7 @@ class SelectWordPageState extends State<SelectWordPage> {
                       "کلمه جدید",
                       style: Theme.of(context)
                           .textTheme
-                          .subtitle1
+                          .subtitle1!
                           .copyWith(color: Colors.blueAccent),
                     ),
                   ),
@@ -91,7 +91,7 @@ class SelectWordPageState extends State<SelectWordPage> {
                       await playWin();
 
                       widget.controller.animateToPage(
-                        widget.controller.page.toInt() + 1,
+                        widget.controller.page!.toInt() + 1,
                         duration: Duration(milliseconds: 200),
                         curve: Curves.easeInQuad,
                       );
@@ -100,9 +100,9 @@ class SelectWordPageState extends State<SelectWordPage> {
                     } else {
                       await playLoss();
                       setState(() {
-                        question.selectedAnswer = null;
+                        question.selectedAnswer = "";
                       });
-                      key.currentState.showSnackBar(SnackBar(
+                      key.currentState!.showSnackBar(SnackBar(
                           elevation: 3,
                           margin: EdgeInsets.only(
                               bottom: xlargeSize(context),
@@ -118,7 +118,7 @@ class SelectWordPageState extends State<SelectWordPage> {
                             textDirection: TextDirection.rtl,
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyText1
+                                .bodyText1!
                                 .copyWith(color: Colors.white),
                           )));
                       print("ghalat");
@@ -126,7 +126,7 @@ class SelectWordPageState extends State<SelectWordPage> {
                   },
                   child: Text(
                     "ادامـه دهـید",
-                    style: Theme.of(context).textTheme.headline4.copyWith(
+                    style: Theme.of(context).textTheme.headline4!.copyWith(
                         fontSize: caption1Size(context),
                         color: Theme.of(context).backgroundColor),
                   ),

@@ -18,6 +18,6 @@ Widget appbarCustom(String title,BuildContext context){
         Navigator.pop(context);
       },
     ),
-    title: Text("خانواده و فامیل", style: Theme.of(context).textTheme.caption.copyWith(fontFamily: "kalameh",color: AppColors.textColorLight)),
+    title: Text("خانواده و فامیل", style: Theme.of(context).textTheme.caption!.copyWith(fontFamily: "kalameh",color: AppColors.textColorLight)),
   );
 }

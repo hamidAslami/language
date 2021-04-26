@@ -11,6 +11,7 @@ class ListeningPage extends StatefulWidget {
 
 class ListeningPageState extends State<ListeningPage> {
   double sliderValue = 0;
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -84,7 +85,7 @@ class ListeningPageState extends State<ListeningPage> {
                             Container(
                               child: Text(
                                 'احمد و محمود',
-                                style: theme.textTheme.headline4.copyWith(
+                                style: theme.textTheme.headline4!.copyWith(
                                   color: theme.primaryColorDark,
                                 ),
                               ),
@@ -92,7 +93,7 @@ class ListeningPageState extends State<ListeningPage> {
                             Container(
                                 child: Text(
                               'نوشته شده توسط جعفر موسوی',
-                              style: theme.textTheme.bodyText1.copyWith(
+                              style: theme.textTheme.bodyText1!.copyWith(
                                   color: theme.primaryColorDark,
                                   fontWeight: FontWeight.bold),
                             )),
@@ -134,7 +135,7 @@ class ListeningPageState extends State<ListeningPage> {
                         children: [
                           Text(
                             '13 : 01',
-                            style: theme.textTheme.bodyText1
+                            style: theme.textTheme.bodyText1!
                                 .copyWith(color: Colors.brown.shade800),
                           ),
                           Expanded(
@@ -142,7 +143,7 @@ class ListeningPageState extends State<ListeningPage> {
                           ),
                           Text(
                             '21 : 02',
-                            style: theme.textTheme.bodyText1
+                            style: theme.textTheme.bodyText1!
                                 .copyWith(color: Colors.brown.shade800),
                           ),
                         ],

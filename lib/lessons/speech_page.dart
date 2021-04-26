@@ -71,7 +71,7 @@ class SpeechPageState extends State<SpeechPage>
       _localeNames = await speech.locales();
 
       var systemLocale = await speech.systemLocale();
-      _currentLocaleId = systemLocale.localeId;
+      _currentLocaleId = systemLocale!.localeId;
     }
 
     if (!mounted) return;
@@ -177,7 +177,7 @@ class SpeechPageState extends State<SpeechPage>
                       "جمله",
                       style: Theme.of(context)
                           .textTheme
-                          .subtitle1
+                          .subtitle1!
                           .copyWith(color: Colors.blueAccent),
                     ),
                   ),
@@ -280,7 +280,7 @@ class SpeechPageState extends State<SpeechPage>
                       await playWin();
 
                       widget.controller.animateToPage(
-                        widget.controller.page.toInt() + 1,
+                        widget.controller.page!.toInt() + 1,
                         duration: Duration(milliseconds: 200),
                         curve: Curves.easeInQuad,
                       );
@@ -289,9 +289,9 @@ class SpeechPageState extends State<SpeechPage>
                     } else {
                       await playLoss();
                       setState(() {
-                        question.selectedAnswer = null;
+                        question.selectedAnswer = "";
                       });
-                      key.currentState.showSnackBar(SnackBar(
+                      key.currentState!.showSnackBar(SnackBar(
                           elevation: 3,
                           margin: EdgeInsets.only(
                               bottom: xlargeSize(context),
@@ -307,7 +307,7 @@ class SpeechPageState extends State<SpeechPage>
                             textDirection: TextDirection.rtl,
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyText1
+                                .bodyText1!
                                 .copyWith(color: Colors.white),
                           )));
                       print("ghalat");
@@ -315,7 +315,7 @@ class SpeechPageState extends State<SpeechPage>
                   },
                   child: Text(
                     "ادامـه دهـید",
-                    style: Theme.of(context).textTheme.headline4.copyWith(
+                    style: Theme.of(context).textTheme.headline4!.copyWith(
                         fontSize: caption1Size(context),
                         color: Theme.of(context).backgroundColor),
                   ),

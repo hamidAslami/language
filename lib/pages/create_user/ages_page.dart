@@ -26,7 +26,7 @@ class AgesPageState extends State<AgesPage> {
                   margin: EdgeInsets.only(top: xxLargeSize(context)),
                   child: Text("شمـا چنـد سـال داریـد؟",
                       textAlign: TextAlign.center,
-                      style: theme.textTheme.headline4
+                      style: theme.textTheme.headline4!
                           .copyWith(color: AppColors.textColorLight)),
                 ),
                 Container(
@@ -34,7 +34,7 @@ class AgesPageState extends State<AgesPage> {
                   margin: EdgeInsets.only(top: mediumSize(context)),
                   child: Text(
                     "مسیر موفقیت و مسیر شکست تقریبا شبیه هم هستند\n!ما به شما کمک خواهیم کرد تا مکان مناسب را برای شروع درست کنید",
-                    style: theme.textTheme.caption.copyWith(
+                    style: theme.textTheme.caption!.copyWith(
                       color: AppColors.textColorDark,
                     ),
                     textAlign: TextAlign.center,

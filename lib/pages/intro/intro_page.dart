@@ -209,7 +209,6 @@ class MyApp2 extends StatelessWidget {
           pages: pages,
           enableLoop: true,
           fullTransitionValue: 300,
-          enableSlideIcon: true,
           waveType: WaveType.liquidReveal,
           positionSlideIcon: 0.5,
         ),

@@ -36,14 +36,14 @@ class NotificationPageState extends State<NotificationPage> {
             Align(
               alignment: Alignment(0, 0.1),
               child: Text("!در مسیر خود باشید",
-                  style: theme.textTheme.headline4
+                  style: theme.textTheme.headline4!
                       .copyWith(color: AppColors.textColorLight)),
             ),
             Align(
               alignment: Alignment(0, 0.3),
               child: Text(
                 "!یادآوری های یادگیری را دریافت کنید تا ضربان خود را از دست ندهید\nهمیشه می توانید آنها را در حالت تنظیم خاموش کنید",
-                style: theme.textTheme.caption.copyWith(
+                style: theme.textTheme.caption!.copyWith(
                   color: AppColors.textColorDark,
                 ),
                 textAlign: TextAlign.center,
@@ -65,7 +65,7 @@ class NotificationPageState extends State<NotificationPage> {
                       color: theme.backgroundColor,
                       child: Text(
                         "شاید بعدا",
-                        style: theme.textTheme.headline4.copyWith(
+                        style: theme.textTheme.headline4!.copyWith(
                             fontSize: caption1Size(context),
                             color: AppColors.textColorLight),
                       ),
@@ -81,7 +81,7 @@ class NotificationPageState extends State<NotificationPage> {
                       color: AppColors.primaryColor,
                       child: Text(
                         "یادآوری کن",
-                        style: theme.textTheme.headline4.copyWith(
+                        style: theme.textTheme.headline4!.copyWith(
                             fontSize: caption1Size(context),
                             color: theme.backgroundColor),
                       ),

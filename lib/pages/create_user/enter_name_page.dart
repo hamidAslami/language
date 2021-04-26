@@ -16,7 +16,6 @@ class NamePageState extends State<NamePage> {
         textDirection: TextDirection.ltr,
         child: Scaffold(
             backgroundColor: theme.backgroundColor,
-            resizeToAvoidBottomPadding: true,
             resizeToAvoidBottomInset: true,
             body: SingleChildScrollView(
               child: Container(
@@ -31,7 +30,7 @@ class NamePageState extends State<NamePage> {
                       Container(
                         margin: EdgeInsets.only(top: standardSize(context)),
                         child: Text("!نام خـود را وارد کـنید",
-                            style: theme.textTheme.headline4.copyWith(
+                            style: theme.textTheme.headline4!.copyWith(
                                 color: AppColors.textColorLight,
                                 fontSize: fullWidth(context) / 25)),
                       ),
@@ -50,7 +49,7 @@ class NamePageState extends State<NamePage> {
                                 contentPadding:
                                     EdgeInsets.all(mediumSize(context)),
                                 hintText: "",
-                                hintStyle: theme.textTheme.bodyText1
+                                hintStyle: theme.textTheme.bodyText1!
                                     .copyWith(color: Colors.grey.shade600),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(8),

@@ -12,9 +12,9 @@ class MainPage extends StatefulWidget {
 class MainPageState extends State<MainPage>
     with SingleTickerProviderStateMixin {
   int _index = 0;
-  AnimationController _animationController;
-  Animation<double> animation;
-  CurvedAnimation curve;
+  late AnimationController _animationController;
+  late Animation<double> animation;
+  late  CurvedAnimation curve;
 
   final iconList = <IconData>[
     Icons.home_filled,
@@ -26,7 +26,7 @@ class MainPageState extends State<MainPage>
   @override
   void initState() {
     _animationController = AnimationController(
-      duration: Duration(seconds: 1),
+      duration: Duration(seconds: 1), vsync: this,
     );
     curve = CurvedAnimation(
       parent: _animationController,

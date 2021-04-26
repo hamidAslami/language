@@ -14,7 +14,7 @@ import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
 class SpeechPage extends StatefulWidget {
-  final PageController controller;
+  late final PageController controller;
 
   SpeechPage(this.controller);
 
@@ -38,11 +38,12 @@ class SpeechPageState extends State<SpeechPage>
     return await cache.play("wrong.mp3");
   }
 
-  TextEditingController controller;
+  late TextEditingController controller;
 
   @override
   void initState() {
     controller = TextEditingController();
+    super.initState();
   }
 
   @override
@@ -72,7 +73,7 @@ class SpeechPageState extends State<SpeechPage>
                       "جمله",
                       style: Theme.of(context)
                           .textTheme
-                          .subtitle1
+                          .subtitle1!
                           .copyWith(color: Colors.blueAccent),
                     ),
                   ),
@@ -144,7 +145,7 @@ class SpeechPageState extends State<SpeechPage>
                       await playWin();
 
                       widget.controller.animateToPage(
-                        widget.controller.page.toInt() + 1,
+                        widget.controller.page!.toInt() + 1,
                         duration: Duration(milliseconds: 200),
                         curve: Curves.easeInQuad,
                       );
@@ -153,9 +154,9 @@ class SpeechPageState extends State<SpeechPage>
                     } else {
                       await playLoss();
                       setState(() {
-                        question.selectedAnswer = null;
+                        question.selectedAnswer = "";
                       });
-                      key.currentState.showSnackBar(SnackBar(
+                      key.currentState!.showSnackBar(SnackBar(
                           elevation: 3,
                           margin: EdgeInsets.only(
                               bottom: xlargeSize(context),
@@ -171,7 +172,7 @@ class SpeechPageState extends State<SpeechPage>
                             textDirection: TextDirection.rtl,
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyText1
+                                .bodyText1!
                                 .copyWith(color: Colors.white),
                           )));
                       print("ghalat");
@@ -179,7 +180,7 @@ class SpeechPageState extends State<SpeechPage>
                   },
                   child: Text(
                     "ادامـه دهـید",
-                    style: Theme.of(context).textTheme.headline4.copyWith(
+                    style: Theme.of(context).textTheme.headline4!.copyWith(
                         fontSize: caption1Size(context),
                         color: Theme.of(context).backgroundColor),
                   ),

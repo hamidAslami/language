@@ -13,7 +13,7 @@ class BaseLessonPage extends StatefulWidget {
 }
 
 class BaseLessonPageState extends State<BaseLessonPage> {
-  PageController controller;
+  late PageController controller;
 
   @override
   void initState() {
@@ -48,7 +48,7 @@ class BaseLessonPageState extends State<BaseLessonPage> {
                           "5",
                           style: Theme.of(context)
                               .textTheme
-                              .subtitle1
+                              .subtitle1!
                               .copyWith(color: Colors.redAccent),
                         ),
                       )

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'package:flutter_language_app/fakeData.dart';
 import 'package:flutter_language_app/models/cart_box.dart';
@@ -12,10 +13,43 @@ import 'package:flutter_language_app/theme/colors.dart';
 
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lottie/lottie.dart';
+import 'package:ndialog/ndialog.dart';
 
+import '../../widgets/cupertinoContext.dart';
 import '../listening_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => HomePageState();
+}
+
+class HomePageState extends State<HomePage> {
+  String avatar = "assets/avatar2.jpg";
+
+  void configLoading() {
+    EasyLoading.instance
+      ..displayDuration = const Duration(milliseconds: 2000)
+      ..indicatorType = EasyLoadingIndicatorType.circle
+      ..loadingStyle = EasyLoadingStyle.light
+      ..indicatorSize = 45.0
+      ..radius = 10.0
+      ..progressColor = Colors.yellow
+      ..backgroundColor = Colors.white
+      ..indicatorColor = Colors.yellow
+      ..textColor = Colors.yellow
+      ..maskColor = Colors.blue.withOpacity(0.5)
+      ..userInteractions = true
+      ..dismissOnTap = false;
+  }
+
+  @override
+  void initState() {
+    configLoading();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -44,35 +78,206 @@ class HomePage extends StatelessWidget {
                                   margin: EdgeInsets.only(
                                       right: xSmallSize(context)),
                                   child: Text("صبح بخیـر!",
-                                      style: theme.textTheme.headline4
+                                      style: theme.textTheme.headline4!
                                           .copyWith(color: theme.primaryColor)),
                                 ),
                                 Container(
                                   margin: EdgeInsets.only(
                                       right: xSmallSize(context)),
                                   child: Text(
-                                    "آیدا حسینی",
-                                    style: theme.textTheme.bodyText2
+                                    "حمیدرضا اسلمی",
+                                    style: theme.textTheme.bodyText2!
                                         .copyWith(color: Color(0xff4c456f)),
                                   ),
                                 ),
                               ],
                             ),
-                            GestureDetector(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage(),));
+                            CupertinoContextMenuCustom(
+                              previewSize: Size(fullWidth(context) / 5,
+                                  fullWidth(context) / 5),
+                              previewBuilder: (BuildContext context,
+                                  Animation<double> animation, Widget child) {
+                                return FittedBox(
+                                  fit: BoxFit.cover,
+                                  child: Container(
+                                    height: fullWidth(context) / 8,
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image: AssetImage(avatar))),
+                                    width: fullWidth(context) / 8,
+                                  ),
+                                );
                               },
-                              child: Image.asset(
-                                "assets/pic_avatar_woman_1.png",
-                                width: fullWidth(context) / 8,
+                              actions: [
+                                CupertinoContextMenuAction(
+                                    onPressed: () async {
+                                      Navigator.of(context, rootNavigator: true)
+                                          .pop();
+
+                                      setState(() {
+                                        avatar = "assets/avatar2.jpg";
+                                      });
+                                      await EasyLoading.show(
+                                        dismissOnTap: false,
+                                        status: 'loading...',
+                                        maskType: EasyLoadingMaskType.clear,
+                                      );
+                                      print('EasyLoading show');
+                                    },
+                                    child: Container(
+                                      height: fullWidth(context) / 9,
+                                      child: Directionality(
+                                        textDirection: TextDirection.rtl,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              height: fullWidth(context) / 8,
+                                              decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  image: DecorationImage(
+                                                      fit: BoxFit.cover,
+                                                      image: AssetImage(
+                                                          "assets/avatar2.jpg"))),
+                                              width: fullWidth(context) / 8,
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.only(
+                                                  right: xxSmallSize(context)),
+                                              child: Text(
+                                                "حمیدرضا اسلمی",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText1,
+                                              ),
+                                            ),
+                                            Expanded(child: SizedBox()),
+                                            SvgPicture.asset(
+                                              "assets/tick_circle.svg",
+                                              width: fullWidth(context) / 16,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    )),
+                                CupertinoContextMenuAction(
+                                    onPressed: () async {
+                                      Navigator.of(context, rootNavigator: true)
+                                          .pop();
+
+                                      setState(() {
+                                        avatar = "assets/avatar1.jpg";
+                                      });
+
+                                      await CustomProgressDialog.future(
+                                        context,
+                                        blur: 3,
+                                        dismissable: false,
+                                        future: Future.delayed(
+                                            Duration(seconds: 10), () {
+                                          return "WOHOOO";
+                                        }),
+                                        loadingWidget: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                            color: Colors.grey.shade200,
+                                          ),
+                                          height: 100,
+                                          width: 100,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                width: 60,
+                                                height: 60,
+                                                child: ColorFiltered(
+                                                  colorFilter: ColorFilter.mode(
+                                                      Colors.black,
+                                                      BlendMode.srcIn),
+                                                  child: LottieBuilder.asset(
+                                                      'assets/lottie_loading.json'),
+                                                ),
+                                              ),
+                                              Text(
+                                                "صبر کن...",
+                                                textAlign: TextAlign.center,
+                                                textDirection:
+                                                    TextDirection.rtl,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .caption,
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      height: fullWidth(context) / 9,
+                                      child: Directionality(
+                                        textDirection: TextDirection.rtl,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              height: fullWidth(context) / 8,
+                                              decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  image: DecorationImage(
+                                                      image: AssetImage(
+                                                          "assets/avatar1.jpg"))),
+                                              width: fullWidth(context) / 8,
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.only(
+                                                  right: xxSmallSize(context)),
+                                              child: Text(
+                                                "علیرضا اسلمی",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText1,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    )),
+                              ],
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => ProfilePage(),
+                                      ));
+                                },
+                                child: Container(
+                                  height: fullWidth(context) / 8,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: AssetImage(avatar))),
+                                  width: fullWidth(context) / 8,
+                                ),
                               ),
                             ),
                           ],
                         ),
                       ),
                       GestureDetector(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => ListeningPage(),));
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ListeningPage(),
+                              ));
                         },
                         child: Container(
                           margin: EdgeInsets.symmetric(
@@ -83,21 +288,22 @@ class HomePage extends StatelessWidget {
                             children: [
                               Positioned.fill(
                                   child: Container(
-                                    margin: EdgeInsets.symmetric(
-                                        vertical: standardSize(context)),
-                                    width: fullWidth(context),
-                                    height: fullHeight(context) / 3.4,
-                                    decoration: BoxDecoration(
-                                        color: theme.primaryColor,
-                                        borderRadius: BorderRadius.circular(16)),
-                                  )),
+                                margin: EdgeInsets.symmetric(
+                                    vertical: standardSize(context)),
+                                width: fullWidth(context),
+                                height: fullHeight(context) / 3.4,
+                                decoration: BoxDecoration(
+                                    color: theme.primaryColor,
+                                    borderRadius: BorderRadius.circular(16)),
+                              )),
                               Positioned(
                                 top: fullHeight(context) / -22,
                                 left: fullHeight(context) / -5.4,
                                 right: 0,
                                 bottom: fullHeight(context) / -31,
                                 child: Container(
-                                  child: Image.asset("assets/pic_school1.png"),
+                                  child:
+                                      Image.asset("assets/pic_school_home.png"),
                                 ),
                               ),
                               Positioned(
@@ -108,10 +314,11 @@ class HomePage extends StatelessWidget {
                                   children: [
                                     Container(
                                       child: Text("دوره تخصصی\nزبان انگلیسی",
-                                          style: theme.textTheme.headline4
+                                          style: theme.textTheme.headline4!
                                               .copyWith(
-                                              color: Color(0xffffffff),
-                                              fontSize: mediumSize(context))),
+                                                  color: Color(0xffffffff),
+                                                  fontSize:
+                                                      mediumSize(context))),
                                     ),
                                     Container(
                                       margin: EdgeInsets.only(
@@ -122,7 +329,7 @@ class HomePage extends StatelessWidget {
                                         child: Container(
                                           decoration: BoxDecoration(
                                             borderRadius:
-                                            BorderRadius.circular(10),
+                                                BorderRadius.circular(10),
                                             boxShadow: [
                                               BoxShadow(
                                                   color: Color(0xff4c456f),
@@ -157,7 +364,7 @@ class HomePage extends StatelessWidget {
                           children: [
                             Container(
                               child: Text("دوره های تخصصی",
-                                  style: theme.textTheme.headline4.copyWith(
+                                  style: theme.textTheme.headline4!.copyWith(
                                     color: AppColors.darkAccentColor,
                                   )),
                             ),
@@ -171,7 +378,8 @@ class HomePage extends StatelessWidget {
                                 ),
                                 child: Container(
                                   child: Text("مشاهده همه!",
-                                      style: theme.textTheme.bodyText2.copyWith(
+                                      style:
+                                          theme.textTheme.bodyText2!.copyWith(
                                         color: Color(0xff4c456f),
                                       )),
                                 ),
@@ -212,7 +420,7 @@ class HomePage extends StatelessWidget {
                               margin: EdgeInsets.symmetric(
                                   vertical: mediumSize(context)),
                               child: Text("درس ها",
-                                  style: theme.textTheme.headline4.copyWith(
+                                  style: theme.textTheme.headline4!.copyWith(
                                     color: AppColors.darkAccentColor,
                                   )),
                             ),
@@ -226,7 +434,8 @@ class HomePage extends StatelessWidget {
                                 ),
                                 child: Container(
                                   child: Text("مشاهده همه!",
-                                      style: theme.textTheme.bodyText2.copyWith(
+                                      style:
+                                          theme.textTheme.bodyText2!.copyWith(
                                         color: Color(0xff4c456f),
                                       )),
                                 ),
@@ -267,15 +476,15 @@ Widget categoryCard(CategoryModel category, BuildContext context) {
       children: [
         Positioned.fill(
             child: Container(
-              margin: EdgeInsets.symmetric(vertical: standardSize(context)),
-              width: fullWidth(context) / 2.5,
-              height: fullHeight(context) / 3,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(category.backgroundImage),
-                      fit: BoxFit.cover),
-                  borderRadius: BorderRadius.circular(16)),
-            )),
+          margin: EdgeInsets.symmetric(vertical: standardSize(context)),
+          width: fullWidth(context) / 2.5,
+          height: fullHeight(context) / 3,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(category.backgroundImage),
+                  fit: BoxFit.cover),
+              borderRadius: BorderRadius.circular(16)),
+        )),
         Positioned(
           top: fullHeight(context) / 13,
           left: smallSize(context),
@@ -293,7 +502,7 @@ Widget categoryCard(CategoryModel category, BuildContext context) {
           top: fullHeight(context) / 20,
           child: Container(
             child: Text(category.title,
-                style: theme.textTheme.headline4.copyWith(
+                style: theme.textTheme.headline4!.copyWith(
                   color: Color(0xffffffff),
                   fontSize: fullWidth(context) / 20,
                   shadows: [
@@ -312,8 +521,10 @@ Widget categoryCard(CategoryModel category, BuildContext context) {
   );
 } // Category card
 
-Widget lessonBox(CartBoxModel cartBoxModel,
-    BuildContext context,) {
+Widget lessonBox(
+  CartBoxModel cartBoxModel,
+  BuildContext context,
+) {
   var theme = Theme.of(context);
   return Container(
     margin: EdgeInsets.symmetric(vertical: mediumSize(context)),
@@ -374,7 +585,7 @@ Widget lessonBox(CartBoxModel cartBoxModel,
               child: Align(
                 alignment: Alignment.center,
                 child: Text(cartBoxModel.textTitle,
-                    style: theme.textTheme.headline4.copyWith(
+                    style: theme.textTheme.headline4!.copyWith(
                         fontSize: fullWidth(context) / 24,
                         color: Color(
                           AppColors.textColorLight.value,
@@ -394,7 +605,7 @@ Widget lessonBox(CartBoxModel cartBoxModel,
               child: Container(
                 child: Text(
                   cartBoxModel.textBox,
-                  style: theme.textTheme.headline4.copyWith(
+                  style: theme.textTheme.headline4!.copyWith(
                       color: theme.backgroundColor,
                       fontSize: fullWidth(context) / 28),
                   textAlign: TextAlign.center,

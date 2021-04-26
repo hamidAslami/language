@@ -17,10 +17,10 @@ class ChewieDemo extends StatefulWidget {
 }
 
 class _ChewieDemoState extends State<ChewieDemo> {
-  VideoPlayerController _videoPlayerController1;
-  TargetPlatform _platform;
+  late VideoPlayerController _videoPlayerController1;
+  late TargetPlatform _platform;
 
-  ChewieController _chewieController;
+  late ChewieController _chewieController;
 
   @override
   void initState() {
@@ -90,7 +90,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData.light().copyWith(
-            platform: _platform ?? Theme.of(context).platform,
+            platform: _platform ,
           ),
           home: Scaffold(
             backgroundColor: Colors.black87,
@@ -112,7 +112,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
             ),
             body: Center(
               child: _chewieController != null &&
-                      _chewieController.videoPlayerController.value.initialized
+                      _chewieController.videoPlayerController.value.isInitialized
                   ? Chewie(
                       controller: _chewieController,
                     )

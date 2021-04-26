@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
       _localeNames = await speech.locales();
 
       var systemLocale = await speech.systemLocale();
-      _currentLocaleId = systemLocale.localeId;
+      _currentLocaleId = systemLocale!.localeId;
     }
 
     if (!mounted) return;

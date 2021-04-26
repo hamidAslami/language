@@ -48,7 +48,7 @@ class ProfilePageState extends State<ProfilePage> {
                       margin:
                           EdgeInsets.symmetric(vertical: xxSmallSize(context)),
                       child: Text("آیدا حسینی",
-                          style: theme.textTheme.headline4.copyWith(
+                          style: theme.textTheme.headline4!.copyWith(
                               color: AppColors.textColorLight,
                               fontSize: bodyText1Size(context))),
                       // decoration: BoxDecoration(boxShadow: [
@@ -85,13 +85,13 @@ class ProfilePageState extends State<ProfilePage> {
                             children: [
                               Container(
                                 child: Text("دوره ها",
-                                    style: theme.textTheme.headline4.copyWith(
+                                    style: theme.textTheme.headline4!.copyWith(
                                         fontSize: fullWidth(context) / 34,
                                         color: Color(0xffcfcaca))),
                               ),
                               Container(
                                 child: Text("10",
-                                    style: theme.textTheme.headline4.copyWith(
+                                    style: theme.textTheme.headline4!.copyWith(
                                         fontSize: bodyText1Size(context),
                                         color: AppColors.textColorDark)),
                               ),
@@ -109,13 +109,13 @@ class ProfilePageState extends State<ProfilePage> {
                             children: [
                               Container(
                                 child: Text("تکمیل شده",
-                                    style: theme.textTheme.headline4.copyWith(
+                                    style: theme.textTheme.headline4!.copyWith(
                                         fontSize: fullWidth(context) / 34,
                                         color: Color(0xffcfcaca))),
                               ),
                               Container(
                                 child: Text("6",
-                                    style: theme.textTheme.headline4.copyWith(
+                                    style: theme.textTheme.headline4!.copyWith(
                                         fontSize: bodyText1Size(context),
                                         color: AppColors.textColorDark)),
                               ),
@@ -133,13 +133,13 @@ class ProfilePageState extends State<ProfilePage> {
                             children: [
                               Container(
                                 child: Text("گواهینامه‌ها",
-                                    style: theme.textTheme.headline4.copyWith(
+                                    style: theme.textTheme.headline4!.copyWith(
                                         fontSize: fullWidth(context) / 34,
                                         color: Color(0xffcfcaca))),
                               ),
                               Container(
                                 child: Text("2",
-                                    style: theme.textTheme.headline4.copyWith(
+                                    style: theme.textTheme.headline4!.copyWith(
                                         fontSize: bodyText1Size(context),
                                         color: AppColors.textColorDark)),
                               ),
@@ -190,7 +190,7 @@ class ProfilePageState extends State<ProfilePage> {
                                     margin: EdgeInsets.only(
                                         left: fullHeight(context) / 19),
                                     child: Text("دوره طلایی",
-                                        style: theme.textTheme.headline4
+                                        style: theme.textTheme.headline4!
                                             .copyWith(
                                                 fontSize:
                                                     fullWidth(context) / 34,
@@ -201,7 +201,7 @@ class ProfilePageState extends State<ProfilePage> {
                                         left: fullHeight(context) / 19,
                                         top: xSmallSize(context)),
                                     child: Text("2020-4-40",
-                                        style: theme.textTheme.headline4
+                                        style: theme.textTheme.headline4!
                                             .copyWith(
                                                 fontSize: caption1Size(context),
                                                 color: theme.primaryColor)),
@@ -250,7 +250,7 @@ class ProfilePageState extends State<ProfilePage> {
                                     margin: EdgeInsets.only(
                                         left: fullHeight(context) / 19),
                                     child: Text("دوره شگفت انگیز",
-                                        style: theme.textTheme.headline4
+                                        style: theme.textTheme.headline4!
                                             .copyWith(
                                                 fontSize:
                                                     fullWidth(context) / 34,
@@ -261,7 +261,7 @@ class ProfilePageState extends State<ProfilePage> {
                                         left: fullHeight(context) / 19,
                                         top: xSmallSize(context)),
                                     child: Text("2022-8-80",
-                                        style: theme.textTheme.headline4
+                                        style: theme.textTheme.headline4!
                                             .copyWith(
                                                 fontSize: caption1Size(context),
                                                 color: theme.primaryColor)),
@@ -338,7 +338,7 @@ Widget itemProfile(BuildContext context, String text, String icon,
             Container(
               margin: EdgeInsets.only(right: largeSize(context)),
               child: Text(text,
-                  style: theme.textTheme.headline4.copyWith(
+                  style: theme.textTheme.headline4!.copyWith(
                       fontSize: xSmallSize(context),
                       color: AppColors.textColorLight)),
             ),
