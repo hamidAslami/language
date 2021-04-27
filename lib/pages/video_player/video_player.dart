@@ -2,7 +2,7 @@ import 'package:chewie/chewie.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'file:///C:/Users/abbas/AndroidStudioProjects/language/lib/pages/bas/lesson_page/lesson_page.dart';
+import 'package:flutter_language_app/pages/bas/lesson_page/lesson_page.dart';
 import 'package:video_player/video_player.dart';
 
 class ChewieDemo extends StatefulWidget {

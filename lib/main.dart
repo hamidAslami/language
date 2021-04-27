@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_language_app/lessons/base_page.dart';
-import 'file:///C:/Users/abbas/AndroidStudioProjects/language/lib/pages/bas/home/home_page.dart';
-import 'file:///C:/Users/abbas/AndroidStudioProjects/language/lib/pages/bas/lesson_page/lesson_page.dart';
-import 'file:///C:/Users/abbas/AndroidStudioProjects/language/lib/pages/bas/splash_page/splash_page.dart';
-
-
-
 import 'package:flutter_language_app/theme/app_theme.dart';
 import 'package:flutter_language_app/theme/colors.dart';
+import 'package:flutter_language_app/widgets/customSnackBar.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'app/app.router.dart';
+import 'app/locator.dart';
 
-import 'pages/bas/splash_page/splash_page.dart';
-
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupLocator();
+  setupSnackbarUi();
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp2()));
 }
 
@@ -33,7 +31,8 @@ class MyApp2 extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: appTheme(context),
-      home: HomePage(),
+      navigatorKey: StackedService.navigatorKey,
+      onGenerateRoute: StackedRouter().onGenerateRoute,
       builder: EasyLoading.init(),
     );
   }

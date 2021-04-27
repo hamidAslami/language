@@ -8,8 +8,9 @@ import 'package:flutter_language_app/fakeData.dart';
 import 'package:flutter_language_app/models/cart_box.dart';
 import 'package:flutter_language_app/models/category_model.dart';
 import 'package:flutter_language_app/pages/bas/home/home_notifier.dart';
-import 'file:///C:/Users/abbas/AndroidStudioProjects/language/lib/pages/bas/lesson_page/lesson_page.dart';
-import 'file:///C:/Users/abbas/AndroidStudioProjects/language/lib/pages/profile_page/profile_page.dart';
+import 'package:flutter_language_app/pages/bas/lesson_page/lesson_page.dart';
+import 'package:flutter_language_app/pages/profile_page/profile_page.dart';
+
 import 'package:flutter_language_app/theme/colors.dart';
 
 import 'package:flutter_language_app/theme/dimens.dart';
@@ -25,6 +26,7 @@ import '../../listening_page/listening_page.dart';
 class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => HomePageState();
+
 }
 
 class HomePageState extends State<HomePage> {

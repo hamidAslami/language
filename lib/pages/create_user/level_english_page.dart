@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/abbas/AndroidStudioProjects/language/lib/pages/bas/home/home_page.dart';
+import 'package:flutter_language_app/pages/bas/home/home_page.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lottie/lottie.dart';
 
 class LevelEnglish extends StatefulWidget {
   @override

@@ -129,15 +129,7 @@ class VerifyPageState extends State<VerifyPage> {
                     icon:
                         Icon(Icons.navigate_next_rounded, color: Colors.white),
                     onPressed: () {
-                      createUserSheet(context);
-                      /*Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomePage()));
-                      PageTransition(
-                          child: HomePage(),
-                          type: PageTransitionType.rightToLeftWithFade,
-                          duration: Duration(milliseconds: 700));
-                          }
-                       */
+                      model.getDataFromServer();
                     },
                   ),
                 ),

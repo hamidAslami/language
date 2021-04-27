@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
-
 import 'level_english_page.dart';
 
 class TimeGoalPage extends StatefulWidget {

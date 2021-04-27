@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/abbas/AndroidStudioProjects/language/lib/pages/bas/verify_paga/verify_page.dart';
+import 'package:flutter_language_app/pages/bas/verify_paga/verify_page.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:lottie/lottie.dart';

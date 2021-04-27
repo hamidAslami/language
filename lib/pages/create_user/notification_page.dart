@@ -1,5 +1,4 @@
 import 'package:flare_flutter/flare_actor.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
@@ -58,11 +57,12 @@ class NotificationPageState extends State<NotificationPage> {
                   Container(
                     width: fullWidth(context) / 2.6,
                     height: fullHeight(context) / 13,
-                    child: RaisedButton(
-                      splashColor: Colors.grey.shade200,
-                      elevation: xxSmallSize(context),
+                    child: ElevatedButton(
                       onPressed: () {},
-                      color: theme.backgroundColor,
+                     style: ElevatedButton.styleFrom(
+                       elevation: xxSmallSize(context),
+                       primary: theme.backgroundColor,
+                     ),
                       child: Text(
                         "شاید بعدا",
                         style: theme.textTheme.headline4!.copyWith(
@@ -74,11 +74,12 @@ class NotificationPageState extends State<NotificationPage> {
                   Container(
                     width: fullWidth(context) / 2.6,
                     height: fullHeight(context) / 13,
-                    child: RaisedButton(
-                      splashColor: Color(0xff512da8),
-                      elevation: xxSmallSize(context),
+                    child: ElevatedButton(
                       onPressed: () {},
-                      color: AppColors.primaryColor,
+                      style: ElevatedButton.styleFrom(
+                        elevation: xxSmallSize(context),
+                        primary: AppColors.primaryColor,
+                      ),
                       child: Text(
                         "یادآوری کن",
                         style: theme.textTheme.headline4!.copyWith(
