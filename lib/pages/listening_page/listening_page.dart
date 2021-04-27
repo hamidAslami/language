@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_language_app/pages/listening_page/listening_notifier.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:stacked/stacked.dart';
 
 class ListeningPage extends StatefulWidget {
   @override
@@ -15,7 +17,9 @@ class ListeningPageState extends State<ListeningPage> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    return Directionality(
+    return ViewModelBuilder<ListeningVM>.reactive(
+    viewModelBuilder: () => ListeningVM(),
+    builder: (context, model, child) => Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
@@ -195,6 +199,6 @@ class ListeningPageState extends State<ListeningPage> {
           ),
         ),
       ),
-    );
+    ));
   }
 }

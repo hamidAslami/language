@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_language_app/pages/bas/verify_page.dart';
+import 'file:///C:/Users/abbas/AndroidStudioProjects/language/lib/pages/bas/verify_paga/verify_page.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:stacked/stacked.dart';
+
+import 'login_notifier.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -14,7 +17,9 @@ class LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    return Directionality(
+    return ViewModelBuilder<LogInVM>.reactive(
+    viewModelBuilder: () => LogInVM(),
+    builder: (context, model, child) => Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
           resizeToAvoidBottomInset: true,
@@ -112,6 +117,6 @@ class LoginPageState extends State<LoginPage> {
               ),
             ),
           )),
-    );
+    ));
   }
 }

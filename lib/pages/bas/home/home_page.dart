@@ -7,8 +7,9 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_language_app/fakeData.dart';
 import 'package:flutter_language_app/models/cart_box.dart';
 import 'package:flutter_language_app/models/category_model.dart';
-import 'package:flutter_language_app/pages/bas/lesson_page.dart';
-import 'package:flutter_language_app/pages/profile_page.dart';
+import 'package:flutter_language_app/pages/bas/home/home_notifier.dart';
+import 'file:///C:/Users/abbas/AndroidStudioProjects/language/lib/pages/bas/lesson_page/lesson_page.dart';
+import 'file:///C:/Users/abbas/AndroidStudioProjects/language/lib/pages/profile_page/profile_page.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 
 import 'package:flutter_language_app/theme/dimens.dart';
@@ -16,9 +17,10 @@ import 'package:flutter_language_app/theme/text_widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:ndialog/ndialog.dart';
+import 'package:stacked/stacked.dart';
 
-import '../../widgets/cupertinoContext.dart';
-import '../listening_page.dart';
+import '../../../widgets/cupertinoContext.dart';
+import '../../listening_page/listening_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -54,7 +56,9 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
 
-    return Directionality(
+    return ViewModelBuilder<HomeVM>.reactive(
+    viewModelBuilder: () => HomeVM(),
+    builder: (context, model, child) => Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
             backgroundColor: theme.backgroundColor,
@@ -460,7 +464,7 @@ class HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                ))));
+                )))));
   }
 }
 

@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_language_app/lessons/base_page.dart';
-import 'package:flutter_language_app/pages/bas/home_page.dart';
-import 'package:flutter_language_app/pages/bas/lesson_page.dart';
-import 'package:flutter_language_app/pages/bas/splash_page.dart';
+import 'file:///C:/Users/abbas/AndroidStudioProjects/language/lib/pages/bas/home/home_page.dart';
+import 'file:///C:/Users/abbas/AndroidStudioProjects/language/lib/pages/bas/lesson_page/lesson_page.dart';
+import 'file:///C:/Users/abbas/AndroidStudioProjects/language/lib/pages/bas/splash_page/splash_page.dart';
 
 
 
 import 'package:flutter_language_app/theme/app_theme.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 
-import 'pages/bas/splash_page.dart';
+import 'pages/bas/splash_page/splash_page.dart';
 
 void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp2()));

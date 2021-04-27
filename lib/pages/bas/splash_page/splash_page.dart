@@ -4,10 +4,12 @@ import 'dart:ui';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_language_app/pages/bas/login_page.dart';
+import 'package:flutter_language_app/pages/bas/splash_page/splash_notifier.dart';
+import 'file:///C:/Users/abbas/AndroidStudioProjects/language/lib/pages/bas/login_page/login_page.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:stacked/stacked.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -31,7 +33,9 @@ class SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    return Directionality(
+    return ViewModelBuilder<SplashVM>.reactive(
+    viewModelBuilder: () => SplashVM(),
+    builder: (context, model, child) => Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
           backgroundColor: theme.backgroundColor,
@@ -63,6 +67,6 @@ class SplashPageState extends State<SplashPage> {
               )
             ],
           )),
-    );
+    ));
   }
 }

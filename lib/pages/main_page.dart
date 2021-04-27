@@ -2,7 +2,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'home_page.dart';
+import 'bas/home/home_page.dart';
 
 class MainPage extends StatefulWidget {
   @override

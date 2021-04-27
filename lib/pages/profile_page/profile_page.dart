@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_language_app/pages/profile_page/profile_notifier.dart';
 
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:stacked/stacked.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -15,7 +17,9 @@ class ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    return AnnotatedRegion<SystemUiOverlayStyle>(
+    return ViewModelBuilder<ProfileVM>.reactive(
+    viewModelBuilder: () => ProfileVM(),
+    builder: (context, model, child) => AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
           statusBarColor: Color(0xfff8f8f8),
           statusBarBrightness: Brightness.light),
@@ -315,7 +319,7 @@ class ProfilePageState extends State<ProfilePage> {
           ),
         ),
       ),
-    );
+    ));
   }
 }
 

@@ -28,6 +28,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
+  stacked: ^2.0.4
   line_icons: ^2.0.1
   google_fonts: ^2.0.0
   animated_bottom_navigation_bar: ^0.3.2
@@ -37,6 +38,7 @@ dependencies:
   video_player: ^2.1.1
   page_transition: ^2.0.1-nullsafety.0
   liquid_swipe: ^2.1.0
+  stacked_services: ^0.8.5
   step_progress_indicator: ^1.0.0-nullsafety.0
   chewie: ^1.0.0
   audioplayers: ^0.18.3
