@@ -8,8 +8,7 @@ import 'models/lesson_model.dart';
 import 'models/MultiQuestion.dart';
 
 List categoryList() {
-  List<CategoryModel> categoryCard = []
-  ;
+  List<CategoryModel> categoryCard = [];
 
   categoryCard.add(CategoryModel('assets/bg_category_card_yellow.jpg',
       'دوره مـبتدی', 'assets/pic_rocket.png'));
@@ -23,7 +22,6 @@ List categoryList() {
 
 List lessonList(BuildContext context) {
   List<Lesson> lessonList = [];
-
   var theme = Theme.of(context);
   lessonList.add(Lesson("https://s16.picofile.com/file/8417349934/teacher.jpg",
       "آموزش گرامر", lessonType.video, true, theme.primaryColor, () {

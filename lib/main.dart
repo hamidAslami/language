@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_language_app/pages/bas/verify_page/widgets/signUp_sheet.dart';
 import 'package:flutter_language_app/theme/app_theme.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/widgets/customSnackBar.dart';
@@ -12,6 +13,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
   setupSnackbarUi();
+  // setupBottomSheetUi();
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp2()));
 }
 

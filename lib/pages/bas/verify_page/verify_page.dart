@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_language_app/pages/bas/verify_paga/verify_notifier.dart';
+import 'package:flutter_language_app/pages/bas/verify_page/verify_notifier.dart';
 import 'package:flutter_language_app/pages/create_user/enter_name_page.dart';
 import 'package:flutter_language_app/pages/create_user/level_english_page.dart';
 import 'package:flutter_language_app/pages/create_user/notification_page.dart';
@@ -23,7 +23,7 @@ class VerifyPageState extends State<VerifyPage> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return ViewModelBuilder<VerifyVM>.reactive(
-    viewModelBuilder: () => VerifyVM(),
+    viewModelBuilder: () => VerifyVM(context),
     builder: (context, model, child) => Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
