@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_language_app/pages/bas/verify_page/widgets/create_user_sheet_notifier.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
+import 'package:stacked/stacked.dart';
 
 class NamePage extends StatefulWidget {
   @override
@@ -8,10 +10,27 @@ class NamePage extends StatefulWidget {
 }
 
 class NamePageState extends State<NamePage> {
+  late TextEditingController nameController;
+
+  @override
+
+  void initState() {
+    nameController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    nameController = TextEditingController();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    return Directionality(
+    return ViewModelBuilder<CreateUserSheetVM>.reactive(
+    viewModelBuilder: () => CreateUserSheetVM(context,nameController),
+    builder: (context, model, child) => Directionality(
         textDirection: TextDirection.ltr,
         child: Scaffold(
             backgroundColor: theme.backgroundColor,
@@ -40,7 +59,8 @@ class NamePageState extends State<NamePage> {
                               left: standardSize(context)),
                           child: Directionality(
                             textDirection: TextDirection.rtl,
-                            child: TextField(
+                            child: TextFormField(
+                              controller: nameController,
                               keyboardType: TextInputType.text,
                               decoration: InputDecoration(
                                 fillColor: Colors.grey.shade200,
@@ -60,6 +80,6 @@ class NamePageState extends State<NamePage> {
                           )),
                     ]),
               ),
-            )));
+            ))));
   }
 }

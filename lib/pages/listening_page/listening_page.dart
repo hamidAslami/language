@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_language_app/pages/listening_page/listening_notifier.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
+import 'package:flutter_language_app/widgets/wish_button/wish_button.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:stacked/stacked.dart';
@@ -30,7 +31,9 @@ class ListeningPageState extends State<ListeningPage> {
               Icons.arrow_back_ios,
               color: Colors.black,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
           title: Text(
             'داستان',
@@ -107,14 +110,8 @@ class ListeningPageState extends State<ListeningPage> {
                           child: SizedBox(),
                         ),
                         Container(
-                          child: IconButton(
-                            splashColor: theme.primaryColor,
-                            icon: Icon(
-                              Icons.favorite,
-                              color: Colors.red.shade700,
-                            ),
-                            onPressed: () {},
-                          ),
+                          child:
+                            WishButtonWidget(2, false, standardSize(context))
                         )
                       ],
                     ),
