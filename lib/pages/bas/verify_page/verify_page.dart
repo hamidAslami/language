@@ -14,6 +14,11 @@ import 'package:step_progress_indicator/step_progress_indicator.dart';
 late PageController controller;
 
 class VerifyPage extends StatefulWidget {
+
+  final String phoneNumber;
+
+  VerifyPage(this.phoneNumber);
+
   @override
   State<StatefulWidget> createState() => VerifyPageState();
 }
@@ -23,7 +28,7 @@ class VerifyPageState extends State<VerifyPage> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return ViewModelBuilder<VerifyVM>.reactive(
-    viewModelBuilder: () => VerifyVM(context),
+    viewModelBuilder: () => VerifyVM(context,widget.phoneNumber),
     builder: (context, model, child) => Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
@@ -61,7 +66,7 @@ class VerifyPageState extends State<VerifyPage> {
                       child: Container(
                         margin: EdgeInsets.only(top: standardSize(context)),
                         child: Text(
-                          "لطفا کدی که به شماره 09032716586\nارسال شده را وارد کنید!",
+                          "لطفا کدی که به شماره تلفن " + widget.phoneNumber + " ارسال شد را وارد کنید.",
                           textAlign: TextAlign.center,
                           style: theme.textTheme.headline4!.copyWith(
                               color: Color(0xff4c456f),

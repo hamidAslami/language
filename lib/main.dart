@@ -29,7 +29,7 @@ class MyApp2 extends StatelessWidget {
     //   DeviceOrientation.portraitDown,
     // ]);
 
-    return MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: appTheme(context),

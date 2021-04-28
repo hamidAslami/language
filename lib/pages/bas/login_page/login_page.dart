@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_language_app/app/locator.dart';
+import 'package:flutter_language_app/enums/snackbar_type.dart';
 import 'package:flutter_language_app/pages/bas/verify_page/verify_page.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 import 'login_notifier.dart';
 
@@ -14,6 +17,22 @@ class LoginPage extends StatefulWidget {
 }
 
 class LoginPageState extends State<LoginPage> {
+  late TextEditingController controller;
+  final _formKey = GlobalKey<FormState>();
+  final SnackbarService _snackService = locator<SnackbarService>();
+
+  @override
+  void initState() {
+    controller = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -68,22 +87,26 @@ class LoginPageState extends State<LoginPage> {
                                 left: standardSize(context)),
                             child: Directionality(
                               textDirection: TextDirection.ltr,
-                              child: TextField(
-                                keyboardType: TextInputType.phone,
-                                decoration: InputDecoration(
-                                  fillColor: Colors.grey.shade200,
-                                  filled: true,
-                                  contentPadding:
-                                      EdgeInsets.all(mediumSize(context)),
-                                  hintText: "0903333333",
-                                  hintStyle: theme.textTheme.bodyText1!
-                                      .copyWith(color: Colors.grey.shade600),
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(8),
-                                      borderSide: BorderSide(
-                                          width: 1, style: BorderStyle.none)),
+                              child: Form(
+                                key: _formKey,
+                                child: TextFormField(
+                                  controller: controller,
+                                  keyboardType: TextInputType.phone,
+                                  decoration: InputDecoration(
+                                    fillColor: Colors.grey.shade200,
+                                    filled: true,
+                                    contentPadding:
+                                        EdgeInsets.all(mediumSize(context)),
+                                    hintText: "0903333333",
+                                    hintStyle: theme.textTheme.bodyText1!
+                                        .copyWith(color: Colors.grey.shade600),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                        borderSide: BorderSide(
+                                            width: 1, style: BorderStyle.none)),
+                                  ),
+                                  maxLength: 11,
                                 ),
-                                maxLength: 11,
                               ),
                             )),
                       ],
@@ -102,13 +125,28 @@ class LoginPageState extends State<LoginPage> {
                         icon: Icon(Icons.navigate_next_rounded,
                             color: Colors.white),
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            PageTransition(
-                                child: VerifyPage(),
-                                type: PageTransitionType.rightToLeftWithFade,
-                                duration: Duration(milliseconds: 700)),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   PageTransition(
+                          //       child: VerifyPage(),
+                          //       type: PageTransitionType.rightToLeftWithFade,
+                          //       duration: Duration(milliseconds: 700)),
+                          // );
+                          if (_formKey.currentState!.validate()) {
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                  child: VerifyPage(controller.value.text),
+                                  type: PageTransitionType.rightToLeftWithFade,
+                                    duration: Duration(milliseconds: 700),
+                                ));
+                          } else {
+                            _snackService.showCustomSnackBar(
+                              message: "لطفا شماره خود را وارد کنید",
+                              variant: SnackbarType.message,
+                              duration: Duration(seconds: 3),
+                            );
+                          }
                         },
                       ),
                     ),

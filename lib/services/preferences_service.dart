@@ -1,4 +1,6 @@
+import 'dart:convert';
 
+import 'package:flutter_language_app/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppPreferences {
@@ -45,10 +47,6 @@ class AppPreferences {
   //
   //   await Future.wait(futures);
   // }
-
-
-
-
 
   List<String> get popularTags => _getFromDisk(popularTagsKey) ?? [];
 
@@ -128,17 +126,15 @@ class AppPreferences {
     return value;
   }
 
-  // User get user {
-  //   var userJson = _getFromDisk(UserKey);
-  //   if (userJson == null) {
-  //     return null;
-  //   }
-  //   return User.fromJson(json.decode(userJson));
-  // }
-  //
-  // set user(User userToSave) {
-  //   _saveToDisk<String>(UserKey, json.encode(userToSave.toJson()));
-  // }
+  User get user {
+    var userJson = _getFromDisk(UserKey);
+    if (userJson == null) {}
+    return User.fromJson(json.decode(userJson));
+  }
+
+  set user(User userToSave) {
+    _saveToDisk<String>(UserKey, json.encode(userToSave.toJson()));
+  }
 
   void _saveToDisk<T>(String key, T content) {
     print('(TRACE) LocalStorageService:_saveToDisk. key: $key value: $content');
