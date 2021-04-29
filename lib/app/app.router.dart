@@ -7,7 +7,6 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
-import 'package:flutter_language_app/pages/bas/verify_page/verify_page.dart';
 import 'package:stacked/stacked.dart';
 
 import '../pages/bas/home/home_page.dart';
@@ -59,10 +58,21 @@ class StackedRouter extends RouterBase {
       );
     },
     NamePage: (data) {
+      var args = data.getArgs<NamePageArguments>(nullOk: false);
       return MaterialPageRoute<dynamic>(
-        builder: (context) => NamePage(controller),
+        builder: (context) => NamePage(args.pageController),
         settings: data,
       );
     },
   };
+}
+
+/// ************************************************************************
+/// Arguments holder classes
+/// *************************************************************************
+
+/// NamePage arguments holder class
+class NamePageArguments {
+  final PageController pageController;
+  NamePageArguments({required this.pageController});
 }
