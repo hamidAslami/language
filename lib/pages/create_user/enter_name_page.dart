@@ -83,9 +83,10 @@ class NamePageState extends State<NamePage> {
                             ),
                           )),
                       Container(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: standardSize(context),
-                            vertical: largeSize(context)),
+                        margin: EdgeInsets.only(
+                            right: standardSize(context),
+                            left: standardSize(context),
+                            top: largeSize(context)),
                         width: fullWidth(context),
                         height: fullHeight(context) / 13,
                         child: ElevatedButton(
@@ -94,8 +95,8 @@ class NamePageState extends State<NamePage> {
                             primary: AppColors.textColorLight,
                           ),
                           onPressed: () {
-                            model.getDataFromServerForUser(nameController.text);
-                            print(nameController.text);
+                            model.getDataFromServerForUser(nameController.value.text);
+                            print(nameController.value.text);
                             controller.animateToPage(
                               controller.page!.toInt() + 1,
                               duration: Duration(milliseconds: 200),
