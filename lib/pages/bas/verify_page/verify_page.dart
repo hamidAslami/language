@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_language_app/pages/bas/verify_page/verify_notifier.dart';
 import 'package:flutter_language_app/pages/bas/verify_page/widgets/create_user_sheet.dart';
-import 'package:flutter_language_app/pages/create_user/enter_name_page.dart';
-import 'package:flutter_language_app/pages/create_user/level_english_page.dart';
-import 'package:flutter_language_app/pages/create_user/notification_page.dart';
-import 'package:flutter_language_app/pages/create_user/time_goal_page.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:stacked/stacked.dart';
-import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 late PageController controller;
 
