@@ -9,20 +9,19 @@ import 'package:flutter_language_app/models/cart_box.dart';
 import 'package:flutter_language_app/models/category_model.dart';
 import 'package:flutter_language_app/pages/bas/home/home_notifier.dart';
 import 'package:flutter_language_app/pages/bas/lesson_page/lesson_page.dart';
+import 'package:flutter_language_app/pages/listening_page/listening_page.dart';
 import 'package:flutter_language_app/pages/profile_page/profile_page.dart';
 
 import 'package:flutter_language_app/theme/colors.dart';
 
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
+import 'package:flutter_language_app/widgets/cupertinoContext.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:ndialog/ndialog.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
-
-import '../../../widgets/cupertinoContext.dart';
-import '../../listening_page/listening_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
