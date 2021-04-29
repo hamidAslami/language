@@ -6,21 +6,20 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class CreateUserSheetVM extends BaseViewModel{
-  TextEditingController nameController;
   BuildContext context;
-  CreateUserSheetVM(this.context,this.nameController);
+  CreateUserSheetVM(this.context);
   final AppPreferences pref = locator<AppPreferences>();
   final NavigationService navigationService = locator<NavigationService>();
 
   // final BottomSheetService bottomSheetService = locator<BottomSheetService>();
 
-  Future getDataFromServerForUser() async {
+  Future getDataFromServerForUser(String name) async {
     await Future.delayed(Duration(seconds: 3));
+    pref.user = User(name,pref.phoneNumber);
     initUser();
   }
 
   void initUser() {
-    pref.user= User(nameController.value.text, pref.phoneNumber);
     print(pref.name);
   }
 

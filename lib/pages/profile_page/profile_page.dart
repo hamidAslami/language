@@ -51,7 +51,7 @@ class ProfilePageState extends State<ProfilePage> {
                     Container(
                       margin:
                           EdgeInsets.symmetric(vertical: xxSmallSize(context)),
-                      child: Text("آیدا حسینی",
+                    child: Text(model.data!.name ?? "اطلاعات وارد نشده است",
                           style: theme.textTheme.headline4!.copyWith(
                               color: AppColors.textColorLight,
                               fontSize: bodyText1Size(context))),

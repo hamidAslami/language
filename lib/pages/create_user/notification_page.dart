@@ -4,6 +4,8 @@ import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 
 class NotificationPage extends StatefulWidget {
+  PageController pageController;
+  NotificationPage(this.pageController);
   @override
   State<StatefulWidget> createState() => NotificationPageState();
 }

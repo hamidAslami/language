@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_language_app/pages/bas/home/home_page.dart';
+import 'package:flutter_language_app/pages/bas/verify_page/verify_page.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 
 class LevelEnglish extends StatefulWidget {
+  PageController pageController;
+  LevelEnglish(this.pageController);
   @override
   State<StatefulWidget> createState() => LevelEnglishState();
 }
@@ -43,6 +46,35 @@ class LevelEnglishState extends State<LevelEnglish> {
               ),
               levelEnglish(context, "مقداری!", "assets/ic_level2.png"),
               levelEnglish(context, "بسیار زیاد!", "assets/ic_level3.png"),
+              Container(
+                margin: EdgeInsets.symmetric(
+                    horizontal: standardSize(context),
+                    vertical: largeSize(context)),
+                width: fullWidth(context),
+                height: fullHeight(context) / 13,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    elevation: standardSize(context),
+                    primary: AppColors.textColorLight,
+                  ),
+                  onPressed: () {
+                    controller.animateToPage(
+                      controller.page!.toInt() + 1,
+                      duration: Duration(milliseconds: 200),
+                      curve: Curves.easeInQuad,
+                    );
+                  },
+                  child: Text(
+                    "ادامـه دهـید !",
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline4!
+                        .copyWith(
+                        fontSize: caption1Size(context),
+                        color: Theme.of(context).backgroundColor),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

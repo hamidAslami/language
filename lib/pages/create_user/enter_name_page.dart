@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_language_app/pages/bas/verify_page/verify_page.dart';
 import 'package:flutter_language_app/pages/bas/verify_page/widgets/create_user_sheet_notifier.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:stacked/stacked.dart';
 
 class NamePage extends StatefulWidget {
+  PageController pageController;
+  NamePage(this.pageController);
   @override
   State<StatefulWidget> createState() => NamePageState();
 }
@@ -22,6 +25,7 @@ class NamePageState extends State<NamePage> {
   @override
   void dispose() {
     nameController = TextEditingController();
+
     super.dispose();
   }
 
@@ -29,7 +33,7 @@ class NamePageState extends State<NamePage> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return ViewModelBuilder<CreateUserSheetVM>.reactive(
-    viewModelBuilder: () => CreateUserSheetVM(context,nameController),
+    viewModelBuilder: () => CreateUserSheetVM(context),
     builder: (context, model, child) => Directionality(
         textDirection: TextDirection.ltr,
         child: Scaffold(
@@ -78,6 +82,37 @@ class NamePageState extends State<NamePage> {
                               maxLength: 22,
                             ),
                           )),
+                      Container(
+                        margin: EdgeInsets.symmetric(
+                            horizontal: standardSize(context),
+                            vertical: largeSize(context)),
+                        width: fullWidth(context),
+                        height: fullHeight(context) / 13,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            elevation: standardSize(context),
+                            primary: AppColors.textColorLight,
+                          ),
+                          onPressed: () {
+                            model.getDataFromServerForUser(nameController.text);
+                            print(nameController.text);
+                            controller.animateToPage(
+                              controller.page!.toInt() + 1,
+                              duration: Duration(milliseconds: 200),
+                              curve: Curves.easeInQuad,
+                            );
+                          },
+                          child: Text(
+                            "ادامـه دهـید !",
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline4!
+                                .copyWith(
+                                fontSize: caption1Size(context),
+                                color: Theme.of(context).backgroundColor),
+                          ),
+                        ),
+                      ),
                     ]),
               ),
             ))));

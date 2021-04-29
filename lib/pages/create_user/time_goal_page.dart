@@ -4,6 +4,8 @@ import 'package:flutter_language_app/theme/dimens.dart';
 import 'level_english_page.dart';
 
 class TimeGoalPage extends StatefulWidget {
+  PageController pageController;
+  TimeGoalPage(this.pageController);
   @override
   State<StatefulWidget> createState() => TimeGoalPageState();
 }

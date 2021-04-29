@@ -7,6 +7,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
+import 'package:flutter_language_app/pages/bas/verify_page/verify_page.dart';
 import 'package:stacked/stacked.dart';
 
 import '../pages/bas/home/home_page.dart';
@@ -59,7 +60,7 @@ class StackedRouter extends RouterBase {
     },
     NamePage: (data) {
       return MaterialPageRoute<dynamic>(
-        builder: (context) => NamePage(),
+        builder: (context) => NamePage(controller),
         settings: data,
       );
     },

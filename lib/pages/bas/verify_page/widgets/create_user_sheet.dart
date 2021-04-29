@@ -33,7 +33,7 @@ class CreateUserSheetState extends State<CreateUserSheet> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<CreateUserSheetVM>.reactive(
-        viewModelBuilder: () => CreateUserSheetVM(context,nameController),
+        viewModelBuilder: () => CreateUserSheetVM(context),
         builder: (context, model, child) => FractionallySizedBox(
               heightFactor: 0.9,
               child: Directionality(
@@ -73,40 +73,11 @@ class CreateUserSheetState extends State<CreateUserSheet> {
                           controller: controller,
                           physics: new NeverScrollableScrollPhysics(),
                           children: [
-                            NamePage(),
-                            LevelEnglish(),
-                            NotificationPage(),
-                            TimeGoalPage()
+                            NamePage(controller),
+                            LevelEnglish(controller),
+                            NotificationPage(controller),
+                            TimeGoalPage(controller)
                           ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: standardSize(context),
-                            vertical: largeSize(context)),
-                        width: fullWidth(context),
-                        height: fullHeight(context) / 13,
-                        child: RaisedButton(
-                          splashColor: Color(0xff512da8),
-                          elevation: standardSize(context),
-                          onPressed: () {
-                            model.getDataFromServerForUser();
-                            controller.animateToPage(
-                              controller.page!.toInt() + 1,
-                              duration: Duration(milliseconds: 200),
-                              curve: Curves.easeInQuad,
-                            );
-                          },
-                          color: AppColors.textColorLight,
-                          child: Text(
-                            "ادامـه دهـید !",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline4!
-                                .copyWith(
-                                    fontSize: caption1Size(context),
-                                    color: Theme.of(context).backgroundColor),
-                          ),
                         ),
                       ),
                     ],

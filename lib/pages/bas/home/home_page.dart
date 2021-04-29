@@ -91,7 +91,7 @@ class HomePageState extends State<HomePage> {
                                   margin: EdgeInsets.only(
                                       right: xSmallSize(context)),
                                   child: Text(
-                                    "حمیدرضا اسلمی",
+                                    model.data!.name ?? "اطلاعات وارد نشده است",
                                     style: theme.textTheme.bodyText2!
                                         .copyWith(color: Color(0xff4c456f)),
                                   ),
