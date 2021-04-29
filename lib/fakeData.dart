@@ -30,18 +30,19 @@ List lessonList(BuildContext context) {
         MaterialPageRoute(
             builder: (BuildContext context) => LessonDetailPage()));
   }));
-
-  lessonList.add(Lesson("https://s17.picofile.com/file/8417350200/talk.jpg",
-      "صحبت کن !", lessonType.speaking, true, theme.accentColor, () {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => BaseLessonPage()));
-  }));
-  lessonList.add(Lesson("https://s16.picofile.com/file/8417350600/Write.jpg",
-      "بنویس تا یادت بمونه !", lessonType.writing, true, Colors.pink, () {}));
   lessonList.add(Lesson("https://s17.picofile.com/file/8417351634/Book3.jpg",
       "کلمات رو حفظ کن!", lessonType.words, false, Colors.indigoAccent, () {}));
   lessonList.add(Lesson("https://s16.picofile.com/file/8417352300/quiz5.jpg",
       "وقتشه خودتو محک بزنی!", lessonType.Exercises, false, Colors.red, () {}));
+
+  lessonList.add(Lesson("https://s16.picofile.com/file/8417350600/Write.jpg",
+      "بنویس تا یادت بمونه !", lessonType.writing, true, Colors.pink, () {}));
+  lessonList.add(Lesson("https://s17.picofile.com/file/8417350200/talk.jpg",
+      "صحبت کن !", lessonType.speaking, true, theme.accentColor, () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (BuildContext context) => BaseLessonPage()));
+      }));
+
   return lessonList;
 }
 

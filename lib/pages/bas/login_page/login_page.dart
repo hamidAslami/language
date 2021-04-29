@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_language_app/app/locator.dart';
 import 'package:flutter_language_app/enums/snackbar_type.dart';
@@ -115,13 +116,14 @@ class LoginPageState extends State<LoginPage> {
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Container(
-                      padding: EdgeInsets.all(xxSmallSize(context)),
-                      margin:
-                          EdgeInsets.symmetric(vertical: largeSize(context)),
+                      width: xlargeSize(context)/1.2,
+                      height: xlargeSize(context)/1.2,
+                      margin: EdgeInsets.symmetric(vertical: largeSize(context)),
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: AppColors.textColorLight),
-                      child: IconButton(
+                          shape: BoxShape.circle, color: AppColors.textColorLight),
+                      child:
+                      // model.isBusy?Center(child: CupertinoActivityIndicator()):
+                      IconButton(
                         icon: Icon(Icons.navigate_next_rounded,
                             color: Colors.white),
                         onPressed: () {

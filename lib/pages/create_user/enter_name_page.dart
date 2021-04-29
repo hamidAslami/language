@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_language_app/pages/bas/verify_page/verify_page.dart';
 import 'package:flutter_language_app/pages/bas/verify_page/widgets/create_user_sheet_notifier.dart';
@@ -43,50 +45,55 @@ class NamePageState extends State<NamePage> {
               child: Container(
                 margin: EdgeInsets.only(top: xxLargeSize(context)),
                 child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // Container(
                       //   child: Lottie.asset("assets/lottie_name.json",
                       //       fit: BoxFit.cover, width: fullWidth(context) / 1.3),height: fullHeight(context) / 3,
                       // ),
-                      Container(
-                        margin: EdgeInsets.only(top: standardSize(context)),
-                        child: Text("!نام خـود را وارد کـنید",
-                            style: theme.textTheme.headline4!.copyWith(
-                                color: AppColors.textColorLight,
-                                fontSize: fullWidth(context) / 25)),
-                      ),
-                      Container(
-                          margin: EdgeInsets.only(
-                              top: standardSize(context),
-                              right: standardSize(context),
-                              left: standardSize(context)),
-                          child: Directionality(
-                            textDirection: TextDirection.rtl,
-                            child: TextFormField(
-                              controller: nameController,
-                              keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
-                                fillColor: Colors.grey.shade200,
-                                filled: true,
-                                contentPadding:
+                      Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(top: standardSize(context)),
+                            child: Text("!نام خـود را وارد کـنید",
+                                style: theme.textTheme.headline4!.copyWith(
+                                    color: AppColors.textColorLight,
+                                    fontSize: fullWidth(context) / 25)),
+                          ),
+                          Container(
+                              margin: EdgeInsets.only(
+                                  top: standardSize(context),
+                                  right: standardSize(context),
+                                  left: standardSize(context)),
+                              child: Directionality(
+                                textDirection: TextDirection.rtl,
+                                child: TextFormField(
+                                  controller: nameController,
+                                  keyboardType: TextInputType.text,
+                                  decoration: InputDecoration(
+                                    fillColor: Colors.grey.shade200,
+                                    filled: true,
+                                    contentPadding:
                                     EdgeInsets.all(mediumSize(context)),
-                                hintText: "",
-                                hintStyle: theme.textTheme.bodyText1!
-                                    .copyWith(color: Colors.grey.shade600),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                    borderSide: BorderSide(
-                                        width: 1, style: BorderStyle.none)),
+                                    hintText: "",
+                                    hintStyle: theme.textTheme.bodyText1!
+                                        .copyWith(color: Colors.grey.shade600),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                        borderSide: BorderSide(
+                                            width: 1, style: BorderStyle.none)),
+                                  ),
+                                  maxLength: 22,
+                                ),
                               ),
-                              maxLength: 22,
-                            ),
-                          )),
+                          ),
+                        ],
+                      ),
                       Container(
                         margin: EdgeInsets.only(
                             right: standardSize(context),
                             left: standardSize(context),
-                            top: largeSize(context)),
+                        top: fullWidth(context)/2.3),
                         width: fullWidth(context),
                         height: fullHeight(context) / 13,
                         child: ElevatedButton(
@@ -104,7 +111,7 @@ class NamePageState extends State<NamePage> {
                             );
                           },
                           child: Text(
-                            "ادامـه دهـید !",
+                            "ادامــه دهیـد",
                             style: Theme.of(context)
                                 .textTheme
                                 .headline4!

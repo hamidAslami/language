@@ -18,6 +18,7 @@ import 'package:flutter_language_app/theme/text_widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:ndialog/ndialog.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../widgets/cupertinoContext.dart';
@@ -26,7 +27,6 @@ import '../../listening_page/listening_page.dart';
 class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => HomePageState();
-
 }
 
 class HomePageState extends State<HomePage> {
@@ -59,10 +59,212 @@ class HomePageState extends State<HomePage> {
     var theme = Theme.of(context);
 
     return ViewModelBuilder<HomeVM>.reactive(
-    viewModelBuilder: () => HomeVM(),
-    builder: (context, model, child) => Directionality(
-        textDirection: TextDirection.rtl,
-        child: Scaffold(
+        viewModelBuilder: () => HomeVM(),
+        builder: (context, model, child) => Directionality(
+            textDirection: TextDirection.rtl,
+            child:
+                model.isBusy ?
+                Scaffold(
+                    backgroundColor: theme.backgroundColor,
+                    body: SingleChildScrollView(
+                        physics: BouncingScrollPhysics(),
+                        child: Container(
+                          margin: EdgeInsets.only(top: xlargeSize(context)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.symmetric(
+                                    horizontal: standardSize(context)),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                            margin: EdgeInsets.only(
+                                                right: xSmallSize(context)),
+                                            child: Shimmer.fromColors(
+                                                baseColor: Colors.grey.shade300,
+                                                highlightColor:
+                                                    Colors.grey.shade200,
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      color:
+                                                          Colors.grey.shade300,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              xxSmallSize(
+                                                                  context))),
+                                                  width: xxLargeSize(context),
+                                                  height: smallSize(context),
+                                                ))),
+                                        Container(
+                                            margin: EdgeInsets.only(
+                                                top: xSmallSize(context),
+                                                right: xSmallSize(context)),
+                                            child: Shimmer.fromColors(
+                                                baseColor: Colors.grey.shade300,
+                                                highlightColor:
+                                                    Colors.grey.shade200,
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      color:
+                                                          Colors.grey.shade300,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              xxSmallSize(
+                                                                  context))),
+                                                  width: xxLargeSize(context) /
+                                                      1.5,
+                                                  height: smallSize(context),
+                                                ))),
+                                      ],
+                                    ),
+                                    Shimmer.fromColors(
+                                      baseColor: Colors.grey.shade300,
+                                      highlightColor: Colors.grey.shade200,
+                                      child: Container(
+                                          decoration: BoxDecoration(
+                                              color: Colors.grey.shade300,
+                                              shape: BoxShape.circle),
+                                          width: fullWidth(context) / 7.5,
+                                          height: fullWidth(context) / 7.5),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Shimmer.fromColors(
+                                baseColor: Colors.grey.shade300,
+                                highlightColor: Colors.grey.shade200,
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: standardSize(context),
+                                      vertical: standardSize(context)),
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.shade300,
+                                      borderRadius: BorderRadius.circular(16)),
+                                  width: fullWidth(context),
+                                  height: fullHeight(context) / 4.5,
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.symmetric(
+                                    vertical: xSmallSize(context),
+                                    horizontal: standardSize(context)),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Shimmer.fromColors(
+                                        baseColor: Colors.grey.shade300,
+                                        highlightColor: Colors.grey.shade200,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              color: Colors.grey.shade300,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      xxSmallSize(context))),
+                                          width: fullWidth(context) / 2.3,
+                                          height: smallSize(context),
+                                        )),
+                                    Shimmer.fromColors(
+                                        baseColor: Colors.grey.shade300,
+                                        highlightColor: Colors.grey.shade200,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              color: Colors.grey.shade300,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      xxSmallSize(context))),
+                                          width: xxLargeSize(context) / 1.5,
+                                          height: smallSize(context),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                width: fullWidth(context),
+                                height: fullHeight(context) / 4,
+                                child: PageView.builder(
+                                    physics: BouncingScrollPhysics(),
+                                    pageSnapping: true,
+                                    itemCount: categoryList().length,
+                                    controller: PageController(
+                                        initialPage: 1, viewportFraction: 0.8),
+                                    itemBuilder: (context, index) =>
+                                        categoryCard(
+                                          categoryList()[index], context,
+                                          model.isBusy
+                                        )),
+                                // child: ListView.builder(
+                                //   padding: EdgeInsets.all(0),
+                                //   shrinkWrap: true,
+                                //   physics: BouncingScrollPhysics(),
+                                //   scrollDirection: Axis.horizontal,
+                                //   itemCount: categoryList().length,
+                                //   itemBuilder: (context, index) =>
+                                //       categoryCard(categoryList()[index], context),
+                                // ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.symmetric(
+                                    vertical: xSmallSize(context),
+                                    horizontal: standardSize(context)),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Shimmer.fromColors(
+                                        baseColor: Colors.grey.shade300,
+                                        highlightColor: Colors.grey.shade200,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              color: Colors.grey.shade300,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      xxSmallSize(context))),
+                                          width: fullWidth(context) / 2.3,
+                                          height: smallSize(context),
+                                        )),
+                                    Shimmer.fromColors(
+                                        baseColor: Colors.grey.shade300,
+                                        highlightColor: Colors.grey.shade200,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              color: Colors.grey.shade300,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      xxSmallSize(context))),
+                                          width: xxLargeSize(context) / 1.5,
+                                          height: smallSize(context),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                child: ListView.builder(
+                                  padding: EdgeInsets.only(
+                                      bottom: mediumSize(context),
+                                      right: standardSize(context),
+                                      left: standardSize(context)),
+                                  physics: BouncingScrollPhysics(),
+                                  scrollDirection: Axis.vertical,
+                                  shrinkWrap: true,
+                                  itemCount: homeLessonList().length,
+                                  itemBuilder: (context, index) => lessonBox(
+                                      homeLessonList()[index],
+                                      context,
+                                      model.isBusy),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )))
+            :Scaffold(
             backgroundColor: theme.backgroundColor,
             body: SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
@@ -91,7 +293,7 @@ class HomePageState extends State<HomePage> {
                                   margin: EdgeInsets.only(
                                       right: xSmallSize(context)),
                                   child: Text(
-                                    model.data!.name ?? "اطلاعات وارد نشده است",
+                                    model.data?.name ?? "اطلاعات وارد نشده است",
                                     style: theme.textTheme.bodyText2!
                                         .copyWith(color: Color(0xff4c456f)),
                                   ),
@@ -138,7 +340,7 @@ class HomePageState extends State<HomePage> {
                                         textDirection: TextDirection.rtl,
                                         child: Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.start,
+                                          MainAxisAlignment.start,
                                           children: [
                                             Container(
                                               height: fullWidth(context) / 8,
@@ -189,14 +391,14 @@ class HomePageState extends State<HomePage> {
                                         loadingWidget: Container(
                                           decoration: BoxDecoration(
                                             borderRadius:
-                                                BorderRadius.circular(12),
+                                            BorderRadius.circular(12),
                                             color: Colors.grey.shade200,
                                           ),
                                           height: 100,
                                           width: 100,
                                           child: Column(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             children: [
                                               Container(
                                                 width: 60,
@@ -213,7 +415,7 @@ class HomePageState extends State<HomePage> {
                                                 "صبر کن...",
                                                 textAlign: TextAlign.center,
                                                 textDirection:
-                                                    TextDirection.rtl,
+                                                TextDirection.rtl,
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .caption,
@@ -229,7 +431,7 @@ class HomePageState extends State<HomePage> {
                                         textDirection: TextDirection.rtl,
                                         child: Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.start,
+                                          MainAxisAlignment.start,
                                           children: [
                                             Container(
                                               height: fullWidth(context) / 8,
@@ -294,14 +496,14 @@ class HomePageState extends State<HomePage> {
                             children: [
                               Positioned.fill(
                                   child: Container(
-                                margin: EdgeInsets.symmetric(
-                                    vertical: standardSize(context)),
-                                width: fullWidth(context),
-                                height: fullHeight(context) / 3.4,
-                                decoration: BoxDecoration(
-                                    color: theme.primaryColor,
-                                    borderRadius: BorderRadius.circular(16)),
-                              )),
+                                    margin: EdgeInsets.symmetric(
+                                        vertical: standardSize(context)),
+                                    width: fullWidth(context),
+                                    height: fullHeight(context) / 3.4,
+                                    decoration: BoxDecoration(
+                                        color: theme.primaryColor,
+                                        borderRadius: BorderRadius.circular(16)),
+                                  )),
                               Positioned(
                                 top: fullHeight(context) / -22,
                                 left: fullHeight(context) / -5.4,
@@ -309,7 +511,7 @@ class HomePageState extends State<HomePage> {
                                 bottom: fullHeight(context) / -31,
                                 child: Container(
                                   child:
-                                      Image.asset("assets/pic_school_home.png"),
+                                  Image.asset("assets/pic_school_home.png"),
                                 ),
                               ),
                               Positioned(
@@ -322,9 +524,9 @@ class HomePageState extends State<HomePage> {
                                       child: Text("دوره تخصصی\nزبان انگلیسی",
                                           style: theme.textTheme.headline4!
                                               .copyWith(
-                                                  color: Color(0xffffffff),
-                                                  fontSize:
-                                                      mediumSize(context))),
+                                              color: Color(0xffffffff),
+                                              fontSize:
+                                              mediumSize(context))),
                                     ),
                                     Container(
                                       margin: EdgeInsets.only(
@@ -335,7 +537,7 @@ class HomePageState extends State<HomePage> {
                                         child: Container(
                                           decoration: BoxDecoration(
                                             borderRadius:
-                                                BorderRadius.circular(10),
+                                            BorderRadius.circular(10),
                                             boxShadow: [
                                               BoxShadow(
                                                   color: Color(0xff4c456f),
@@ -385,7 +587,7 @@ class HomePageState extends State<HomePage> {
                                 child: Container(
                                   child: Text("مشاهده همه!",
                                       style:
-                                          theme.textTheme.bodyText2!.copyWith(
+                                      theme.textTheme.bodyText2!.copyWith(
                                         color: Color(0xff4c456f),
                                       )),
                                 ),
@@ -405,7 +607,7 @@ class HomePageState extends State<HomePage> {
                             controller: PageController(
                                 initialPage: 1, viewportFraction: 0.8),
                             itemBuilder: (context, index) =>
-                                categoryCard(categoryList()[index], context)),
+                                categoryCard(categoryList()[index], context, model.isBusy)),
                         // child: ListView.builder(
                         //   padding: EdgeInsets.all(0),
                         //   shrinkWrap: true,
@@ -441,7 +643,7 @@ class HomePageState extends State<HomePage> {
                                 child: Container(
                                   child: Text("مشاهده همه!",
                                       style:
-                                          theme.textTheme.bodyText2!.copyWith(
+                                      theme.textTheme.bodyText2!.copyWith(
                                         color: Color(0xff4c456f),
                                       )),
                                 ),
@@ -461,20 +663,40 @@ class HomePageState extends State<HomePage> {
                           shrinkWrap: true,
                           itemCount: homeLessonList().length,
                           itemBuilder: (context, index) =>
-                              lessonBox(homeLessonList()[index], context),
+                              lessonBox(homeLessonList()[index], context, model.isBusy),
                         ),
                       ),
                     ],
                   ),
-                )))));
+                )))
+            ));
   }
 }
 
 ////////////// Widget Category Card //////////////
 
-Widget categoryCard(CategoryModel category, BuildContext context) {
+Widget categoryCard(
+  CategoryModel category,
+  BuildContext context,
+  bool isBusy
+) {
   var theme = Theme.of(context);
-  return Container(
+  return
+      isBusy?
+      Shimmer.fromColors(
+        baseColor: Colors.grey.shade300,
+        highlightColor: Colors.grey.shade200,
+        child: Container(
+            margin: EdgeInsets.symmetric(
+                vertical: mediumSize(context), horizontal: xSmallSize(context)),
+            width: fullWidth(context) / 2.4,
+            height: fullHeight(context) / 3,
+            decoration: BoxDecoration(
+                color: Colors.grey.shade300,
+                borderRadius: BorderRadius.circular(smallSize(context)))),
+      )
+  :
+  Container(
     margin: EdgeInsets.symmetric(horizontal: xSmallSize(context)),
     width: fullWidth(context) / 2.4,
     height: fullHeight(context) / 4.5,
@@ -482,15 +704,15 @@ Widget categoryCard(CategoryModel category, BuildContext context) {
       children: [
         Positioned.fill(
             child: Container(
-          margin: EdgeInsets.symmetric(vertical: standardSize(context)),
-          width: fullWidth(context) / 2.5,
-          height: fullHeight(context) / 3,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(category.backgroundImage),
-                  fit: BoxFit.cover),
-              borderRadius: BorderRadius.circular(16)),
-        )),
+              margin: EdgeInsets.symmetric(vertical: standardSize(context)),
+              width: fullWidth(context) / 2.5,
+              height: fullHeight(context) / 3,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(category.backgroundImage),
+                      fit: BoxFit.cover),
+                  borderRadius: BorderRadius.circular(16)),
+            )),
         Positioned(
           top: fullHeight(context) / 13,
           left: smallSize(context),
@@ -525,14 +747,28 @@ Widget categoryCard(CategoryModel category, BuildContext context) {
       ],
     ),
   );
-} // Category card
+} // cat
 
-Widget lessonBox(
-  CartBoxModel cartBoxModel,
-  BuildContext context,
-) {
+Widget lessonBox(CartBoxModel cartBoxModel, BuildContext context, bool isBusy) {
   var theme = Theme.of(context);
-  return Container(
+  return
+      isBusy ?
+    Shimmer.fromColors(
+            enabled: true,
+            baseColor: Colors.grey.shade300,
+            highlightColor: Colors.grey.shade200,
+            child: Container(
+              margin: EdgeInsets.symmetric(vertical: mediumSize(context)),
+              height: fullHeight(context) / 7,
+              width: fullWidth(context),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade300,
+                borderRadius: BorderRadius.circular(smallSize(context)),
+              ),
+            )
+      )
+  :
+  Container(
     margin: EdgeInsets.symmetric(vertical: mediumSize(context)),
     height: fullHeight(context) / 7,
     width: fullWidth(context),

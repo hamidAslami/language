@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_language_app/pages/bas/verify_page/verify_page.dart';
 import 'package:flutter_language_app/pages/bas/verify_page/widgets/create_user_sheet_notifier.dart';
@@ -34,7 +35,8 @@ class CreateUserSheetState extends State<CreateUserSheet> {
   Widget build(BuildContext context) {
     return ViewModelBuilder<CreateUserSheetVM>.reactive(
         viewModelBuilder: () => CreateUserSheetVM(context),
-        builder: (context, model, child) => FractionallySizedBox(
+        builder: (context, model, child) =>
+            FractionallySizedBox(
               heightFactor: 0.9,
               child: Directionality(
                 textDirection: TextDirection.rtl,

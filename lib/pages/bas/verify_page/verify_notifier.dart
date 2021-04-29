@@ -18,20 +18,18 @@ class VerifyVM extends BaseViewModel {
   // final BottomSheetService bottomSheetService = locator<BottomSheetService>();
 
   Future getDataFromServer() async {
+    setBusy(true);
     await Future.delayed(Duration(seconds: 3));
     initUser();
-
-
   }
 
   void initUser() {
     pref.isFirstTimeLaunch = false;
     pref.phoneNumber=phone;
     print(phone);
+    setBusy(false);
     createUserSheet(context);
     // pref.phoneNumber = ;
-
     // pref.user = User("name", "phone")
-
   }
 }

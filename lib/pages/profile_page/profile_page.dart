@@ -18,308 +18,344 @@ class ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return ViewModelBuilder<ProfileVM>.reactive(
-    viewModelBuilder: () => ProfileVM(),
-    builder: (context, model, child) => AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle(
-          statusBarColor: Color(0xfff8f8f8),
-          statusBarBrightness: Brightness.light),
-      child: Directionality(
-        textDirection: TextDirection.rtl,
-        child: Container(
-          child: Scaffold(
-            backgroundColor: theme.backgroundColor,
-            body: Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage("assets/bg-pro.jpg"))),
-              child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Container(
-                      alignment: Alignment.center,
-                      margin: EdgeInsets.only(top: xlargeSize(context)),
-                      height: fullWidth(context) / 2.9,
-                      width: fullWidth(context) / 2.9,
-                      child: Image.asset(
-                        "assets/pic_avatar_woman_2.png",
-                        alignment: Alignment.center,
-                      ),
-                    ),
-                    Container(
-                      margin:
-                          EdgeInsets.symmetric(vertical: xxSmallSize(context)),
-                    child: Text(model.data!.name ?? "اطلاعات وارد نشده است",
-                          style: theme.textTheme.headline4!.copyWith(
-                              color: AppColors.textColorLight,
-                              fontSize: bodyText1Size(context))),
-                      // decoration: BoxDecoration(boxShadow: [
-                      //   BoxShadow(
-                      //     color: Colors.grey.withOpacity(0.1),
-                      //     spreadRadius: 3,
-                      //     blurRadius: 7,
-                      //     offset: Offset(0, 4), // changes
-                      //   ),
-                      // ]),
-                    ),
-                    Container(
-                      margin: EdgeInsets.symmetric(
-                          vertical: largeSize(context),
-                          horizontal: largeSize(context)),
-                      width: fullWidth(context),
-                      height: fullHeight(context) / 8.5,
+        viewModelBuilder: () => ProfileVM(),
+        builder: (context, model, child) =>
+            AnnotatedRegion<SystemUiOverlayStyle>(
+              value: SystemUiOverlayStyle(
+                  statusBarColor: Color(0xfff8f8f8),
+                  statusBarBrightness: Brightness.light),
+              child: Directionality(
+                textDirection: TextDirection.rtl,
+                child: Container(
+                  child: Scaffold(
+                    backgroundColor: theme.backgroundColor,
+                    body: Container(
                       decoration: BoxDecoration(
-                          color: theme.backgroundColor,
-                          borderRadius: BorderRadius.circular(16),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 3,
-                              blurRadius: 7,
-                              offset: Offset(0, 6), // changes
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage("assets/bg-pro.jpg"))),
+                      child: SingleChildScrollView(
+                        physics: BouncingScrollPhysics(),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Container(
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.only(top: xlargeSize(context)),
+                              height: fullWidth(context) / 2.9,
+                              width: fullWidth(context) / 2.9,
+                              child: Image.asset(
+                                "assets/pic_avatar_woman_2.png",
+                                alignment: Alignment.center,
+                              ),
                             ),
-                          ]),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                child: Text("دوره ها",
-                                    style: theme.textTheme.headline4!.copyWith(
-                                        fontSize: fullWidth(context) / 34,
-                                        color: Color(0xffcfcaca))),
-                              ),
-                              Container(
-                                child: Text("10",
-                                    style: theme.textTheme.headline4!.copyWith(
-                                        fontSize: bodyText1Size(context),
-                                        color: AppColors.textColorDark)),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            margin: EdgeInsets.symmetric(
-                                vertical: standardSize(context)),
-                            height: fullHeight(context),
-                            width: 0.6,
-                            color: AppColors.textColorLight,
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                child: Text("تکمیل شده",
-                                    style: theme.textTheme.headline4!.copyWith(
-                                        fontSize: fullWidth(context) / 34,
-                                        color: Color(0xffcfcaca))),
-                              ),
-                              Container(
-                                child: Text("6",
-                                    style: theme.textTheme.headline4!.copyWith(
-                                        fontSize: bodyText1Size(context),
-                                        color: AppColors.textColorDark)),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            margin: EdgeInsets.symmetric(
-                                vertical: standardSize(context)),
-                            height: fullHeight(context),
-                            width: 0.6,
-                            color: AppColors.textColorLight,
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                child: Text("گواهینامه‌ها",
-                                    style: theme.textTheme.headline4!.copyWith(
-                                        fontSize: fullWidth(context) / 34,
-                                        color: Color(0xffcfcaca))),
-                              ),
-                              Container(
-                                child: Text("2",
-                                    style: theme.textTheme.headline4!.copyWith(
-                                        fontSize: bodyText1Size(context),
-                                        color: AppColors.textColorDark)),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: mediumSize(context)),
-                          height: fullHeight(context) / 8.5,
-                          decoration: BoxDecoration(
-                              //     image: DecorationImage(
-                              //         image: AssetImage("assets/1.jpg"),
-                              //         fit: BoxFit.cover),
-                              color: theme.backgroundColor,
-                              borderRadius: BorderRadius.circular(16),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.1),
-                                  spreadRadius: 3,
-                                  blurRadius: 7,
-                                  offset: Offset(0, 6), // chan
-                                ),
-                              ]),
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                left: 0,
-                                top: mediumSize(context),
-                                bottom: mediumSize(context),
-                                child: SvgPicture.asset(
-                                  "assets/ic_crown.svg",
-                                  alignment: Alignment.center,
-                                  width: fullWidth(context) / 14,
-                                ),
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                            Container(
+                              margin: EdgeInsets.symmetric(
+                                  vertical: xxSmallSize(context)),
+                              child: Text(
+                                  (model.data?.name != ""
+                                      ? model.data!.name
+                                      : "اطلاعات وارد نشده است")!,
+                                  style: theme.textTheme.headline4!.copyWith(
+                                      color: AppColors.textColorLight,
+                                      fontSize: bodyText1Size(context))),
+                              // decoration: BoxDecoration(boxShadow: [
+                              //   BoxShadow(
+                              //     color: Colors.grey.withOpacity(0.1),
+                              //     spreadRadius: 3,
+                              //     blurRadius: 7,
+                              //     offset: Offset(0, 4), // changes
+                              //   ),
+                              // ]),
+                            ),
+                            Container(
+                              margin: EdgeInsets.symmetric(
+                                  vertical: largeSize(context),
+                                  horizontal: largeSize(context)),
+                              width: fullWidth(context),
+                              height: fullHeight(context) / 8.5,
+                              decoration: BoxDecoration(
+                                  color: theme.backgroundColor,
+                                  borderRadius: BorderRadius.circular(16),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.1),
+                                      spreadRadius: 3,
+                                      blurRadius: 7,
+                                      offset: Offset(0, 6), // changes
+                                    ),
+                                  ]),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Container(
-                                    alignment: Alignment.center,
-                                    margin: EdgeInsets.only(
-                                        left: fullHeight(context) / 19),
-                                    child: Text("دوره طلایی",
-                                        style: theme.textTheme.headline4!
-                                            .copyWith(
-                                                fontSize:
-                                                    fullWidth(context) / 34,
-                                                color: Color(0xffcfcaca))),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        child: Text("دوره ها",
+                                            style: theme.textTheme.headline4!
+                                                .copyWith(
+                                                    fontSize:
+                                                        fullWidth(context) / 34,
+                                                    color: Color(0xffcfcaca))),
+                                      ),
+                                      Container(
+                                        child: Text("10",
+                                            style: theme.textTheme.headline4!
+                                                .copyWith(
+                                                    fontSize:
+                                                        bodyText1Size(context),
+                                                    color: AppColors
+                                                        .textColorDark)),
+                                      ),
+                                    ],
                                   ),
                                   Container(
-                                    margin: EdgeInsets.only(
-                                        left: fullHeight(context) / 19,
-                                        top: xSmallSize(context)),
-                                    child: Text("2020-4-40",
-                                        style: theme.textTheme.headline4!
-                                            .copyWith(
-                                                fontSize: caption1Size(context),
-                                                color: theme.primaryColor)),
+                                    margin: EdgeInsets.symmetric(
+                                        vertical: standardSize(context)),
+                                    height: fullHeight(context),
+                                    width: 0.6,
+                                    color: AppColors.textColorLight,
+                                  ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        child: Text("تکمیل شده",
+                                            style: theme.textTheme.headline4!
+                                                .copyWith(
+                                                    fontSize:
+                                                        fullWidth(context) / 34,
+                                                    color: Color(0xffcfcaca))),
+                                      ),
+                                      Container(
+                                        child: Text("6",
+                                            style: theme.textTheme.headline4!
+                                                .copyWith(
+                                                    fontSize:
+                                                        bodyText1Size(context),
+                                                    color: AppColors
+                                                        .textColorDark)),
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.symmetric(
+                                        vertical: standardSize(context)),
+                                    height: fullHeight(context),
+                                    width: 0.6,
+                                    color: AppColors.textColorLight,
+                                  ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        child: Text("گواهینامه‌ها",
+                                            style: theme.textTheme.headline4!
+                                                .copyWith(
+                                                    fontSize:
+                                                        fullWidth(context) / 34,
+                                                    color: Color(0xffcfcaca))),
+                                      ),
+                                      Container(
+                                        child: Text("2",
+                                            style: theme.textTheme.headline4!
+                                                .copyWith(
+                                                    fontSize:
+                                                        bodyText1Size(context),
+                                                    color: AppColors
+                                                        .textColorDark)),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: mediumSize(context)),
-                          height: fullHeight(context) / 8.5,
-                          decoration: BoxDecoration(
-                              //     image: DecorationImage(
-                              //         image: AssetImage("assets/1.jpg"),
-                              //         fit: BoxFit.cover),
-                              color: theme.backgroundColor,
-                              borderRadius: BorderRadius.circular(16),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.1),
-                                  spreadRadius: 3,
-                                  blurRadius: 7,
-                                  offset: Offset(0, 6), // chan
-                                ),
-                              ]),
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                left: 0,
-                                top: mediumSize(context),
-                                bottom: mediumSize(context),
-                                child: SvgPicture.asset(
-                                  "assets/ic_star.svg",
-                                  alignment: Alignment.center,
-                                  width: fullWidth(context) / 14,
-                                ),
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    alignment: Alignment.center,
-                                    margin: EdgeInsets.only(
-                                        left: fullHeight(context) / 19),
-                                    child: Text("دوره شگفت انگیز",
-                                        style: theme.textTheme.headline4!
-                                            .copyWith(
-                                                fontSize:
-                                                    fullWidth(context) / 34,
-                                                color: Color(0xffcfcaca))),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: mediumSize(context)),
+                                  height: fullHeight(context) / 8.5,
+                                  decoration: BoxDecoration(
+                                      //     image: DecorationImage(
+                                      //         image: AssetImage("assets/1.jpg"),
+                                      //         fit: BoxFit.cover),
+                                      color: theme.backgroundColor,
+                                      borderRadius: BorderRadius.circular(16),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.1),
+                                          spreadRadius: 3,
+                                          blurRadius: 7,
+                                          offset: Offset(0, 6), // chan
+                                        ),
+                                      ]),
+                                  child: Stack(
+                                    children: [
+                                      Positioned(
+                                        left: 0,
+                                        top: mediumSize(context),
+                                        bottom: mediumSize(context),
+                                        child: SvgPicture.asset(
+                                          "assets/ic_crown.svg",
+                                          alignment: Alignment.center,
+                                          width: fullWidth(context) / 14,
+                                        ),
+                                      ),
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            alignment: Alignment.center,
+                                            margin: EdgeInsets.only(
+                                                left: fullHeight(context) / 19),
+                                            child: Text("دوره طلایی",
+                                                style: theme
+                                                    .textTheme.headline4!
+                                                    .copyWith(
+                                                        fontSize:
+                                                            fullWidth(context) /
+                                                                34,
+                                                        color:
+                                                            Color(0xffcfcaca))),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                left: fullHeight(context) / 19,
+                                                top: xSmallSize(context)),
+                                            child: Text("2020-4-40",
+                                                style: theme
+                                                    .textTheme.headline4!
+                                                    .copyWith(
+                                                        fontSize: caption1Size(
+                                                            context),
+                                                        color: theme
+                                                            .primaryColor)),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        left: fullHeight(context) / 19,
-                                        top: xSmallSize(context)),
-                                    child: Text("2022-8-80",
-                                        style: theme.textTheme.headline4!
-                                            .copyWith(
-                                                fontSize: caption1Size(context),
-                                                color: theme.primaryColor)),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: mediumSize(context)),
+                                  height: fullHeight(context) / 8.5,
+                                  decoration: BoxDecoration(
+                                      //     image: DecorationImage(
+                                      //         image: AssetImage("assets/1.jpg"),
+                                      //         fit: BoxFit.cover),
+                                      color: theme.backgroundColor,
+                                      borderRadius: BorderRadius.circular(16),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.1),
+                                          spreadRadius: 3,
+                                          blurRadius: 7,
+                                          offset: Offset(0, 6), // chan
+                                        ),
+                                      ]),
+                                  child: Stack(
+                                    children: [
+                                      Positioned(
+                                        left: 0,
+                                        top: mediumSize(context),
+                                        bottom: mediumSize(context),
+                                        child: SvgPicture.asset(
+                                          "assets/ic_star.svg",
+                                          alignment: Alignment.center,
+                                          width: fullWidth(context) / 14,
+                                        ),
+                                      ),
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            alignment: Alignment.center,
+                                            margin: EdgeInsets.only(
+                                                left: fullHeight(context) / 19),
+                                            child: Text("دوره شگفت انگیز",
+                                                style: theme
+                                                    .textTheme.headline4!
+                                                    .copyWith(
+                                                        fontSize:
+                                                            fullWidth(context) /
+                                                                34,
+                                                        color:
+                                                            Color(0xffcfcaca))),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                left: fullHeight(context) / 19,
+                                                top: xSmallSize(context)),
+                                            child: Text("2022-8-80",
+                                                style: theme
+                                                    .textTheme.headline4!
+                                                    .copyWith(
+                                                        fontSize: caption1Size(
+                                                            context),
+                                                        color: theme
+                                                            .primaryColor)),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              width: fullWidth(context),
+                              height: fullHeight(context) / 2.5,
+                              margin: EdgeInsets.only(
+                                  left: largeSize(context),
+                                  right: largeSize(context),
+                                  bottom: xlargeSize(context),
+                                  top: largeSize(context)),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.1),
+                                    spreadRadius: 3,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 4), // changes
                                   ),
                                 ],
+                                color: theme.backgroundColor,
                               ),
-                            ],
-                          ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  itemProfile(context, "آزمون سطح توانایی",
+                                      "assets/ic_shield.svg"),
+                                  itemProfile(context, "بارگیری آفلاین",
+                                      "assets/ic_download.svg"),
+                                  itemProfile(context, "راهنما و اطلاعات",
+                                      "assets/ic_question_mark.svg"),
+                                  itemProfile(context, "با ما تماس بگیرید",
+                                      "assets/ic_phone_call.svg",
+                                      hasDivider: false),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    Container(
-                      width: fullWidth(context),
-                      height: fullHeight(context) / 2.5,
-                      margin: EdgeInsets.only(
-                          left: largeSize(context),
-                          right: largeSize(context),
-                          bottom: xlargeSize(context),
-                          top: largeSize(context)),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.1),
-                            spreadRadius: 3,
-                            blurRadius: 7,
-                            offset: Offset(0, 4), // changes
-                          ),
-                        ],
-                        color: theme.backgroundColor,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          itemProfile(context, "آزمون سطح توانایی",
-                              "assets/ic_shield.svg"),
-                          itemProfile(context, "بارگیری آفلاین",
-                              "assets/ic_download.svg"),
-                          itemProfile(context, "راهنما و اطلاعات",
-                              "assets/ic_question_mark.svg"),
-                          itemProfile(context, "با ما تماس بگیرید",
-                              "assets/ic_phone_call.svg",
-                              hasDivider: false),
-                        ],
                       ),
                     ),
-                  ],
+                  ),
                 ),
               ),
-            ),
-          ),
-        ),
-      ),
-    ));
+            ));
   }
 }
 
