@@ -408,13 +408,12 @@ class LessonPageState extends State<LessonPage> {
                               left: mediumSize(context),
                               right: mediumSize(context),
                               bottom: mediumSize(context),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: CachedNetworkImageProvider(
-                                            lesson.image))),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(xxLargeSize(context)),
+                                child: imageWidget(lesson.image
+                                ,
+                                    fit: BoxFit.cover
+                                ),
                               ),
                             ),
                             lesson.isDone

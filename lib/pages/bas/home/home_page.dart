@@ -895,7 +895,7 @@ Widget lessonBox(CartBoxModel cartBoxModel, BuildContext context, bool isBusy) {
                 )
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(xxLargeSize(context)*2),
+              borderRadius: BorderRadius.circular(xxLargeSize(context)),
               child: SizedBox(
                 height: fullHeight(context) / 14,
                 width: fullHeight(context) / 14,
