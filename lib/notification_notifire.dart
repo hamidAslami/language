@@ -2,7 +2,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_language_app/services/push_notification_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:uni_links/uni_links.dart';
-
 import 'app/locator.dart';
 
 class NotificationVM extends FutureViewModel {

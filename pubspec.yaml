@@ -36,7 +36,9 @@ dependencies:
   flare_flutter: ^3.0.0
   lottie: ^1.0.1
   uni_links: ^0.5.1
+  cached_network_image: ^3.0.0
   video_player: ^2.1.1
+  image_fade: ^0.2.1
   page_transition: ^2.0.1-nullsafety.0
   liquid_swipe: ^2.1.0
   stacked_services: ^0.8.5
