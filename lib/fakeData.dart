@@ -103,9 +103,9 @@ MultiQuestion multiQuestion() {
     "Father",
     "Mother"
   ], [
-    "https://s18.picofile.com/file/8432325568/Boy.svg.html",
-    "https://s18.picofile.com/file/8432325576/Girl.svg.html",
-    "https://s19.picofile.com/file/8432325592/Man.svg.html",
-    "https://s19.picofile.com/file/8432325618/Woman.svg.html"
+    "https://s18.picofile.com/file/8432327818/boy.png",
+    "https://s18.picofile.com/file/8432327850/girl.png",
+    "https://s18.picofile.com/file/8432327884/man.png",
+    "https://s18.picofile.com/file/8432327926/woman.png"
   ], "Girl","");
 }

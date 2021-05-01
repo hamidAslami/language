@@ -1,11 +1,13 @@
 import 'dart:async';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_language_app/pages/video_player/video_player.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
+import 'package:flutter_language_app/widgets/image_widget.dart';
 
 class LessonDetailPage extends StatefulWidget {
   @override
@@ -135,7 +137,7 @@ class LessonDetailPageState extends State<LessonDetailPage>
                   duration: imageDuration,
                   child: lessonPic(
                       'assets/pic_lesson_dit.jpg',
-                      'https://images.vexels.com/media/users/3/145908/list/52eabf633ca6414e60a7677b0b917d92-male-avatar-maker.jpg',
+                      'https://s18.picofile.com/file/8432327818/boy.png',
                       context)),
               Positioned(
                   left: 0,
@@ -213,10 +215,10 @@ Widget lessonPic(String imagePerson, String imageAvatar, BuildContext context) {
         alignment: Alignment(-0.45, -0.68),
         child: Container(
           width: fullWidth(context) / 5.2,
+          child: imageWidget(imageAvatar,fit: BoxFit.contain),
           height: fullHeight(context) / 11.4,
           decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: NetworkImage(imageAvatar), fit: BoxFit.cover),
+            
               shape: BoxShape.circle,
               border: Border.all(color: Color(0xfff9be42), width: 4)),
         ),

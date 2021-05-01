@@ -2,12 +2,14 @@ import 'dart:math';
 
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_language_app/fakeData.dart';
 import 'package:flutter_language_app/models/MultiQuestion.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
+import 'package:flutter_language_app/widgets/image_widget.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:speech_to_text/speech_recognition_error.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
@@ -193,14 +195,11 @@ class SpeechPageState extends State<SpeechPage>
               Container(
                 alignment: Alignment.center,
                 width: fullWidth(context),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: imageWidget('https://s18.picofile.com/file/8432329126/photo_1512626120412_faf41adb4874.jpg')),
                 margin: EdgeInsets.symmetric(vertical: smallSize(context)),
                 height: fullWidth(context) / 2,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(
-                            "https://images.unsplash.com/photo-1512626120412-faf41adb4874?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"))),
               ),
               Container(
                 margin: EdgeInsets.only(top: mediumSize(context)),
@@ -367,11 +366,11 @@ class QuestionCardState extends State<QuestionCard> {
         child: Column(
           children: [
             Container(
+              height: 80,
+              width: 80,
               margin: EdgeInsets.only(top: smallSize(context)),
-              child: SvgPicture.network(
+              child: imageWidget(
                 widget._multiQuestion.images[widget.index],
-                height: 80,
-                width: 80,
                 fit: BoxFit.cover,
               ),
             ),

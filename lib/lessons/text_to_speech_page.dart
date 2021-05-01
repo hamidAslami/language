@@ -8,6 +8,7 @@ import 'package:flutter_language_app/fakeData.dart';
 import 'package:flutter_language_app/models/MultiQuestion.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
+import 'package:flutter_language_app/widgets/image_widget.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:speech_to_text/speech_recognition_error.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
@@ -232,11 +233,12 @@ class QuestionCardState extends State<QuestionCard> {
         child: Column(
           children: [
             Container(
+              height: 80,
+              width: 80,
               margin: EdgeInsets.only(top: smallSize(context)),
-              child: SvgPicture.network(
+              child: imageWidget(
                 widget._multiQuestion.images[widget.index],
-                height: 80,
-                width: 80,
+
                 fit: BoxFit.cover,
               ),
             ),
