@@ -10,6 +10,7 @@ class NotificationVM extends FutureViewModel {
       locator<PushNotificationService>();
 
   Future handleStartUpLogic() async {
+
     // await initUniLinks();
     await _pushNotificationService.initialise();
   }
