@@ -1,20 +1,20 @@
 {
   "project_info": {
-    "project_number": "361291060502",
-    "project_id": "language-c2cf8",
-    "storage_bucket": "language-c2cf8.appspot.com"
+    "project_number": "243759278131",
+    "project_id": "melal-app",
+    "storage_bucket": "melal-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:361291060502:android:bd558b13ffb60485aeec37",
+        "mobilesdk_app_id": "1:243759278131:android:7b70ab2ab3d1586ef09b46",
         "android_client_info": {
           "package_name": "dev.androidcoding.flutter_language_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "361291060502-mo0bur70rk6hb64cg0rcbfog10ahg8pt.apps.googleusercontent.com",
+          "client_id": "243759278131-omnlr288a54m5tcld6fbkl4g45vjt6ok.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "dev.androidcoding.flutter_language_app",
@@ -22,20 +22,20 @@
           }
         },
         {
-          "client_id": "361291060502-adlnkg30b0ggfrshis6lel69m7hvj0tu.apps.googleusercontent.com",
+          "client_id": "243759278131-ga3tojn3nhabvjrpf8vm92o26alo9car.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCPfZucEOQUaE82z8VNdNCy97Dz7W-hqyI"
+          "current_key": "AIzaSyA-gW0xGG_loI26XkDj6iLWiPWPLqyUi7c"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "361291060502-adlnkg30b0ggfrshis6lel69m7hvj0tu.apps.googleusercontent.com",
+              "client_id": "243759278131-ga3tojn3nhabvjrpf8vm92o26alo9car.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

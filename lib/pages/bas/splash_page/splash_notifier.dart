@@ -17,7 +17,7 @@ class SplashVM extends FutureViewModel {
     if (pref.isFirstTimeLaunch) {
       _navigationService.pushNamedAndRemoveUntil(Routes.loginPage);
     } else {
-      _navigationService.pushNamedAndRemoveUntil(Routes.homePage);
+      _navigationService.pushNamedAndRemoveUntil(Routes.mainPage);
     }
   }
 
