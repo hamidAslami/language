@@ -1,7 +1,12 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_language_app/pages/bas/intro/intro_page.dart';
+import 'package:flutter_language_app/pages/bas/lesson_page/lesson_page.dart';
+import 'package:flutter_language_app/pages/listening_page/listening_page.dart';
+import 'package:flutter_language_app/pages/profile_page/profile_page.dart';
+import 'package:flutter_language_app/theme/colors.dart';
+import 'package:flutter_language_app/theme/dimens.dart';
 import 'bas/home/home_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -51,14 +56,14 @@ class MainPageState extends State<MainPage>
     switch (_index) {
       case 0:
         return HomePage();
-      /*case 1:
-        return DesignApp();
+      case 1:
+        return ListeningPage();
       case 2:
-        return ArtistAlbum();
+        return LessonPage();
       case 3:
-        return NotificationPage();*/
-      // case 4:
-      //   return ProfilePage();
+        return IntroPage();
+      case 4:
+        return ProfilePage();
       default:
         return HomePage();
     }
@@ -74,6 +79,7 @@ class MainPageState extends State<MainPage>
           scale: animation,
           child: FloatingActionButton(
             elevation: 8,
+            backgroundColor: AppColors.accentColor,
             child: Icon(
               Icons.brightness_3,
             ),
@@ -85,10 +91,14 @@ class MainPageState extends State<MainPage>
           icons: iconList,
           activeIndex: _index,
           elevation: 30,
-          inactiveColor: Colors.grey,
+          rightCornerRadius: largeSize(context),
+          leftCornerRadius: largeSize(context),
+          inactiveColor: AppColors.accentColor,
+          activeColor: AppColors.primaryColor,
+          backgroundColor: AppColors.background,
           notchAndCornersAnimation: animation,
           splashSpeedInMilliseconds: 300,
-          notchSmoothness: NotchSmoothness.verySmoothEdge,
+          notchSmoothness: NotchSmoothness.softEdge,
           gapLocation: GapLocation.center,
           onTap: (index) => setState(() => _index = index),
         ),

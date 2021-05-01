@@ -103,9 +103,9 @@ MultiQuestion multiQuestion() {
     "Father",
     "Mother"
   ], [
-    "https://s18.picofile.com/file/8432327818/boy.png",
-    "https://s18.picofile.com/file/8432327850/girl.png",
-    "https://s18.picofile.com/file/8432327884/man.png",
-    "https://s18.picofile.com/file/8432327926/woman.png"
+    "https://www.flaticon.com/svg/static/icons/svg/145/145867.svg",
+    "https://www.flaticon.com/svg/static/icons/svg/145/145852.svg",
+    "https://www.flaticon.com/svg/static/icons/svg/145/145859.svg",
+    "https://www.flaticon.com/svg/static/icons/svg/145/145862.svg"
   ], "Girl","");
 }

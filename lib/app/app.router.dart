@@ -7,24 +7,26 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
-import 'package:flutter_language_app/pages/bas/verify_page/verify_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
-
 import '../pages/bas/home/home_page.dart';
 import '../pages/bas/login_page/login_page.dart';
 import '../pages/bas/splash_page/splash_page.dart';
 import '../pages/create_user/enter_name_page.dart';
+import '../pages/main_page.dart';
 
 class Routes {
   static const String splashPage = '/';
   static const String loginPage = '/login-page';
   static const String homePage = '/home-page';
   static const String namePage = '/name-page';
+  static const String mainPage = '/main-page';
   static const all = <String>{
     splashPage,
     loginPage,
     homePage,
     namePage,
+    mainPage,
   };
 }
 
@@ -36,6 +38,7 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.loginPage, page: LoginPage),
     RouteDef(Routes.homePage, page: HomePage),
     RouteDef(Routes.namePage, page: NamePage),
+    RouteDef(Routes.mainPage, page: MainPage),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -59,10 +62,27 @@ class StackedRouter extends RouterBase {
       );
     },
     NamePage: (data) {
+      var args = data.getArgs<NamePageArguments>(nullOk: false);
       return MaterialPageRoute<dynamic>(
-        builder: (context) => NamePage(controller),
+        builder: (context) => NamePage(args.pageController),
+        settings: data,
+      );
+    },
+    MainPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => MainPage(),
         settings: data,
       );
     },
   };
+}
+
+/// ************************************************************************
+/// Arguments holder classes
+/// *************************************************************************
+
+/// NamePage arguments holder class
+class NamePageArguments {
+  final PageController pageController;
+  NamePageArguments({required this.pageController});
 }

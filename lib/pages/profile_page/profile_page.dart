@@ -55,7 +55,7 @@ class ProfilePageState extends State<ProfilePage> {
                               child: Text(
                                   (model.data?.name != ""
                                       ? model.data!.name
-                                      : "اطلاعات وارد نشده است !")!,
+                                      : "اطلاعات وارد نشده است")!,
                                   style: theme.textTheme.headline4!.copyWith(
                                       color: AppColors.textColorLight,
                                       fontSize: bodyText1Size(context))),
