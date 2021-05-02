@@ -10,6 +10,7 @@ import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
 import 'package:flutter_language_app/widgets/appbar.dart';
+import 'package:flutter_language_app/widgets/image_loading.dart';
 import 'package:flutter_language_app/widgets/image_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
@@ -106,9 +107,26 @@ class LessonPageState extends State<LessonPage> {
                                         child: SizedBox(
                                           width: fullWidth(context) / 2,
                                           height: fullWidth(context) / 2,
-                                          child: imageWidget(
-                                              "https://s17.picofile.com/file/8417368668/bg_lesson_1_5x.png",
-                                              fit: BoxFit.cover),
+                                          child: CachedNetworkImage(
+                                            fit: BoxFit.cover,
+                                            fadeInCurve: Curves.easeInCubic,
+                                            fadeInDuration: Duration(milliseconds: 200),
+                                            imageUrl: "https://s17.picofile.com/file/8417368668/bg_lesson_1_5x.png" ?? "",
+                                            placeholder: (context, url) => Container(
+                                              width: largeSize(context),
+                                              height: largeSize(context),
+                                              child: Center(
+                                                child: imageLoading(),
+                                              ),
+                                            ),
+
+                                            errorWidget: (context, url, error) => Center(
+                                                child: Container(
+                                                  child: Icon(Icons.broken_image),
+                                                )),
+                                            // progressIndicatorBuilder: (context, url, downloadProgress) =>
+                                            //     CupertinoActivityIndicator(),
+                                          ),
                                         ),
                                       ),
                                       Positioned(

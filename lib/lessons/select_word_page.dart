@@ -6,6 +6,7 @@ import 'package:flutter_language_app/fakeData.dart';
 import 'package:flutter_language_app/models/MultiQuestion.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
+import 'package:flutter_language_app/widgets/image_widget.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SelectWordPage extends StatefulWidget {
@@ -81,11 +82,16 @@ class SelectWordPageState extends State<SelectWordPage> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                  top: xlargeSize(context),
+                  top: xlargeSize(context)/1.2,
                 ),
-                child: RaisedButton(
-                  splashColor: Color(0xff512da8),
-                  elevation: standardSize(context),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    elevation: standardSize(context),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: xxLargeSize(context),
+                        vertical: smallSize(context)
+                    ),
+                  ),
                   onPressed: () async {
                     if (question.selectedAnswer == question.answerCorrect) {
                       await playWin();
@@ -178,11 +184,11 @@ class QuestionCardState extends State<QuestionCard> {
         child: Column(
           children: [
             Container(
+              height: 80,
+              width: 80,
               margin: EdgeInsets.only(top: smallSize(context)),
-              child: SvgPicture.network(
+              child: imageWidget(
                 widget._multiQuestion.images[widget.index],
-                height: 80,
-                width: 80,
                 fit: BoxFit.cover,
               ),
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_language_app/lessons/select_word_page.dart';
+import 'package:flutter_language_app/lessons/text_to_speech_page.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
@@ -94,6 +95,7 @@ class BaseLessonPageState extends State<BaseLessonPage> {
                 physics: new NeverScrollableScrollPhysics(),
                 children: [
                   SelectWordPage(controller),
+                  SpeechPage2(controller),
                   SpeechPage(controller),
                 ],
               ),

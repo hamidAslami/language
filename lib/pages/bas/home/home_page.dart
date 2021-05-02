@@ -16,7 +16,6 @@ import 'package:flutter_language_app/pages/profile_page/profile_page.dart';
 import 'package:flutter_language_app/theme/colors.dart';
 
 import 'package:flutter_language_app/theme/dimens.dart';
-import 'package:flutter_language_app/theme/next.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
 import 'package:flutter_language_app/widgets/cupertinoContext.dart';
 import 'package:flutter_language_app/widgets/image_widget.dart';
