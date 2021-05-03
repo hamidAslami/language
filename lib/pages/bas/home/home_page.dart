@@ -1,7 +1,9 @@
 import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+
 import 'package:flutter_language_app/fakeData.dart';
 import 'package:flutter_language_app/models/cart_box.dart';
 import 'package:flutter_language_app/models/category_model.dart';
@@ -9,10 +11,13 @@ import 'package:flutter_language_app/pages/bas/home/home_notifier.dart';
 import 'package:flutter_language_app/pages/bas/lesson_page/lesson_page.dart';
 import 'package:flutter_language_app/pages/listening_page/listening_page.dart';
 import 'package:flutter_language_app/pages/profile_page/profile_page.dart';
+
 import 'package:flutter_language_app/theme/colors.dart';
+
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
 import 'package:flutter_language_app/widgets/cupertinoContext.dart';
+import 'package:flutter_language_app/widgets/image_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:ndialog/ndialog.dart';
@@ -185,10 +190,12 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
     return ViewModelBuilder<HomeVM>.reactive(
         viewModelBuilder: () => HomeVM(),
-        builder: (context, model, child) => Directionality(
-            textDirection: TextDirection.rtl,
-            child: model.isBusy
-                ? Scaffold(
+        builder: (context, model, child) =>
+            Directionality(
+                textDirection: TextDirection.rtl,
+                child: model.isBusy
+                    ? homePageShimmer(context, model.isBusy)
+                    : Scaffold(
                     backgroundColor: theme.backgroundColor,
                     body: SingleChildScrollView(
                         physics: BouncingScrollPhysics(),
@@ -202,262 +209,60 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     horizontal: standardSize(context)),
                                 child: Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  MainAxisAlignment.spaceBetween,
                                   children: [
                                     Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         Container(
-                                            margin: EdgeInsets.only(
-                                                right: xSmallSize(context)),
-                                            child: Shimmer.fromColors(
-                                                baseColor: Colors.grey.shade300,
-                                                highlightColor:
-                                                    Colors.grey.shade200,
-                                                child: Container(
-                                                  decoration: BoxDecoration(
-                                                      color:
-                                                          Colors.grey.shade300,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              xxSmallSize(
-                                                                  context))),
-                                                  width: xxLargeSize(context),
-                                                  height: smallSize(context),
-                                                ))),
+                                          margin: EdgeInsets.only(
+                                              right: xSmallSize(context)),
+                                          child: Text("صبح بخیـر!",
+                                              style: theme.textTheme.headline4!
+                                                  .copyWith(
+                                                  color:
+                                                  theme.primaryColor)),
+                                        ),
                                         Container(
-                                            margin: EdgeInsets.only(
-                                                top: xSmallSize(context),
-                                                right: xSmallSize(context)),
-                                            child: Shimmer.fromColors(
-                                                baseColor: Colors.grey.shade300,
-                                                highlightColor:
-                                                    Colors.grey.shade200,
-                                                child: Container(
-                                                  decoration: BoxDecoration(
-                                                      color:
-                                                          Colors.grey.shade300,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              xxSmallSize(
-                                                                  context))),
-                                                  width: xxLargeSize(context) /
-                                                      1.5,
-                                                  height: smallSize(context),
-                                                ))),
+                                          margin: EdgeInsets.only(
+                                              right: xSmallSize(context)),
+                                          child: Text(
+                                            (model.data?.name != ''
+                                                ? model.data!.name
+                                                : "اطلاعات وارد نشده است !")!,
+                                            style: theme.textTheme.bodyText2!
+                                                .copyWith(
+                                                color: Color(0xff4c456f)),
+                                          ),
+                                        ),
                                       ],
                                     ),
-                                    Shimmer.fromColors(
-                                      baseColor: Colors.grey.shade300,
-                                      highlightColor: Colors.grey.shade200,
-                                      child: Container(
-                                          decoration: BoxDecoration(
-                                              color: Colors.grey.shade300,
-                                              shape: BoxShape.circle),
-                                          width: fullWidth(context) / 7.5,
-                                          height: fullWidth(context) / 7.5),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Shimmer.fromColors(
-                                baseColor: Colors.grey.shade300,
-                                highlightColor: Colors.grey.shade200,
-                                child: Container(
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: standardSize(context),
-                                      vertical: standardSize(context)),
-                                  decoration: BoxDecoration(
-                                      color: Colors.grey.shade300,
-                                      borderRadius: BorderRadius.circular(16)),
-                                  width: fullWidth(context),
-                                  height: fullHeight(context) / 4.5,
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.symmetric(
-                                    vertical: xSmallSize(context),
-                                    horizontal: standardSize(context)),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Shimmer.fromColors(
-                                        baseColor: Colors.grey.shade300,
-                                        highlightColor: Colors.grey.shade200,
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                              color: Colors.grey.shade300,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      xxSmallSize(context))),
-                                          width: fullWidth(context) / 2.3,
-                                          height: smallSize(context),
-                                        )),
-                                    Shimmer.fromColors(
-                                        baseColor: Colors.grey.shade300,
-                                        highlightColor: Colors.grey.shade200,
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                              color: Colors.grey.shade300,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      xxSmallSize(context))),
-                                          width: xxLargeSize(context) / 1.5,
-                                          height: smallSize(context),
-                                        ))
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                width: fullWidth(context),
-                                height: fullHeight(context) / 4,
-                                child: PageView.builder(
-                                    physics: BouncingScrollPhysics(),
-                                    pageSnapping: true,
-                                    itemCount: categoryList().length,
-                                    controller: PageController(
-                                        initialPage: 1, viewportFraction: 0.8),
-                                    itemBuilder: (context, index) =>
-                                        categoryCard(categoryList()[index],
-                                            context, model.isBusy)),
-                                // child: ListView.builder(
-                                //   padding: EdgeInsets.all(0),
-                                //   shrinkWrap: true,
-                                //   physics: BouncingScrollPhysics(),
-                                //   scrollDirection: Axis.horizontal,
-                                //   itemCount: categoryList().length,
-                                //   itemBuilder: (context, index) =>
-                                //       categoryCard(categoryList()[index], context),
-                                // ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.symmetric(
-                                    vertical: xSmallSize(context),
-                                    horizontal: standardSize(context)),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Shimmer.fromColors(
-                                        baseColor: Colors.grey.shade300,
-                                        highlightColor: Colors.grey.shade200,
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                              color: Colors.grey.shade300,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      xxSmallSize(context))),
-                                          width: fullWidth(context) / 2.3,
-                                          height: smallSize(context),
-                                        )),
-                                    Shimmer.fromColors(
-                                        baseColor: Colors.grey.shade300,
-                                        highlightColor: Colors.grey.shade200,
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                              color: Colors.grey.shade300,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      xxSmallSize(context))),
-                                          width: xxLargeSize(context) / 1.5,
-                                          height: smallSize(context),
-                                        ))
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                child: ListView.builder(
-                                  padding: EdgeInsets.only(
-                                      bottom: mediumSize(context),
-                                      right: standardSize(context),
-                                      left: standardSize(context)),
-                                  physics: BouncingScrollPhysics(),
-                                  scrollDirection: Axis.vertical,
-                                  shrinkWrap: true,
-                                  itemCount: homeLessonList().length,
-                                  itemBuilder: (context, index) => lessonBox(
-                                      homeLessonList()[index],
-                                      context,
-                                      model.isBusy),
-                                ),
-                              ),
-                            ],
-                          ),
-                        )))
-                : Scaffold(
-                    backgroundColor: theme.backgroundColor,
-                    body: SingleChildScrollView(
-                        physics: BouncingScrollPhysics(),
-                        child: Container(
-                          margin: EdgeInsets.only(top: xlargeSize(context)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ScaleTransition(
-                                scale: _animationHeader,
-                                child: Container(
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: standardSize(context)),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            margin: EdgeInsets.only(
-                                                right: xSmallSize(context)),
-                                            child: Text("صبح بخیـر!",
-                                                style: theme
-                                                    .textTheme.headline4!
-                                                    .copyWith(
-                                                        color: theme
-                                                            .primaryColor)),
+                                    CupertinoContextMenuCustom(
+                                      previewSize: Size(fullWidth(context) / 5,
+                                          fullWidth(context) / 5),
+                                      previewBuilder: (BuildContext context,
+                                          Animation<double> animation,
+                                          Widget child) {
+                                        return FittedBox(
+                                          fit: BoxFit.cover,
+                                          child: Container(
+                                            height: fullWidth(context) / 8,
+                                            decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                image: DecorationImage(
+                                                    fit: BoxFit.cover,
+                                                    image: AssetImage(avatar))),
+                                            width: fullWidth(context) / 8,
                                           ),
-                                          Container(
-                                            margin: EdgeInsets.only(
-                                                right: xSmallSize(context)),
-                                            child: Text(
-                                              model.data?.name ??
-                                                  "اطلاعات وارد نشده است",
-                                              style: theme.textTheme.bodyText2!
-                                                  .copyWith(
-                                                      color: Color(0xff4c456f)),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      CupertinoContextMenuCustom(
-                                        previewSize: Size(
-                                            fullWidth(context) / 5,
-                                            fullWidth(context) / 5),
-                                        previewBuilder: (BuildContext context,
-                                            Animation<double> animation,
-                                            Widget child) {
-                                          return FittedBox(
-                                            fit: BoxFit.cover,
-                                            child: Container(
-                                              height: fullWidth(context) / 8,
-                                              decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  image: DecorationImage(
-                                                      fit: BoxFit.cover,
-                                                      image:
-                                                          AssetImage(avatar))),
-                                              width: fullWidth(context) / 8,
-                                            ),
-                                          );
-                                        },
-                                        actions: [
-                                          CupertinoContextMenuAction(
-                                              onPressed: () async {
-                                                Navigator.of(context,
-                                                        rootNavigator: true)
-                                                    .pop();
+                                        );
+                                      },
+                                      actions: [
+                                        CupertinoContextMenuAction(
+                                            onPressed: () async {
+                                              Navigator.of(context,
+                                                  rootNavigator: true)
+                                                  .pop();
 
                                                 setState(() {
                                                   avatar = "assets/avatar2.jpg";
@@ -1090,9 +895,3 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ),
         );
   }
-
-}
-
-////////////// Widget Category Card //////////////
-
-
