@@ -166,7 +166,7 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
         : _animateCourseCard = true;
 
     _isStartLessonCard
-        ? Future.delayed(Duration(milliseconds: 3500), () {
+        ? Future.delayed(Duration(milliseconds: 4000), () {
             setState(() {
               _animateLessonCard = true;
               _isStartLessonCard = false;
@@ -1003,11 +1003,11 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   MaterialPageRoute(builder: (context) => LessonPage()));
             },
             child: AnimatedOpacity(
-              duration: Duration(milliseconds: 3000),
+              duration: Duration(milliseconds: 2000),
               opacity: _animateLessonCard ? 1 : 0,
               curve: Curves.easeInOutQuart,
               child: AnimatedPadding(
-                duration: Duration(milliseconds: 3500),
+                duration: Duration(milliseconds: 2500),
                 padding: _animateLessonCard
                     ? const EdgeInsets.all(4.0)
                     : const EdgeInsets.only(top: 10),
