@@ -134,25 +134,27 @@ class SpeechPage2State extends State<SpeechPage2>
                   ),
                 ),
 
-                Center(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: smallSize(context),
-                      vertical: smallSize(context)
-                    ),
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.circular(
-                          smallSize(context)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: smallSize(context)),
+                      child: FloatingActionButton(
+                        onPressed: _speak2,
+                        elevation: 2,
+                        backgroundColor: appTheme(context).accentColor,
+                        splashColor: Color(0xffFF7146C7),
+                        child: Icon(
+                          Icons.music_note,
                         ),
-                        border: Border.all(
-                          color: Colors.blue.shade600,
-                          width: 2
-                        )
                       ),
-                      margin: EdgeInsets.only(right: xSmallSize(context)),
+                    ),
+                    Container(
+                      // margin: EdgeInsets.only(right: smallSize(context)),
                       child: Text('حمام',
-                      style: appTheme(context).textTheme.subtitle1,)),
+                          style: appTheme(context).textTheme.subtitle1),
+                    )
+                  ],
                 ),
 
                 Container(
@@ -162,32 +164,30 @@ class SpeechPage2State extends State<SpeechPage2>
                     child: _inputSection()),
                 Container(
                   margin: EdgeInsets.only(
-                    top: xxLargeSize(context)/1.15,
+                    top: xxLargeSize(context) / 1.15,
                   ),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: xxLargeSize(context),
-                        vertical: smallSize(context)
-                      ),
                       elevation: standardSize(context),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: xxLargeSize(context),
+                          vertical: smallSize(context)
+                      ),
                     ),
                     onPressed: () async {
-                      if (question.selectedAnswer == question.answerCorrect) {
                         widget.controller.animateToPage(
                           widget.controller.page!.toInt() + 1,
                           duration: Duration(milliseconds: 200),
                           curve: Curves.easeInQuad,
                         );
-                      }
-                    },
+                      },
                     child: Text(
                       "ادامـه دهـید",
                       style: Theme.of(context).textTheme.headline4!.copyWith(
                           fontSize: caption1Size(context),
                           color: Theme.of(context).backgroundColor),
                     ),
-                  ),
+                  )
                 ), //ادامه دهید
               ],
             ),
@@ -210,12 +210,9 @@ class SpeechPage2State extends State<SpeechPage2>
               right: smallSize(context),
             ),
             border: OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(smallSize(context))
-            ),
-            hintStyle: TextStyle(
-                color: Colors.black26
-            ),
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(smallSize(context))),
+            hintStyle: TextStyle(color: Colors.black26),
             hintText: 'متن رو وارد کن مثال ( حمام, فرهنگ , آپـارتمـان )',
             filled: true,
             fillColor: Colors.grey.shade100),
