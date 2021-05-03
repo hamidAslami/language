@@ -134,7 +134,7 @@ class SpeechPage2State extends State<SpeechPage2>
                   ),
                 ),
 
-                Row(
+                Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
