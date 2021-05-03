@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_language_app/fakeData.dart';
 import 'package:flutter_language_app/models/MultiQuestion.dart';
 import 'package:flutter_language_app/theme/app_theme.dart';
+import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
 import 'package:flutter_language_app/widgets/image_widget.dart';
@@ -119,75 +120,132 @@ class SpeechPage2State extends State<SpeechPage2>
                         style: Theme.of(context)
                             .textTheme
                             .subtitle1!
-                            .copyWith(color: Colors.blueAccent),
+                            .copyWith(color: Theme.of(context).accentColor),
                       ),
                     ),
                   ],
                 ),
                 Container(
-                  margin: EdgeInsets.symmetric(vertical: largeSize(context)),
-                  child: Center(
-                    child: Text(
-                      "جـمله زیـر را تـرجمه کن !",
-                      style: Theme.of(context).textTheme.headline4,
-                    ),
+                  margin: EdgeInsets.symmetric(
+                      vertical: standardSize(context)
+                  ),
+                  child: Row(
+                    children: [
+
+                      Text(
+                        "جـمله زیـر را تـرجمه کن !",
+                        style: Theme.of(context).textTheme.headline4,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                          right: smallSize(context)
+                        ),
+                        child: Image.asset('assets/office-material.png',
+                        height: 30,
+                        width: 30,)
+                      ),
+                    ],
                   ),
                 ),
+                Center(
+                  child: Container(
+                      padding: EdgeInsets.only(
+                        top: mediumSize(context),
+                        bottom: 0,
 
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(left: smallSize(context)),
-                      child: FloatingActionButton(
-                        onPressed: _speak2,
-                        elevation: 2,
-                        backgroundColor: appTheme(context).accentColor,
-                        splashColor: Color(0xffFF7146C7),
-                        child: Icon(
-                          Icons.music_note,
+                      ),
+                      // width: fullWidth(context)/1.2,
+                      // height: fullWidth(context)/2,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(smallSize(context)),
+                          color: appTheme(context).backgroundColor,
+                          boxShadow: [
+                            BoxShadow(
+                                blurRadius: 10,
+                                spreadRadius: 0.4,
+                                color: Colors.grey.shade300,
+                                offset: Offset(
+                                    0.0,0.5
+                                )
+                            )
+                          ]
+                      ),
+                      margin: EdgeInsets.symmetric(vertical: largeSize(context),horizontal: xSmallSize(context)),
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(
+                              top: largeSize(context),
+                                right: smallSize(context),
+                                left: smallSize(context)
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Center(
+                                  child: Text('حمام',
+                                      style: appTheme(context).textTheme.subtitle1),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    SizedBox(
+                                      width: xlargeSize(context)/1.5,
+                                      height: xlargeSize(context)/1.5,
+                                      child: FloatingActionButton(
+                                        onPressed: _speak2,
+                                        splashColor: Colors.grey.shade100,
+                                        backgroundColor: AppColors.background,
+                                        elevation: 2.25,
+                                        child: Icon(
+                                          CupertinoIcons.speaker_3_fill,
+                                          size: standardSize(context),
+                                          color: AppColors.accentColor,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                              alignment: Alignment.center,
+                              width: fullWidth(context),
+                              margin: EdgeInsets.only(top: mediumSize(context)),
+                              child: _inputSection()),
+                        ],
+                      )
+                  ),
+                ),
+                Container(
+                    margin: EdgeInsets.only(
+                      top: xxLargeSize(context) / 2.2,
+                    ),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Theme.of(context).accentColor,
+                        elevation: standardSize(context),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: xxLargeSize(context),
+                            vertical: smallSize(context)
                         ),
                       ),
-                    ),
-                    Container(
-                      // margin: EdgeInsets.only(right: smallSize(context)),
-                      child: Text('حمام',
-                          style: appTheme(context).textTheme.subtitle1),
-                    )
-                  ],
-                ),
-
-                Container(
-                    alignment: Alignment.center,
-                    width: fullWidth(context),
-                    margin: EdgeInsets.symmetric(vertical: largeSize(context)),
-                    child: _inputSection()),
-                Container(
-                  margin: EdgeInsets.only(
-                    top: xxLargeSize(context) / 1.15,
-                  ),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      elevation: standardSize(context),
-                      padding: EdgeInsets.symmetric(
-                          horizontal: xxLargeSize(context),
-                          vertical: smallSize(context)
-                      ),
-                    ),
-                    onPressed: () async {
+                      onPressed: () async {
                         widget.controller.animateToPage(
                           widget.controller.page!.toInt() + 1,
                           duration: Duration(milliseconds: 200),
                           curve: Curves.easeInQuad,
                         );
                       },
-                    child: Text(
-                      "ادامـه دهـید",
-                      style: Theme.of(context).textTheme.headline4!.copyWith(
-                          fontSize: caption1Size(context),
-                          color: Theme.of(context).backgroundColor),
-                    ),
-                  )
+                      child: Text(
+                        "ادامـه دهـید",
+                        style: Theme.of(context).textTheme.headline4!.copyWith(
+                            fontSize: caption1Size(context),
+                            color: Theme.of(context).backgroundColor),
+                      ),
+                    )
                 ), //ادامه دهید
               ],
             ),
@@ -198,7 +256,6 @@ class SpeechPage2State extends State<SpeechPage2>
   }
 
   Widget _inputSection() => Container(
-      alignment: Alignment.topCenter,
       child: TextField(
         onChanged: (String value) {
           _onChange(value);
@@ -206,13 +263,15 @@ class SpeechPage2State extends State<SpeechPage2>
         style: TextStyle(color: Colors.black),
         decoration: InputDecoration(
             contentPadding: EdgeInsets.only(
-              bottom: xxLargeSize(context),
+              bottom: xxLargeSize(context)/1.2,
               right: smallSize(context),
             ),
             border: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(smallSize(context))),
-            hintStyle: TextStyle(color: Colors.black26),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(smallSize(context)),
+                    bottomRight: Radius.circular(smallSize(context))
+                )),
+            hintStyle: appTheme(context).textTheme.subtitle2!.copyWith(color: Colors.grey.shade400),
             hintText: 'متن رو وارد کن مثال ( حمام, فرهنگ , آپـارتمـان )',
             filled: true,
             fillColor: Colors.grey.shade100),

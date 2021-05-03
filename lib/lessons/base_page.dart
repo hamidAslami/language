@@ -69,6 +69,7 @@ class BaseLessonPageState extends State<BaseLessonPage> {
                           roundedEdges: Radius.circular(10),
                           padding: 0,
                           totalSteps: 6,
+                          selectedColor: Theme.of(context).accentColor,
                         ))),
                 IconButton(
                     icon: Icon(

@@ -180,7 +180,7 @@ class SpeechPageState extends State<SpeechPage>
                       style: Theme.of(context)
                           .textTheme
                           .subtitle1!
-                          .copyWith(color: Colors.blueAccent),
+                          .copyWith(color: Theme.of(context).accentColor),
                     ),
                   ),
                 ],
@@ -273,6 +273,7 @@ class SpeechPageState extends State<SpeechPage>
                 ),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                    primary: Theme.of(context).accentColor,
                     elevation: standardSize(context),
                     padding: EdgeInsets.symmetric(
                         horizontal: xxLargeSize(context),
