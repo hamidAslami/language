@@ -134,24 +134,25 @@ class SpeechPage2State extends State<SpeechPage2>
                   ),
                 ),
 
-                Row(
-                  children: [
-                    Container(
-                        width: xlargeSize(context) / 1.3,
-                        height: xlargeSize(context) / 1.3,
-                        decoration: BoxDecoration(
-                            color: Colors.amber, shape: BoxShape.circle),
-                        child: IconButton(
-                          splashColor: Colors.amberAccent,
-                            icon: Icon(Icons.play_arrow),
-                            onPressed: () {
-                              _speak2();
-                            })),
-                    Container(
-                        margin: EdgeInsets.only(right: xSmallSize(context)),
-                        child: Text('حمام',
-                        style: appTheme(context).textTheme.subtitle1,)),
-                  ],
+                Center(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: smallSize(context),
+                      vertical: smallSize(context)
+                    ),
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(
+                          smallSize(context)
+                        ),
+                        border: Border.all(
+                          color: Colors.blue.shade600,
+                          width: 2
+                        )
+                      ),
+                      margin: EdgeInsets.only(right: xSmallSize(context)),
+                      child: Text('حمام',
+                      style: appTheme(context).textTheme.subtitle1,)),
                 ),
 
                 Container(
@@ -202,19 +203,21 @@ class SpeechPage2State extends State<SpeechPage2>
         onChanged: (String value) {
           _onChange(value);
         },
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.black),
         decoration: InputDecoration(
             contentPadding: EdgeInsets.only(
               bottom: xxLargeSize(context),
-              top: smallSize(context),
               right: smallSize(context),
             ),
-            border: InputBorder.none,
+            border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(smallSize(context))
+            ),
             hintStyle: TextStyle(
-
+                color: Colors.black26
             ),
             hintText: 'متن رو وارد کن مثال ( حمام, فرهنگ , آپـارتمـان )',
             filled: true,
-            fillColor: appTheme(context).accentColor),
+            fillColor: Colors.grey.shade100),
       ));
 }
