@@ -23,6 +23,7 @@ class MyApp2 extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
         statusBarColor: AppColors.background,
+        statusBarBrightness: Brightness.light,
         statusBarIconBrightness: Brightness.dark));
 
     // SystemChrome.setPreferredOrientations([
