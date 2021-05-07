@@ -25,6 +25,7 @@ class ListeningPageState extends State<ListeningPage> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
+          brightness: Brightness.light,
           leading: IconButton(
             splashColor: theme.primaryColor,
             icon: Icon(

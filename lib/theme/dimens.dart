@@ -121,8 +121,8 @@ double headline3Size(BuildContext context) {
 
 double headline4Size(BuildContext context) {
   if (MediaQuery.of(context).size.width > 600) {
-    return MediaQuery.of(context).size.width / 28;
+    return MediaQuery.of(context).size.width / 30;
   } else
-    return MediaQuery.of(context).size.width / 18;
+    return MediaQuery.of(context).size.width / 20;
 }
 

@@ -74,6 +74,10 @@ dependencies:
   google_nav_bar: ^5.0.3
   like_button: ^2.0.2
   fluttericon: ^2.0.0
+  image_picker: ^0.7.4
+  image_cropper: ^1.4.0
+  camera: ^0.8.1
+
 
 
 dev_dependencies:

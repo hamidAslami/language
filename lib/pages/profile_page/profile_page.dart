@@ -1,10 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_language_app/pages/profile_page/profile_notifier.dart';
-
 import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
+import 'package:flutter_language_app/widgets/loading_widget.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:stacked/stacked.dart';
 
@@ -29,7 +30,7 @@ class ProfilePageState extends State<ProfilePage> {
                 child: Container(
                   child: Scaffold(
                     backgroundColor: theme.backgroundColor,
-                    body: Container(
+                    body: model.isBusy ? loadingWidget(context) : Container(
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               fit: BoxFit.cover,
@@ -316,13 +317,14 @@ class ProfilePageState extends State<ProfilePage> {
                             Container(
                               width: fullWidth(context),
                               height: fullHeight(context) / 2.5,
+                              padding: EdgeInsets.only(top: mediumSize(context)),
                               margin: EdgeInsets.only(
                                   left: largeSize(context),
                                   right: largeSize(context),
                                   bottom: xlargeSize(context),
                                   top: largeSize(context)),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(16),
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.grey.withOpacity(0.1),
@@ -334,11 +336,13 @@ class ProfilePageState extends State<ProfilePage> {
                                 color: theme.backgroundColor,
                               ),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   itemProfile(context, "آزمون سطح توانایی",
                                       "assets/ic_shield.svg"),
                                   itemProfile(context, "بارگیری آفلاین",
+                                      "assets/ic_download.svg"),
+                                  itemProfile(context, "ویرایش",
                                       "assets/ic_download.svg"),
                                   itemProfile(context, "راهنما و اطلاعات",
                                       "assets/ic_question_mark.svg"),

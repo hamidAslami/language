@@ -7,12 +7,13 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
+
 import '../pages/bas/home/home_page.dart';
 import '../pages/bas/login_page/login_page.dart';
 import '../pages/bas/splash_page/splash_page.dart';
 import '../pages/create_user/enter_name_page.dart';
+import '../pages/edit_profile_page/edit_profile_page.dart';
 import '../pages/main_page.dart';
 
 class Routes {
@@ -21,12 +22,14 @@ class Routes {
   static const String homePage = '/home-page';
   static const String namePage = '/name-page';
   static const String mainPage = '/main-page';
+  static const String editProfilePage = '/edit-profile-page';
   static const all = <String>{
     splashPage,
     loginPage,
     homePage,
     namePage,
     mainPage,
+    editProfilePage,
   };
 }
 
@@ -39,6 +42,7 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.homePage, page: HomePage),
     RouteDef(Routes.namePage, page: NamePage),
     RouteDef(Routes.mainPage, page: MainPage),
+    RouteDef(Routes.editProfilePage, page: EditProfilePage),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -71,6 +75,12 @@ class StackedRouter extends RouterBase {
     MainPage: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => MainPage(),
+        settings: data,
+      );
+    },
+    EditProfilePage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => EditProfilePage(),
         settings: data,
       );
     },

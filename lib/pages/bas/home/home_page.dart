@@ -15,6 +15,7 @@ import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:flutter_language_app/theme/text_widgets.dart';
 import 'package:flutter_language_app/widgets/cupertinoContext.dart';
+import 'package:flutter_language_app/widgets/empty_app_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:ndialog/ndialog.dart';
@@ -189,10 +190,11 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 ? homePageShimmer(context, model.isBusy)
                 : Scaffold(
                     backgroundColor: theme.backgroundColor,
+                    appBar: emptyAppBar(),
                     body: SingleChildScrollView(
                         physics: BouncingScrollPhysics(),
                         child: Container(
-                          margin: EdgeInsets.only(top: xlargeSize(context)),
+                          margin: EdgeInsets.only(top: mediumSize(context)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -735,6 +737,10 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            IconButton(icon: Icon(Icons.access_alarm), onPressed: (){},
+                              visualDensity: VisualDensity(horizontal: -4.0, vertical: -4.0),
+                              padding: EdgeInsets.zero,
+                            ),
                             Container(
                                 margin:
                                     EdgeInsets.only(right: xSmallSize(context)),

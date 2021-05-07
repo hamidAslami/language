@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_language_app/pages/bas/upload_image_profile_page/upload_image_profile_page.dart';
 import 'package:flutter_language_app/pages/bas/verify_page/verify_page.dart';
 import 'package:flutter_language_app/pages/bas/verify_page/widgets/create_user_sheet_notifier.dart';
 import 'package:flutter_language_app/pages/create_user/enter_name_page.dart';
 import 'package:flutter_language_app/pages/create_user/level_english_page.dart';
 import 'package:flutter_language_app/pages/create_user/notification_page.dart';
 import 'package:flutter_language_app/pages/create_user/time_goal_page.dart';
-import 'package:flutter_language_app/theme/colors.dart';
 import 'package:flutter_language_app/theme/dimens.dart';
 import 'package:stacked/stacked.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
@@ -76,6 +76,7 @@ class CreateUserSheetState extends State<CreateUserSheet> {
                           physics: new NeverScrollableScrollPhysics(),
                           children: [
                             NamePage(controller),
+                            UploadImageProfilePage(controller),
                             LevelEnglish(controller),
                             NotificationPage(controller),
                             TimeGoalPage(controller)

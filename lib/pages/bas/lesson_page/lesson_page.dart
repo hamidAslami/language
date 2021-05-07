@@ -24,7 +24,7 @@ class LessonPage extends StatefulWidget {
 
 class LessonPageState extends State<LessonPage> with TickerProviderStateMixin {
   late AnimationController _controllerBannerHeader = AnimationController(
-    duration: const Duration(milliseconds: 2000),
+    duration: const Duration(milliseconds: 1500),
     vsync: this,
   )..forward();
   late Animation<Offset> _offsetAnimationBannerHeader = Tween<Offset>(
@@ -39,7 +39,7 @@ class LessonPageState extends State<LessonPage> with TickerProviderStateMixin {
   static bool _isStartListStep = true;
 
   late AnimationController _controllerBannerFooter = AnimationController(
-    duration: const Duration(milliseconds: 3000),
+    duration: const Duration(milliseconds: 2000),
     vsync: this,
   )..forward();
   late Animation<Offset> _offsetAnimationBannerFooter = Tween<Offset>(
@@ -55,7 +55,7 @@ class LessonPageState extends State<LessonPage> with TickerProviderStateMixin {
     super.initState();
 
     _isStartListStep
-        ? Future.delayed(Duration(milliseconds: 3000), () {
+        ? Future.delayed(Duration(milliseconds: 3500), () {
             setState(() {
               _animateListStep = true;
               _isStartListStep = false;
@@ -453,141 +453,152 @@ class LessonPageState extends State<LessonPage> with TickerProviderStateMixin {
           )
         : GestureDetector(
           onTap: lesson.opPress,
-          child: Container(
-            width: fullWidth(context),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
+          child: AnimatedOpacity(
+            duration: Duration(milliseconds: 2000),
+            opacity: _animateListStep ? 1 : 0,
+            curve: Curves.easeInOutQuart,
+            child: AnimatedPadding(
+              duration: Duration(milliseconds: 2500),
+              padding: _animateListStep
+                  ? const EdgeInsets.all(4.0)
+                  : const EdgeInsets.only(top: 10),
+              child: Container(
+                width: fullWidth(context),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      height: fullWidth(context) / 3.5,
-                      child: Stack(
-                        children: [
-                          Positioned.fill(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.shade300,
-                                      blurRadius: 10,
-                                      spreadRadius: 2,
+                    Row(
+                      children: [
+                        Container(
+                          height: fullWidth(context) / 3.5,
+                          child: Stack(
+                            children: [
+                              Positioned.fill(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.shade300,
+                                          blurRadius: 10,
+                                          spreadRadius: 2,
+                                        )
+                                      ],
+                                      border: Border.all(
+                                          width: 9,
+                                          color: lesson.isDone
+                                              ? lesson.color
+                                              : Colors.grey.shade200)),
+                                ),
+                              ),
+                              Positioned(
+                                top: mediumSize(context),
+                                left: mediumSize(context),
+                                right: mediumSize(context),
+                                bottom: mediumSize(context),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(
+                                      xxLargeSize(context)),
+                                  child: imageWidget(lesson.image,
+                                      fit: BoxFit.cover),
+                                ),
+                              ),
+                              lesson.isDone
+                                  ? Align(
+                                      alignment: Alignment(0, 1.3),
+                                      child: Container(
+                                        padding: EdgeInsets.all(
+                                            xSmallSize(context)),
+                                        child: Container(
+                                            width: fullWidth(context) / 26,
+                                            height: fullWidth(context) / 26,
+                                            child: SvgPicture.asset(
+                                              'assets/ic_tick.svg',
+                                              color: Colors.white,
+                                            )),
+                                        decoration: BoxDecoration(
+                                            color: lesson.color,
+                                            shape: BoxShape.circle),
+                                      ),
                                     )
-                                  ],
-                                  border: Border.all(
-                                      width: 9,
-                                      color: lesson.isDone
-                                          ? lesson.color
-                                          : Colors.grey.shade200)),
-                            ),
+                                  : Container(),
+                            ],
                           ),
-                          Positioned(
-                            top: mediumSize(context),
-                            left: mediumSize(context),
-                            right: mediumSize(context),
-                            bottom: mediumSize(context),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(
-                                  xxLargeSize(context)),
-                              child: imageWidget(lesson.image,
-                                  fit: BoxFit.cover),
-                            ),
-                          ),
-                          lesson.isDone
-                              ? Align(
-                                  alignment: Alignment(0, 1.3),
-                                  child: Container(
-                                    padding: EdgeInsets.all(
-                                        xSmallSize(context)),
-                                    child: Container(
-                                        width: fullWidth(context) / 26,
-                                        height: fullWidth(context) / 26,
-                                        child: SvgPicture.asset(
-                                          'assets/ic_tick.svg',
-                                          color: Colors.white,
-                                        )),
-                                    decoration: BoxDecoration(
-                                        color: lesson.color,
-                                        shape: BoxShape.circle),
+                          width: fullWidth(context) / 3.5,
+                        ),
+                        Expanded(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(
+                                horizontal: smallSize(context)),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(lesson.title,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline4!
+                                        .copyWith(
+                                            fontSize:
+                                                bodyText1Size(context))),
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      top: mediumSize(context)),
+                                  child: Row(
+                                    children: [
+                                      icon((() {
+                                        switch (lesson.type) {
+                                          case lessonType.video:
+                                            return Icons.video_library_sharp;
+                                          case lessonType.speaking:
+                                            return Icons.chat_rounded;
+                                          case lessonType.words:
+                                            return Icons.menu_book_outlined;
+                                          case lessonType.writing:
+                                            return Icons.text_format_sharp;
+                                          case lessonType.Exercises:
+                                            return Icons.assignment;
+                                        }
+                                      })()),
+                                      text(context, (() {
+                                        switch (lesson.type) {
+                                          case lessonType.video:
+                                            return "Video";
+                                          case lessonType.speaking:
+                                            return "Speaking";
+                                          case lessonType.words:
+                                            return "Vocabulary";
+                                          case lessonType.writing:
+                                            return "Writing";
+                                          case lessonType.Exercises:
+                                            return "Exercises";
+                                        }
+                                      })()),
+                                    ],
                                   ),
                                 )
-                              : Container(),
-                        ],
-                      ),
-                      width: fullWidth(context) / 3.5,
-                    ),
-                    Expanded(
-                      child: Container(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: smallSize(context)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(lesson.title,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline4!
-                                    .copyWith(
-                                        fontSize:
-                                            bodyText1Size(context))),
-                            Container(
-                              margin: EdgeInsets.only(
-                                  top: mediumSize(context)),
-                              child: Row(
-                                children: [
-                                  icon((() {
-                                    switch (lesson.type) {
-                                      case lessonType.video:
-                                        return Icons.video_library_sharp;
-                                      case lessonType.speaking:
-                                        return Icons.chat_rounded;
-                                      case lessonType.words:
-                                        return Icons.menu_book_outlined;
-                                      case lessonType.writing:
-                                        return Icons.text_format_sharp;
-                                      case lessonType.Exercises:
-                                        return Icons.assignment;
-                                    }
-                                  })()),
-                                  text(context, (() {
-                                    switch (lesson.type) {
-                                      case lessonType.video:
-                                        return "Video";
-                                      case lessonType.speaking:
-                                        return "Speaking";
-                                      case lessonType.words:
-                                        return "Vocabulary";
-                                      case lessonType.writing:
-                                        return "Writing";
-                                      case lessonType.Exercises:
-                                        return "Exercises";
-                                    }
-                                  })()),
-                                ],
-                              ),
-                            )
-                          ],
+                              ],
+                            ),
+                          ),
                         ),
+                      ],
+                    ),
+                    Align(
+                      alignment: Alignment(0.71, -0.5),
+                      child: Container(
+                        width: xSmallSize(context),
+                        height: fullWidth(context) / 6,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: lesson.isDone
+                                ? lesson.color
+                                : Colors.grey.shade200),
                       ),
                     ),
                   ],
                 ),
-                Align(
-                  alignment: Alignment(0.71, -0.5),
-                  child: Container(
-                    width: xSmallSize(context),
-                    height: fullWidth(context) / 6,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: lesson.isDone
-                            ? lesson.color
-                            : Colors.grey.shade200),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         );
