@@ -198,48 +198,278 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Container(
-                                margin: EdgeInsets.symmetric(
-                                    horizontal: standardSize(context)),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              right: xSmallSize(context)),
-                                          child: Text("صبح بخیـر!",
-                                              style: theme.textTheme.headline4!
-                                                  .copyWith(
-                                                      color:
-                                                          theme.primaryColor)),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              right: xSmallSize(context)),
-                                          child: Text(
-                                            (model.data?.name != ''
-                                                ? model.data!.name
-                                                : "اطلاعات وارد نشده است !")!,
-                                            style: theme.textTheme.bodyText2!
-                                                .copyWith(
-                                                    color: Color(0xff4c456f)),
+                              ScaleTransition(
+                                scale: _animationHeader,
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: standardSize(context)),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                right: xSmallSize(context)),
+                                            child: Text("صبح بخیـر!",
+                                                style: theme.textTheme.headline4!
+                                                    .copyWith(
+                                                        color:
+                                                            theme.primaryColor)),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    CupertinoContextMenuCustom(
-                                      previewSize: Size(fullWidth(context) / 5,
-                                          fullWidth(context) / 5),
-                                      previewBuilder: (BuildContext context,
-                                          Animation<double> animation,
-                                          Widget child) {
-                                        return FittedBox(
-                                          fit: BoxFit.cover,
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                right: xSmallSize(context)),
+                                            child: Text(
+                                              (model.data?.name != ''
+                                                  ? model.data!.name
+                                                  : "اطلاعات وارد نشده است !")!,
+                                              style: theme.textTheme.bodyText2!
+                                                  .copyWith(
+                                                      color: Color(0xff4c456f)),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      CupertinoContextMenuCustom(
+                                        previewSize: Size(fullWidth(context) / 5,
+                                            fullWidth(context) / 5),
+                                        previewBuilder: (BuildContext context,
+                                            Animation<double> animation,
+                                            Widget child) {
+                                          return FittedBox(
+                                            fit: BoxFit.cover,
+                                            child: Container(
+                                              height: fullWidth(context) / 8,
+                                              decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  image: DecorationImage(
+                                                      fit: BoxFit.cover,
+                                                      image: AssetImage(avatar))),
+                                              width: fullWidth(context) / 8,
+                                            ),
+                                          );
+                                        },
+                                        actions: [
+                                          CupertinoContextMenuAction(
+                                              onPressed: () async {
+                                                Navigator.of(context,
+                                                        rootNavigator: true)
+                                                    .pop();
+
+                                                setState(() {
+                                                  avatar = "assets/avatar2.jpg";
+                                                });
+
+                                                await CustomProgressDialog.future(
+                                                  context,
+                                                  blur: 3,
+                                                  dismissable: false,
+                                                  future: Future.delayed(
+                                                      Duration(seconds: 10), () {
+                                                    return "WOHOOO";
+                                                  }),
+                                                  loadingWidget: Container(
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12),
+                                                      color: Colors.grey.shade200,
+                                                    ),
+                                                    height: 100,
+                                                    width: 100,
+                                                    child: Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Container(
+                                                          width: 60,
+                                                          height: 60,
+                                                          child: ColorFiltered(
+                                                            colorFilter:
+                                                                ColorFilter.mode(
+                                                                    Colors.black,
+                                                                    BlendMode
+                                                                        .srcIn),
+                                                            child: LottieBuilder
+                                                                .asset(
+                                                                    'assets/lottie_loading.json'),
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          "صبر کن...",
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          textDirection:
+                                                              TextDirection.rtl,
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .caption,
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              child: Container(
+                                                height: fullWidth(context) / 9,
+                                                child: Directionality(
+                                                  textDirection:
+                                                      TextDirection.rtl,
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    children: [
+                                                      Container(
+                                                        height:
+                                                            fullWidth(context) /
+                                                                8,
+                                                        decoration: BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            image: DecorationImage(
+                                                                fit: BoxFit.cover,
+                                                                image: AssetImage(
+                                                                    "assets/avatar2.jpg"))),
+                                                        width:
+                                                            fullWidth(context) /
+                                                                8,
+                                                      ),
+                                                      Container(
+                                                        margin: EdgeInsets.only(
+                                                            right: xxSmallSize(
+                                                                context)),
+                                                        child: Text(
+                                                          "حمیدرضا اسلمی",
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .bodyText1,
+                                                        ),
+                                                      ),
+                                                      Expanded(child: SizedBox()),
+                                                      SvgPicture.asset(
+                                                        "assets/tick_circle.svg",
+                                                        width:
+                                                            fullWidth(context) /
+                                                                16,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              )),
+                                          CupertinoContextMenuAction(
+                                              onPressed: () async {
+                                                Navigator.of(context,
+                                                        rootNavigator: true)
+                                                    .pop();
+
+                                                setState(() {
+                                                  avatar = "assets/avatar1.jpg";
+                                                });
+
+                                                await CustomProgressDialog.future(
+                                                  context,
+                                                  blur: 3,
+                                                  dismissable: false,
+                                                  future: Future.delayed(
+                                                      Duration(seconds: 10), () {
+                                                    return "WOHOOO";
+                                                  }),
+                                                  loadingWidget: Container(
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12),
+                                                      color: Colors.grey.shade200,
+                                                    ),
+                                                    height: 100,
+                                                    width: 100,
+                                                    child: Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Container(
+                                                          width: 60,
+                                                          height: 60,
+                                                          child: ColorFiltered(
+                                                            colorFilter:
+                                                                ColorFilter.mode(
+                                                                    Colors.black,
+                                                                    BlendMode
+                                                                        .srcIn),
+                                                            child: LottieBuilder
+                                                                .asset(
+                                                                    'assets/lottie_loading.json'),
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          "صبر کن...",
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          textDirection:
+                                                              TextDirection.rtl,
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .caption,
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              child: Container(
+                                                height: fullWidth(context) / 9,
+                                                child: Directionality(
+                                                  textDirection:
+                                                      TextDirection.rtl,
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    children: [
+                                                      Container(
+                                                        height:
+                                                            fullWidth(context) /
+                                                                8,
+                                                        decoration: BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            image: DecorationImage(
+                                                                image: AssetImage(
+                                                                    "assets/avatar1.jpg"))),
+                                                        width:
+                                                            fullWidth(context) /
+                                                                8,
+                                                      ),
+                                                      Container(
+                                                        margin: EdgeInsets.only(
+                                                            right: xxSmallSize(
+                                                                context)),
+                                                        child: Text(
+                                                          "علیرضا اسلمی",
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .bodyText1,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              )),
+                                        ],
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ProfilePage(),
+                                                ));
+                                          },
                                           child: Container(
                                             height: fullWidth(context) / 8,
                                             decoration: BoxDecoration(
@@ -249,237 +479,10 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                     image: AssetImage(avatar))),
                                             width: fullWidth(context) / 8,
                                           ),
-                                        );
-                                      },
-                                      actions: [
-                                        CupertinoContextMenuAction(
-                                            onPressed: () async {
-                                              Navigator.of(context,
-                                                      rootNavigator: true)
-                                                  .pop();
-
-                                              setState(() {
-                                                avatar = "assets/avatar2.jpg";
-                                              });
-
-                                              await CustomProgressDialog.future(
-                                                context,
-                                                blur: 3,
-                                                dismissable: false,
-                                                future: Future.delayed(
-                                                    Duration(seconds: 10), () {
-                                                  return "WOHOOO";
-                                                }),
-                                                loadingWidget: Container(
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12),
-                                                    color: Colors.grey.shade200,
-                                                  ),
-                                                  height: 100,
-                                                  width: 100,
-                                                  child: Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Container(
-                                                        width: 60,
-                                                        height: 60,
-                                                        child: ColorFiltered(
-                                                          colorFilter:
-                                                              ColorFilter.mode(
-                                                                  Colors.black,
-                                                                  BlendMode
-                                                                      .srcIn),
-                                                          child: LottieBuilder
-                                                              .asset(
-                                                                  'assets/lottie_loading.json'),
-                                                        ),
-                                                      ),
-                                                      Text(
-                                                        "صبر کن...",
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        textDirection:
-                                                            TextDirection.rtl,
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .caption,
-                                                      )
-                                                    ],
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                            child: Container(
-                                              height: fullWidth(context) / 9,
-                                              child: Directionality(
-                                                textDirection:
-                                                    TextDirection.rtl,
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      height:
-                                                          fullWidth(context) /
-                                                              8,
-                                                      decoration: BoxDecoration(
-                                                          shape:
-                                                              BoxShape.circle,
-                                                          image: DecorationImage(
-                                                              fit: BoxFit.cover,
-                                                              image: AssetImage(
-                                                                  "assets/avatar2.jpg"))),
-                                                      width:
-                                                          fullWidth(context) /
-                                                              8,
-                                                    ),
-                                                    Container(
-                                                      margin: EdgeInsets.only(
-                                                          right: xxSmallSize(
-                                                              context)),
-                                                      child: Text(
-                                                        "حمیدرضا اسلمی",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .bodyText1,
-                                                      ),
-                                                    ),
-                                                    Expanded(child: SizedBox()),
-                                                    SvgPicture.asset(
-                                                      "assets/tick_circle.svg",
-                                                      width:
-                                                          fullWidth(context) /
-                                                              16,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            )),
-                                        CupertinoContextMenuAction(
-                                            onPressed: () async {
-                                              Navigator.of(context,
-                                                      rootNavigator: true)
-                                                  .pop();
-
-                                              setState(() {
-                                                avatar = "assets/avatar1.jpg";
-                                              });
-
-                                              await CustomProgressDialog.future(
-                                                context,
-                                                blur: 3,
-                                                dismissable: false,
-                                                future: Future.delayed(
-                                                    Duration(seconds: 10), () {
-                                                  return "WOHOOO";
-                                                }),
-                                                loadingWidget: Container(
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12),
-                                                    color: Colors.grey.shade200,
-                                                  ),
-                                                  height: 100,
-                                                  width: 100,
-                                                  child: Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Container(
-                                                        width: 60,
-                                                        height: 60,
-                                                        child: ColorFiltered(
-                                                          colorFilter:
-                                                              ColorFilter.mode(
-                                                                  Colors.black,
-                                                                  BlendMode
-                                                                      .srcIn),
-                                                          child: LottieBuilder
-                                                              .asset(
-                                                                  'assets/lottie_loading.json'),
-                                                        ),
-                                                      ),
-                                                      Text(
-                                                        "صبر کن...",
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        textDirection:
-                                                            TextDirection.rtl,
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .caption,
-                                                      )
-                                                    ],
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                            child: Container(
-                                              height: fullWidth(context) / 9,
-                                              child: Directionality(
-                                                textDirection:
-                                                    TextDirection.rtl,
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      height:
-                                                          fullWidth(context) /
-                                                              8,
-                                                      decoration: BoxDecoration(
-                                                          shape:
-                                                              BoxShape.circle,
-                                                          image: DecorationImage(
-                                                              image: AssetImage(
-                                                                  "assets/avatar1.jpg"))),
-                                                      width:
-                                                          fullWidth(context) /
-                                                              8,
-                                                    ),
-                                                    Container(
-                                                      margin: EdgeInsets.only(
-                                                          right: xxSmallSize(
-                                                              context)),
-                                                      child: Text(
-                                                        "علیرضا اسلمی",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .bodyText1,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            )),
-                                      ],
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ProfilePage(),
-                                              ));
-                                        },
-                                        child: Container(
-                                          height: fullWidth(context) / 8,
-                                          decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              image: DecorationImage(
-                                                  fit: BoxFit.cover,
-                                                  image: AssetImage(avatar))),
-                                          width: fullWidth(context) / 8,
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                               SlideTransition(

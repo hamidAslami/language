@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_language_app/pages/bas/upload_image_profile_page/upload_image_profile_page.dart';
 import 'package:flutter_language_app/pages/bas/verify_page/verify_page.dart';
 import 'package:flutter_language_app/pages/bas/verify_page/widgets/create_user_sheet_notifier.dart';
-import 'package:flutter_language_app/pages/create_user/enter_name_page.dart';
+import 'package:flutter_language_app/pages/create_user/create_user_page.dart';
 import 'package:flutter_language_app/pages/create_user/level_english_page.dart';
 import 'package:flutter_language_app/pages/create_user/notification_page.dart';
 import 'package:flutter_language_app/pages/create_user/time_goal_page.dart';
@@ -20,7 +19,6 @@ class CreateUserSheetState extends State<CreateUserSheet> {
   late TextEditingController nameController;
 
   @override
-
   void initState() {
     nameController = TextEditingController();
     super.initState();
@@ -31,12 +29,12 @@ class CreateUserSheetState extends State<CreateUserSheet> {
     nameController = TextEditingController();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<CreateUserSheetVM>.reactive(
         viewModelBuilder: () => CreateUserSheetVM(context),
-        builder: (context, model, child) =>
-            FractionallySizedBox(
+        builder: (context, model, child) => FractionallySizedBox(
               heightFactor: 0.9,
               child: Directionality(
                 textDirection: TextDirection.rtl,
@@ -57,10 +55,19 @@ class CreateUserSheetState extends State<CreateUserSheet> {
                           "ایجاد حساب",
                           style: Theme.of(context).textTheme.subtitle1,
                         ),
+                        actions: [
+                          IconButton(
+                            icon: Icon(CupertinoIcons.clear),
+                            onPressed: () {
+
+                             Navigator.pop(context);
+                            },
+                          ),
+                        ],
                         leading: IconButton(
-                          icon: Icon(Icons.close),
+                          icon: Icon(CupertinoIcons.back),
                           onPressed: () {
-                            Navigator.pop(context);
+                            controller.previousPage(duration: Duration(milliseconds: 200), curve: Curves.bounceIn);
                           },
                         ),
                       ),
@@ -75,8 +82,7 @@ class CreateUserSheetState extends State<CreateUserSheet> {
                           controller: controller,
                           physics: new NeverScrollableScrollPhysics(),
                           children: [
-                            NamePage(controller),
-                            UploadImageProfilePage(controller),
+                            CreateUserPage(controller),
                             LevelEnglish(controller),
                             NotificationPage(controller),
                             TimeGoalPage(controller)

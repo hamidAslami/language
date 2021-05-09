@@ -2,6 +2,7 @@ class User {
   String? name;
   String? phone;
 
+
   User(this.name, this.phone);
 
   User.fromJson(Map<String, dynamic> json) {

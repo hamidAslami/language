@@ -12,7 +12,7 @@ import 'package:stacked/stacked.dart';
 import '../pages/bas/home/home_page.dart';
 import '../pages/bas/login_page/login_page.dart';
 import '../pages/bas/splash_page/splash_page.dart';
-import '../pages/create_user/enter_name_page.dart';
+import '../pages/create_user/create_user_page.dart';
 import '../pages/edit_profile_page/edit_profile_page.dart';
 import '../pages/main_page.dart';
 
@@ -40,7 +40,7 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.splashPage, page: SplashPage),
     RouteDef(Routes.loginPage, page: LoginPage),
     RouteDef(Routes.homePage, page: HomePage),
-    RouteDef(Routes.namePage, page: NamePage),
+    RouteDef(Routes.namePage, page: CreateUserPage),
     RouteDef(Routes.mainPage, page: MainPage),
     RouteDef(Routes.editProfilePage, page: EditProfilePage),
   ];
@@ -65,10 +65,10 @@ class StackedRouter extends RouterBase {
         settings: data,
       );
     },
-    NamePage: (data) {
+    CreateUserPage: (data) {
       var args = data.getArgs<NamePageArguments>(nullOk: false);
       return MaterialPageRoute<dynamic>(
-        builder: (context) => NamePage(args.pageController),
+        builder: (context) => CreateUserPage(args.pageController),
         settings: data,
       );
     },

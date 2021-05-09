@@ -16,6 +16,7 @@ class TimeGoalPageState extends State<TimeGoalPage> {
     return Directionality(
         textDirection: TextDirection.ltr,
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           backgroundColor: theme.backgroundColor,
           body: SingleChildScrollView(
             physics: BouncingScrollPhysics(),

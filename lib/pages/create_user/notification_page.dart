@@ -17,6 +17,7 @@ class NotificationPageState extends State<NotificationPage> {
     return Directionality(
       textDirection: TextDirection.ltr,
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: theme.backgroundColor,
         body: Stack(
           fit: StackFit.expand,

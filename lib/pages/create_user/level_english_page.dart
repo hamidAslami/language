@@ -18,64 +18,69 @@ class LevelEnglishState extends State<LevelEnglish> {
     return Directionality(
       textDirection: TextDirection.ltr,
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: theme.backgroundColor,
-        body: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                margin: EdgeInsets.only(top: largeSize(context)),
-                child: Text("آیا از قبـل انگـلیسی بلـدید؟",
-                    style: theme.textTheme.headline4!
-                        .copyWith(color: AppColors.textColorLight)),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: mediumSize(context)),
-                child: Text(
-                  "مسیر موفقیت و مسیر شکست تقریبا شبیه هم هستند\n!ما به شما کمک خواهیم کرد تا مکان مناسب را برای شروع درست کنید",
-                  style: theme.textTheme.caption!.copyWith(
-                    color: AppColors.textColorDark,
-                  ),
-                  textAlign: TextAlign.center,
+        body: Container(
+          height: fullHeight(context),
+          width: fullWidth(context),
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: largeSize(context)),
+                  child: Text("آیا از قبـل انگـلیسی بلـدید؟",
+                      style: theme.textTheme.headline4!
+                          .copyWith(color: AppColors.textColorLight)),
                 ),
-              ),
-              Container(
-                child: levelEnglish(context, "بسیار کم!", "assets/ic_level1.png"),
-                margin: EdgeInsets.only(top: smallSize(context)),
-              ),
-              levelEnglish(context, "مقداری!", "assets/ic_level2.png"),
-              levelEnglish(context, "بسیار زیاد!", "assets/ic_level3.png"),
-              Container(
-                margin: EdgeInsets.symmetric(
-                    horizontal: standardSize(context),
-                    vertical: largeSize(context)),
-                width: fullWidth(context),
-                height: fullHeight(context) / 13,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    elevation: standardSize(context),
-                    primary: AppColors.textColorLight,
-                  ),
-                  onPressed: () {
-                    controller.animateToPage(
-                      controller.page!.toInt() + 1,
-                      duration: Duration(milliseconds: 200),
-                      curve: Curves.easeInQuad,
-                    );
-                  },
+                Container(
+                  margin: EdgeInsets.only(top: mediumSize(context)),
                   child: Text(
-                    "ادامـه دهـید !",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline4!
-                        .copyWith(
-                        fontSize: caption1Size(context),
-                        color: Theme.of(context).backgroundColor),
+                    "مسیر موفقیت و مسیر شکست تقریبا شبیه هم هستند\n!ما به شما کمک خواهیم کرد تا مکان مناسب را برای شروع درست کنید",
+                    style: theme.textTheme.caption!.copyWith(
+                      color: AppColors.textColorDark,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
-              ),
-            ],
+                Container(
+                  child: levelEnglish(context, "بسیار کم!", "assets/ic_level1.png"),
+                  margin: EdgeInsets.only(top: smallSize(context)),
+                ),
+                levelEnglish(context, "مقداری!", "assets/ic_level2.png"),
+                levelEnglish(context, "بسیار زیاد!", "assets/ic_level3.png"),
+                Container(
+                  margin: EdgeInsets.symmetric(
+                      horizontal: standardSize(context),
+                      vertical: largeSize(context)),
+                  width: fullWidth(context),
+                  height: fullHeight(context) / 13,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: standardSize(context),
+                      primary: AppColors.textColorLight,
+                    ),
+                    onPressed: () {
+                      controller.animateToPage(
+                        controller.page!.toInt() + 1,
+                        duration: Duration(milliseconds: 200),
+                        curve: Curves.easeInQuad,
+                      );
+                    },
+                    child: Text(
+                      "ادامـه دهـید !",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline4!
+                          .copyWith(
+                          fontSize: caption1Size(context),
+                          color: Theme.of(context).backgroundColor),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
